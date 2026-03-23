@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://d1p1edh501dns"]
+
+[ext_resource type="Texture2D" uid="uid://b0j11c77u6tu4" path="res://sprites/white_circle.png" id="1_2nsb5"]
+[ext_resource type="Script" uid="uid://dfdnrqhpd81qr" path="res://scripts/enemy_soldier.gd" id="1_3f7y6"]
+[ext_resource type="Texture2D" uid="uid://b2it70gowf7it" path="res://sprites/arrow.png" id="3_8575j"]
+
+[node name="enemy_soldier" type="Node2D" unique_id=1684205262 node_paths=PackedStringArray("intent_arrow")]
+script = ExtResource("1_3f7y6")
+intent_arrow = NodePath("visual/intent_arrow")
+
+[node name="visual" type="Node2D" parent="." unique_id=795287941]
+z_index = 100
+
+[node name="intent_arrow" type="Node2D" parent="visual" unique_id=526566186]
+z_index = 4
+position = Vector2(0, -16)
+
+[node name="sprite" type="Sprite2D" parent="visual/intent_arrow" unique_id=833087690]
+self_modulate = Color(0.4, 0.072000004, 0.072000004, 1)
+position = Vector2(26, 0)
+rotation = 1.5707964
+scale = Vector2(0.36, 0.36)
+texture = ExtResource("3_8575j")
+
+[node name="sprite_3" type="Sprite2D" parent="visual" unique_id=357796783]
+self_modulate = Color(1, 0.71000004, 0.71000004, 1)
+z_index = 3
+position = Vector2(0, -17)
+scale = Vector2(0.28, 0.28)
+texture = ExtResource("1_2nsb5")
+
+[node name="sprite_2" type="Sprite2D" parent="visual" unique_id=1610245410]
+self_modulate = Color(0.94, 0.5358, 0.5358, 1)
+z_index = 2
+position = Vector2(0, -9)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("1_2nsb5")
+
+[node name="sprite_1" type="Sprite2D" parent="visual" unique_id=975530023]
+self_modulate = Color(0.86, 0.30100003, 0.30100003, 1)
+z_index = 1
+position = Vector2(0, -2)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("1_2nsb5")
+
+[node name="sprite_0" type="Sprite2D" parent="visual" unique_id=2064449938]
+self_modulate = Color(0.58, 0.2668, 0.2668, 1)
+position = Vector2(0, 1.0000019)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("1_2nsb5")
