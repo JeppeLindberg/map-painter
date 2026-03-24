@@ -7,7 +7,7 @@ var planned_movement = Vector2i.ZERO
 
 
 func _ready() -> void:
-	add_to_group('occupants')
+	add_to_group('occupant')
 	add_to_group('enemy_soldier')
 
 func _process(_delta):

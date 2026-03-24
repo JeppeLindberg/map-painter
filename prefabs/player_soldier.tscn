@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://p17h7uyjao7v" path="res://scripts/player_soldier.gd" id="1_ktd4h"]
 [ext_resource type="PackedScene" uid="uid://bn2k2j1612fal" path="res://prefabs/pathfinding_clickable.tscn" id="2_vwbyv"]
 
-[node name="player_soldier" type="Node2D" unique_id=1824605875]
+[node name="player_soldier" type="Node2D" unique_id=1824605875 groups=["occupant"]]
 z_index = 100
 script = ExtResource("1_ktd4h")
 pathfinding_clickable_prefab = ExtResource("2_vwbyv")

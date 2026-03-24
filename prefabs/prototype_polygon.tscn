@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://ceskeiqst147p"]
+
+[ext_resource type="Texture2D" uid="uid://dh7ejv1lt1gur" path="res://sprites/gradient.png" id="1_j28h6"]
+[ext_resource type="Script" uid="uid://d1xf43kkj4nle" path="res://scripts/prototype_polygon.gd" id="2_h0rme"]
+
+[node name="prototype_polygon" type="Polygon2D" unique_id=1814504689]
+color = Color(0.35730806, 0.28878066, 0.35437027, 1)
+texture = ExtResource("1_j28h6")
+polygon = PackedVector2Array(7, -33, -23, -13, -3, 54, 65.661316, 41.217743)
+uv = PackedVector2Array(-100, -100, 100, -100, 100, 100, -100, 100)
+script = ExtResource("2_h0rme")

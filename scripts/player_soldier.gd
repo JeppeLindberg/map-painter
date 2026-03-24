@@ -11,7 +11,7 @@ var target_tile_index = null
 
 
 func _ready() -> void:
-	add_to_group('occupants')
+	add_to_group('occupant')
 	add_to_group('player_soldier')
 
 func _process(_delta: float) -> void:

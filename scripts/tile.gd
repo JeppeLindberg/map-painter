@@ -23,7 +23,7 @@ func paint(new_color):
 	color = new_color
 
 func get_current_occupant():
-	var occupants = main.get_children_in_group(self, 'occupants')
+	var occupants = main.get_children_in_group(self, 'occupant')
 	if occupants == []:
 		return null
 	else:

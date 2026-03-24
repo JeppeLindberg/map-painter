@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://7befx1u5v3fn"]
+
+[ext_resource type="Texture2D" uid="uid://r7hr4d7px5f" path="res://sprites/white.png" id="1_u1ior"]
+[ext_resource type="Script" uid="uid://ch6eivoukap2y" path="res://scripts/tile.gd" id="1_x2ukr"]
+
+[node name="tile_polygon" type="Node2D" unique_id=1738362686]
+script = ExtResource("1_x2ukr")
+
+[node name="visual" type="Node2D" parent="." unique_id=431904697]
+
+[node name="polygon" type="Polygon2D" parent="visual" unique_id=1645437304]
+texture_repeat = 2
+color = Color(0.98039216, 0.8901961, 0.8901961, 1)
+antialiased = true
+texture = ExtResource("1_u1ior")
+polygon = PackedVector2Array(-82.00003, 5.999668, 16, 48, 60, 54, 68, 16)
+uv = PackedVector2Array(9, 12, 16, 48, 60, 54, 68, 16)

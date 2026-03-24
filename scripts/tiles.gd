@@ -1,3 +1,4 @@
+@tool
 extends Node
 
 const X_RESOLUTION = 54
@@ -6,9 +7,23 @@ const Y_RESOLUTION = 54
 var tiles_dict = {}
 var initialized = false
 
-
+@export var main: Node2D
 @export var tile_prefab: PackedScene
+@export var occupant_container: Node2D
 
+
+@export_tool_button("Recreate", "Callable") var recreate_callable = recreate
+@export_tool_button("Clear", "Callable") var clear_callable = clear
+
+func clear():
+	for occupant in main.get_children_in_group(self, 'occupant'):
+		occupant.reparent(occupant_container)
+
+	for child in get_children():
+		child.queue_free()
+
+func recreate():	
+	clear()
 
 func _process(_delta) -> void:
 	if Engine.is_editor_hint():

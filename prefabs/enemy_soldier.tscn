@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://dfdnrqhpd81qr" path="res://scripts/enemy_soldier.gd" id="1_3f7y6"]
 [ext_resource type="Texture2D" uid="uid://b2it70gowf7it" path="res://sprites/arrow.png" id="3_8575j"]
 
-[node name="enemy_soldier" type="Node2D" unique_id=1684205262 node_paths=PackedStringArray("intent_arrow")]
+[node name="enemy_soldier" type="Node2D" unique_id=1684205262 node_paths=PackedStringArray("intent_arrow") groups=["occupant"]]
 script = ExtResource("1_3f7y6")
 intent_arrow = NodePath("visual/intent_arrow")
 
