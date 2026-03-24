@@ -1,17 +1,42 @@
+@tool
 extends Node2D
 
+var utils = preload("res://scripts/utils.gd").new()
+
 @onready var tiles = get_parent()
-@onready var main = get_node('/root/main')
 
 var tile_index:Vector2i
 
 var color = 'neutral'
 
-@export var visual_neutral: Node2D
-@export var visual_player: Node2D
-@export var visual_enemy: Node2D
+@export var surface_polygon: Polygon2D
+@export var colorizable_polygon: Polygon2D
+
+@export var polygon: PackedVector2Array
 
 
+func initialize():
+	var points = []
+	for point in polygon:
+		points.append(point)
+
+	points.sort_custom(ccw_sort)
+
+	colorizable_polygon.polygon = PackedVector2Array(points)
+	surface_polygon.polygon = PackedVector2Array(utils.shrink_polygon(points, 4.0, 0.5))
+
+func ccw_sort(a, b):
+	var angle_a = Vector2.UP.angle_to(a)
+	var angle_b = Vector2.UP.angle_to(b)
+
+	return angle_a > angle_b
+
+
+func _ready() -> void:
+	if Engine.is_editor_hint():
+		return
+
+	initialize()
 
 func get_relative_tile(vec):
 	return tiles.get_tile(tile_index + vec)
@@ -23,26 +48,32 @@ func paint(new_color):
 	color = new_color
 
 func get_current_occupant():
-	var occupants = main.get_children_in_group(self, 'occupant')
+	var occupants = utils.get_children_in_group(self, 'occupant')
 	if occupants == []:
 		return null
 	else:
 		return occupants[0]
 
 func _process(_delta: float) -> void:
+	if Engine.is_editor_hint():
+		return
+
 	match color:
 		'neutral':
-			visual_neutral.visible = true
-			visual_player.visible = false
-			visual_enemy.visible = false
+			pass
+			# visual_neutral.visible = true
+			# visual_player.visible = false
+			# visual_enemy.visible = false
 		'player':
-			visual_neutral.visible = false
-			visual_player.visible = true
-			visual_enemy.visible = false
+			pass
+			# visual_neutral.visible = false
+			# visual_player.visible = true
+			# visual_enemy.visible = false
 		'enemy':
-			visual_neutral.visible = false
-			visual_player.visible = false
-			visual_enemy.visible = true
+			pass
+			# visual_neutral.visible = false
+			# visual_player.visible = false
+			# visual_enemy.visible = true
 
 func get_neighbours():
 	var result = []	

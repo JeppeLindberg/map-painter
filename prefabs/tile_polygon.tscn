@@ -3,15 +3,25 @@
 [ext_resource type="Texture2D" uid="uid://r7hr4d7px5f" path="res://sprites/white.png" id="1_u1ior"]
 [ext_resource type="Script" uid="uid://ch6eivoukap2y" path="res://scripts/tile.gd" id="1_x2ukr"]
 
-[node name="tile_polygon" type="Node2D" unique_id=1738362686]
+[node name="tile_polygon" type="Node2D" unique_id=159405777 node_paths=PackedStringArray("surface_polygon", "colorizable_polygon")]
 script = ExtResource("1_x2ukr")
+surface_polygon = NodePath("visual/surface")
+colorizable_polygon = NodePath("visual/colorizable")
 
 [node name="visual" type="Node2D" parent="." unique_id=431904697]
 
-[node name="polygon" type="Polygon2D" parent="visual" unique_id=1645437304]
+[node name="colorizable" type="Polygon2D" parent="visual" unique_id=1645437304]
+texture_repeat = 2
+color = Color(0.8737911, 0.6944265, 0.69791687, 1)
+antialiased = true
+texture = ExtResource("1_u1ior")
+polygon = PackedVector2Array(-82.00003, 5.999668, 16, 48, 60, 54, 68, 16)
+uv = PackedVector2Array(9, 12, 16, 48, 60, 54, 68, 16)
+
+[node name="surface" type="Polygon2D" parent="visual" unique_id=771144924]
 texture_repeat = 2
 color = Color(0.98039216, 0.8901961, 0.8901961, 1)
 antialiased = true
 texture = ExtResource("1_u1ior")
-polygon = PackedVector2Array(-82.00003, 5.999668, 16, 48, 60, 54, 68, 16)
+polygon = PackedVector2Array(-4, 20, 16, 48, 60, 54, 68, 16)
 uv = PackedVector2Array(9, 12, 16, 48, 60, 54, 68, 16)

@@ -1,6 +1,5 @@
 [gd_scene format=3 uid="uid://3qegwrydp4a5"]
 
-[ext_resource type="PackedScene" uid="uid://bq32grs3be8v5" path="res://prefabs/player_soldier.tscn" id="1_0wfyh"]
 [ext_resource type="Script" uid="uid://dupy7lp1l560o" path="res://scripts/tiles.gd" id="1_jyhfs"]
 [ext_resource type="Script" uid="uid://v8r4mlgo8l88" path="res://scripts/main.gd" id="1_tbgi4"]
 [ext_resource type="PackedScene" uid="uid://gcfqmvwt4j8n" path="res://prefabs/tile.tscn" id="2_0wfyh"]
@@ -8,9 +7,10 @@
 [ext_resource type="Script" uid="uid://crypkp54bqje4" path="res://scripts/turn_mgt.gd" id="2_choun"]
 [ext_resource type="Texture2D" uid="uid://cfn4c10oyciur" path="res://sprites/timer_1.png" id="2_o6xl0"]
 [ext_resource type="Texture2D" uid="uid://b0j11c77u6tu4" path="res://sprites/white_circle.png" id="2_tefeu"]
-[ext_resource type="PackedScene" uid="uid://d1p1edh501dns" path="res://prefabs/enemy_soldier.tscn" id="4_jyhfs"]
 [ext_resource type="Texture2D" uid="uid://ciiobs1rsylf6" path="res://sprites/timer_0.png" id="4_tipki"]
 [ext_resource type="PackedScene" uid="uid://ceskeiqst147p" path="res://prefabs/prototype_polygon.tscn" id="9_ya4ey"]
+[ext_resource type="PackedScene" uid="uid://7befx1u5v3fn" path="res://prefabs/tile_polygon.tscn" id="10_choun"]
+[ext_resource type="Script" uid="uid://ch6eivoukap2y" path="res://scripts/tile.gd" id="11_ya4ey"]
 
 [sub_resource type="Shader" id="Shader_tipki"]
 code = "shader_type canvas_item;
@@ -142,22 +142,44 @@ texture = ExtResource("2_tefeu")
 
 [node name="occupant_container" type="Node2D" parent="." unique_id=1892342923]
 
-[node name="player_soldier" parent="occupant_container" unique_id=674991049 instance=ExtResource("1_0wfyh")]
-position = Vector2(-54, 0)
-
-[node name="enemy_soldier" parent="occupant_container" unique_id=1684205262 instance=ExtResource("4_jyhfs")]
-position = Vector2(54, 0)
-
 [node name="tiles_prototype" type="Node2D" parent="." unique_id=503774185]
+visible = false
 
 [node name="prototype_polygon" parent="tiles_prototype" unique_id=1814504689 instance=ExtResource("9_ya4ey")]
+polygon = PackedVector2Array(7, -33, -31, -29, -28, 15, 37, -19)
 
 [node name="prototype_polygon2" parent="tiles_prototype" unique_id=868231572 instance=ExtResource("9_ya4ey")]
-position = Vector2(39, -88)
-polygon = PackedVector2Array(-32, 55, -23, -13, 7, -33, 55, 24, 9, 36)
+position = Vector2(27, -36)
+polygon = PackedVector2Array(-20, 3, -16, -24, 7, -33, 47, -9, 10, 17)
 
-[node name="tiles" type="Node2D" parent="." unique_id=276516360 node_paths=PackedStringArray("main", "occupant_container")]
+[node name="prototype_polygon3" parent="tiles_prototype" unique_id=1226260224 instance=ExtResource("9_ya4ey")]
+position = Vector2(-26, -63)
+polygon = PackedVector2Array(-5, 34, -25, -17, 37, 3, 33, 30)
+
+[node name="tiles" type="Node2D" parent="." unique_id=276516360 node_paths=PackedStringArray("occupant_container", "tiles_prototype")]
 script = ExtResource("1_jyhfs")
-main = NodePath("..")
 tile_prefab = ExtResource("2_0wfyh")
+tile_polygon_prefab = ExtResource("10_choun")
 occupant_container = NodePath("../occupant_container")
+tiles_prototype = NodePath("../tiles_prototype")
+
+[node name="tile_polygon" type="Node2D" parent="tiles" unique_id=159405777 node_paths=PackedStringArray("surface_polygon", "colorizable_polygon") instance=ExtResource("10_choun")]
+position = Vector2(-3.75, -16.5)
+script = ExtResource("11_ya4ey")
+surface_polygon = NodePath("visual/surface")
+colorizable_polygon = NodePath("visual/colorizable")
+polygon = PackedVector2Array(10.75, -16.5, -27.25, -12.5, -24.25, 31.5, 40.75, -2.5)
+
+[node name="@Node2D@28604" type="Node2D" parent="tiles" unique_id=18363240 node_paths=PackedStringArray("surface_polygon", "colorizable_polygon") instance=ExtResource("10_choun")]
+position = Vector2(32.6, -45.2)
+script = ExtResource("11_ya4ey")
+surface_polygon = NodePath("visual/surface")
+colorizable_polygon = NodePath("visual/colorizable")
+polygon = PackedVector2Array(-25.599998, 12.200001, -21.599998, -14.799999, 1.4000015, -23.8, 41.4, 0.20000076, 4.4000015, 26.2)
+
+[node name="@Node2D@28605" type="Node2D" parent="tiles" unique_id=207577598 node_paths=PackedStringArray("surface_polygon", "colorizable_polygon") instance=ExtResource("10_choun")]
+position = Vector2(-16, -50.5)
+script = ExtResource("11_ya4ey")
+surface_polygon = NodePath("visual/surface")
+colorizable_polygon = NodePath("visual/colorizable")
+polygon = PackedVector2Array(-15, 21.5, -35, -29.5, 27, -9.5, 23, 17.5)

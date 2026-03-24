@@ -7,37 +7,64 @@ const Y_RESOLUTION = 54
 var tiles_dict = {}
 var initialized = false
 
-@export var main: Node2D
+var utils = preload("res://scripts/utils.gd").new()
+
 @export var tile_prefab: PackedScene
+@export var tile_polygon_prefab: PackedScene
 @export var occupant_container: Node2D
+@export var tiles_prototype: Node2D
 
 
 @export_tool_button("Recreate", "Callable") var recreate_callable = recreate
 @export_tool_button("Clear", "Callable") var clear_callable = clear
 
 func clear():
-	for occupant in main.get_children_in_group(self, 'occupant'):
+	for occupant in utils.get_children_in_group(self, 'occupant'):
 		occupant.reparent(occupant_container)
 
 	for child in get_children():
 		child.queue_free()
 
+	tiles_prototype.visible = true
+
 func recreate():	
 	clear()
+
+	for tile_prototype in tiles_prototype.get_children():
+		var avg_global_point = Vector2.ZERO
+		for point in tile_prototype.polygon:
+			avg_global_point += point + tile_prototype.global_position
+		avg_global_point /= len(tile_prototype.polygon)
+
+		var new_tile = tile_polygon_prefab.instantiate()
+		add_child(new_tile)
+		new_tile.owner = get_tree().edited_scene_root
+		new_tile.global_position = avg_global_point
+		
+		var new_points = []
+		for point in tile_prototype.polygon:
+			new_points.append(point - (avg_global_point - tile_prototype.global_position))
+
+		new_tile.polygon = PackedVector2Array(new_points)
+		
+	for tile in get_children():
+		tile.initialize()
+
+	tiles_prototype.visible = false
 
 func _process(_delta) -> void:
 	if Engine.is_editor_hint():
 		return
 
-	if not initialized:
-		initialize()
+	# if not initialized:
+	# 	initialize()
 
-func initialize():
-	for tile in get_children():
-		tile.tile_index = tile.position / Vector2(X_RESOLUTION, Y_RESOLUTION)
-		tiles_dict[tile.tile_index] = tile
+# func initialize():
+# 	for tile in get_children():
+# 		tile.tile_index = tile.position / Vector2(X_RESOLUTION, Y_RESOLUTION)
+# 		tiles_dict[tile.tile_index] = tile
 
-	initialized = true
+# 	initialized = true
 
 func get_tile(vector_index):
 	if vector_index in tiles_dict:

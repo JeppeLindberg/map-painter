@@ -2,7 +2,7 @@ extends Node2D
 
 @export var pathfinding_clickable_prefab: PackedScene
 
-@onready var main = get_node('/root/main')
+var utils = preload("res://scripts/utils.gd").new()
 @onready var pathfinding_clickables = get_node('pathfinding_clickables')
 
 var state = 'idle'
