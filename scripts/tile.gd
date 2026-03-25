@@ -12,10 +12,11 @@ var color = 'neutral'
 @export var surface_polygon: Polygon2D
 @export var colorizable_polygon: Polygon2D
 
-@export var polygon: PackedVector2Array
+@export var neighbour_paths = []
+@export_storage var polygon: PackedVector2Array
 
 
-func initialize():
+func create_visual():
 	var points = []
 	for point in polygon:
 		points.append(point)
@@ -23,7 +24,7 @@ func initialize():
 	points.sort_custom(ccw_sort)
 
 	colorizable_polygon.polygon = PackedVector2Array(points)
-	surface_polygon.polygon = PackedVector2Array(utils.shrink_polygon(points, 4.0, 0.5))
+	surface_polygon.polygon = PackedVector2Array(utils.shrink_polygon(points, 2.0, 0.5))
 
 func ccw_sort(a, b):
 	var angle_a = Vector2.UP.angle_to(a)
@@ -31,12 +32,38 @@ func ccw_sort(a, b):
 
 	return angle_a > angle_b
 
+func calculate_neighbours():
+	neighbour_paths = []
+
+	var global_points = []
+	for point in polygon:
+		global_points.append(point + global_position)
+
+	for tile in get_parent().get_children():
+		if tile.is_queued_for_deletion():
+			continue
+
+		var other_global_points = []
+		for point in tile.polygon:
+			other_global_points.append(point + tile.global_position)
+		
+		var add_neighbour = false
+		if contained_in(global_points[0], other_global_points) and contained_in(global_points[len(global_points) - 1], other_global_points):
+			add_neighbour = true
+
+		if not add_neighbour:
+			for i in range(len(global_points) - 1):
+				if contained_in(global_points[i], other_global_points) and contained_in(global_points[i+1], other_global_points):
+					add_neighbour = true
+		
+		if add_neighbour:
+			neighbour_paths.append(self.get_path_to(tile))
 
 func _ready() -> void:
 	if Engine.is_editor_hint():
 		return
 
-	initialize()
+	create_visual()
 
 func get_relative_tile(vec):
 	return tiles.get_tile(tile_index + vec)
@@ -76,19 +103,16 @@ func _process(_delta: float) -> void:
 			# visual_enemy.visible = true
 
 func get_neighbours():
-	var result = []	
-	for vec in [Vector2i.UP,Vector2i.DOWN,Vector2i.LEFT,Vector2i.RIGHT]:
-		var other_tile = get_parent().get_tile(tile_index + vec)
-		if other_tile != null:
-			result.append(other_tile)
-	
-	return result
+	var neighbour_nodes = []
+	for path in neighbour_paths:
+		neighbour_nodes.append(get_node(path))
+	return neighbour_nodes
 
-func get_step_toward(target_tile_index):
-	if target_tile_index == null:
+func get_step_toward(target_tile):
+	if target_tile == null:
 		return null
 
-	var path = tiles.get_tile_path(tile_index, target_tile_index)
+	var path = tiles.get_tile_path(self, target_tile)
 	if len(path) < 2:
 		return null
 
@@ -96,8 +120,14 @@ func get_step_toward(target_tile_index):
 	
 
 func get_tiles_explore(distance):
-	var explored_tiles = tiles.get_tile_explore_distance(tile_index, distance)
+	var explored_tiles = tiles.get_tile_explore_distance(self, distance)
 	explored_tiles.erase(self)
 	return explored_tiles
 
+
+func contained_in(vec, vec_array):
+	for v in vec_array:
+		if v.distance_to(vec) < 1.0:
+			return true
+	return false
 

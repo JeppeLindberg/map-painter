@@ -7,7 +7,7 @@ var utils = preload("res://scripts/utils.gd").new()
 
 var state = 'idle'
 
-var target_tile_index = null
+var target_tile = null
 
 
 func _ready() -> void:
@@ -25,15 +25,15 @@ func _process(_delta: float) -> void:
 func accept_turn():
 	match state:
 		'move_to':
-			var target_tile = get_parent().get_step_toward(target_tile_index)
-			if (target_tile != null) and (target_tile.get_current_occupant() == null):
-				reparent(target_tile)
+			var one_step_target = get_parent().get_step_toward(target_tile)
+			if (one_step_target != null) and (one_step_target.get_current_occupant() == null):
+				reparent(one_step_target)
 				position = Vector2.ZERO
-				target_tile.paint('player')
+				one_step_target.paint('player')
 
 				create_pathfinding_clickables()
 
-			if target_tile_index == get_parent().tile_index:
+			if target_tile == get_parent():
 				go_to_idle_state()
 
 
@@ -60,10 +60,11 @@ func create_pathfinding_clickables():
 		pathfinding_clickables.add_child(pathfinding_clickable)
 		pathfinding_clickable.global_position = tile.global_position
 		pathfinding_clickable.callback_callable = pathfinding_clickable_clicked
-		pathfinding_clickable.tile_index = tile.tile_index
+		pathfinding_clickable.tile = tile
 
 func pathfinding_clickable_clicked(caller):
-	target_tile_index = caller.tile_index
+	print('bla')
+	target_tile = caller.tile
 	go_to_move_to_state()
 
 func reset_state():

@@ -17,7 +17,6 @@ func _process(_delta: float) -> void:
 
 			for i in range(len(points)):
 				if points[i] != prev_points[i]:
-					print(points[i])
 					for other_point in other_polygon_points:
 						if (points[i] + global_position).distance_to(other_point) < 10.0:
 							polygon[i] = other_point - global_position

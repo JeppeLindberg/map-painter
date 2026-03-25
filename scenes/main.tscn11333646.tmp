@@ -1,0 +1,187 @@
+[gd_scene format=3 uid="uid://3qegwrydp4a5"]
+
+[ext_resource type="Script" uid="uid://dupy7lp1l560o" path="res://scripts/tiles.gd" id="1_jyhfs"]
+[ext_resource type="Script" uid="uid://v8r4mlgo8l88" path="res://scripts/main.gd" id="1_tbgi4"]
+[ext_resource type="PackedScene" uid="uid://gcfqmvwt4j8n" path="res://prefabs/tile.tscn" id="2_0wfyh"]
+[ext_resource type="Script" uid="uid://mgrik15wc4cg" path="res://scripts/timer.gd" id="2_85g3d"]
+[ext_resource type="Script" uid="uid://crypkp54bqje4" path="res://scripts/turn_mgt.gd" id="2_choun"]
+[ext_resource type="Texture2D" uid="uid://cfn4c10oyciur" path="res://sprites/timer_1.png" id="2_o6xl0"]
+[ext_resource type="Texture2D" uid="uid://b0j11c77u6tu4" path="res://sprites/white_circle.png" id="2_tefeu"]
+[ext_resource type="Texture2D" uid="uid://ciiobs1rsylf6" path="res://sprites/timer_0.png" id="4_tipki"]
+[ext_resource type="PackedScene" uid="uid://ceskeiqst147p" path="res://prefabs/prototype_polygon.tscn" id="9_ya4ey"]
+[ext_resource type="PackedScene" uid="uid://7befx1u5v3fn" path="res://prefabs/tile_polygon.tscn" id="10_choun"]
+[ext_resource type="Script" uid="uid://ch6eivoukap2y" path="res://scripts/tile.gd" id="12_eb6dy"]
+[ext_resource type="PackedScene" uid="uid://bq32grs3be8v5" path="res://prefabs/player_soldier.tscn" id="12_trceg"]
+
+[sub_resource type="Shader" id="Shader_tipki"]
+code = "shader_type canvas_item;
+
+uniform sampler2D fill_texture_overlay;
+uniform sampler2D bg_texture;
+uniform float fill_ratio:hint_range(0., 1.) = 1.;
+uniform float start_angle:hint_range(0., 360.) = 0.;
+uniform float max_angle:hint_range(0., 360.) = 360.;
+uniform bool invert_fill = false;
+uniform bool reflect_x = false;
+uniform bool reflect_y = false;
+uniform vec2 offset = vec2(0., 0.);
+
+mat2 tex_rotate(float _angle){
+	return mat2(vec2(cos(_angle), -sin(_angle)), vec2(sin(_angle), cos(_angle)));
+}
+
+void fragment() {
+	float fill_angle = radians(fill_ratio * max_angle);
+	vec2 uv = ((UV * 2. - 1.) + offset) * tex_rotate(-radians(start_angle));
+	
+	if (reflect_x) {
+		uv *= mat2(vec2(-1., 0.), vec2(0., 1.));
+	}
+	if (reflect_y) {
+		uv *= mat2(vec2(1., 0.), vec2(0., -1.));
+	}
+		
+	if ((!invert_fill && atan(uv.x, uv.y) + PI < fill_angle) || (invert_fill && atan(uv.x, uv.y) + PI > fill_angle)) {
+		COLOR = texture(TEXTURE, UV) * texture(fill_texture_overlay, UV);
+	} else {
+		COLOR = texture(bg_texture, UV);
+	}
+}"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_85g3d"]
+load_path = "res://.godot/imported/transparent.png-3c672f4f7b33af5d623e125c39241dfd.ctex"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_choun"]
+shader = SubResource("Shader_tipki")
+shader_parameter/fill_texture_overlay = ExtResource("2_o6xl0")
+shader_parameter/bg_texture = SubResource("CompressedTexture2D_85g3d")
+shader_parameter/fill_ratio = 1.0
+shader_parameter/start_angle = 0.0
+shader_parameter/max_angle = 360.0
+shader_parameter/invert_fill = false
+shader_parameter/reflect_x = false
+shader_parameter/reflect_y = false
+shader_parameter/offset = Vector2(0, 0)
+
+[sub_resource type="Shader" id="Shader_tefeu"]
+code = "shader_type canvas_item;
+
+uniform sampler2D fill_texture_overlay;
+uniform sampler2D bg_texture;
+uniform float fill_ratio:hint_range(0., 1.) = 1.;
+uniform float start_angle:hint_range(0., 360.) = 0.;
+uniform float max_angle:hint_range(0., 360.) = 360.;
+uniform bool invert_fill = false;
+uniform bool reflect_x = false;
+uniform bool reflect_y = false;
+uniform vec2 offset = vec2(0., 0.);
+
+mat2 tex_rotate(float _angle){
+	return mat2(vec2(cos(_angle), -sin(_angle)), vec2(sin(_angle), cos(_angle)));
+}
+
+void fragment() {
+	float fill_angle = radians(fill_ratio * max_angle);
+	vec2 uv = ((UV * 2. - 1.) + offset) * tex_rotate(-radians(start_angle));
+	
+	if (reflect_x) {
+		uv *= mat2(vec2(-1., 0.), vec2(0., 1.));
+	}
+	if (reflect_y) {
+		uv *= mat2(vec2(1., 0.), vec2(0., -1.));
+	}
+		
+	if ((!invert_fill && atan(uv.x, uv.y) + PI < fill_angle) || (invert_fill && atan(uv.x, uv.y) + PI > fill_angle)) {
+		COLOR = texture(TEXTURE, UV) * texture(fill_texture_overlay, UV);
+	} else {
+		COLOR = texture(bg_texture, UV);
+	}
+}"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_o6xl0"]
+load_path = "res://.godot/imported/transparent.png-3c672f4f7b33af5d623e125c39241dfd.ctex"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_85g3d"]
+shader = SubResource("Shader_tefeu")
+shader_parameter/fill_texture_overlay = ExtResource("4_tipki")
+shader_parameter/bg_texture = SubResource("CompressedTexture2D_o6xl0")
+shader_parameter/fill_ratio = 1.0
+shader_parameter/start_angle = 0.0
+shader_parameter/max_angle = 360.0
+shader_parameter/invert_fill = false
+shader_parameter/reflect_x = false
+shader_parameter/reflect_y = false
+shader_parameter/offset = Vector2(0, 0)
+
+[node name="main" type="Node2D" unique_id=613455683]
+script = ExtResource("1_tbgi4")
+
+[node name="turn_mgt" type="Node" parent="." unique_id=137792287 node_paths=PackedStringArray("timer")]
+script = ExtResource("2_choun")
+timer = NodePath("../camera/timer")
+
+[node name="camera" type="Camera2D" parent="." unique_id=1132405800]
+
+[node name="timer" type="Node2D" parent="camera" unique_id=1061558326 node_paths=PackedStringArray("turn_mgt", "radial_sprites")]
+position = Vector2(187, 77)
+script = ExtResource("2_85g3d")
+turn_mgt = NodePath("../../turn_mgt")
+radial_sprites = [NodePath("visual/sprite_1"), NodePath("visual/sprite_0")]
+
+[node name="visual" type="Node2D" parent="camera/timer" unique_id=1751485780]
+scale = Vector2(0.7, 0.7)
+
+[node name="sprite_1" type="Sprite2D" parent="camera/timer/visual" unique_id=498825880]
+z_index = 1
+material = SubResource("ShaderMaterial_choun")
+texture = ExtResource("2_tefeu")
+
+[node name="sprite_0" type="Sprite2D" parent="camera/timer/visual" unique_id=1485245173]
+material = SubResource("ShaderMaterial_85g3d")
+position = Vector2(0, 6)
+texture = ExtResource("2_tefeu")
+
+[node name="occupant_container" type="Node2D" parent="." unique_id=1892342923]
+
+[node name="player_soldier" parent="occupant_container" unique_id=1824605875 instance=ExtResource("12_trceg")]
+position = Vector2(-46, 13.8)
+
+[node name="tiles_prototype" type="Node2D" parent="." unique_id=503774185]
+visible = false
+
+[node name="prototype_polygon" parent="tiles_prototype" unique_id=1814504689 instance=ExtResource("9_ya4ey")]
+polygon = PackedVector2Array(7, -33, -31, -29, -35, -6, -28, 15, -3, -7, 37, -19)
+
+[node name="prototype_polygon21" parent="tiles_prototype" unique_id=2052275408 instance=ExtResource("9_ya4ey")]
+position = Vector2(75, 75)
+polygon = PackedVector2Array(-30, -42, -42, -25, -35, -6, -3, -7, 6, -25, -4, -48)
+
+[node name="prototype_polygon22" parent="tiles_prototype" unique_id=266433373 instance=ExtResource("9_ya4ey")]
+position = Vector2(29, 91)
+polygon = PackedVector2Array(-16, -32, -31, -11, -35, 10, -3, 2, 11, -22, 4, -41)
+
+[node name="prototype_polygon17" parent="tiles_prototype" unique_id=357765890 instance=ExtResource("9_ya4ey")]
+position = Vector2(-119, 43)
+polygon = PackedVector2Array(10, -36, -9, -19, 1, 4, 29, 3, 29, -25)
+
+[node name="prototype_polygon15" parent="tiles_prototype" unique_id=1038131669 instance=ExtResource("9_ya4ey")]
+position = Vector2(-99, -35)
+polygon = PackedVector2Array(47, -9, 37, -31, 6, -26, -3, -7, 25, 5)
+
+[node name="prototype_polygon16" parent="tiles_prototype" unique_id=163103883 instance=ExtResource("9_ya4ey")]
+position = Vector2(-125, -2)
+polygon = PackedVector2Array(49, -4, 51, -28, 23, -40, 14, -16, 16, 9, 35, 20)
+
+[node name="prototype_polygon2" parent="tiles_prototype" unique_id=868231572 instance=ExtResource("9_ya4ey")]
+position = Vector2(27, -36)
+polygon = PackedVector2Array(-20, 3, -16, -24, 7, -33, 47, -9, 10, 17)
+
+[node name="prototype_polygon8" parent="tiles_prototype" unique_id=1326908515 instance=ExtResource("9_ya4ey")]
+position = Vector2(33, 56)
+polygon = PackedVector2Array(-36, -15, -30, -36, -6, -42, 12, -23, 0, -6, -20, 3)
+
+[node name="prototype_polygon9" parent="tiles_prototype" unique_id=850194613 instance=ExtResource("9_ya4ey")]
+position = Vector2(-33, 84)
+polygon = PackedVector2Array(-26, -32, -16, -55, 5, -69, 11, -50, 9, -19)
+
+[node name="prototype_polygon10" parent="tiles_prototype" unique_id=497230311 instance=ExtResource("9_

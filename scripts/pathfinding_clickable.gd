@@ -3,7 +3,7 @@ extends StaticBody2D
 
 var hovering = false
 var callback_callable:Callable
-var tile_index = Vector2i.ZERO
+var tile = Node2D
 
 
 

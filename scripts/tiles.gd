@@ -48,7 +48,20 @@ func recreate():
 		new_tile.polygon = PackedVector2Array(new_points)
 		
 	for tile in get_children():
-		tile.initialize()
+		if tile.is_queued_for_deletion():
+			continue
+
+		tile.create_visual()
+
+	for tile in get_children():
+		if tile.is_queued_for_deletion():
+			continue
+
+		tile.calculate_neighbours()
+		
+		for child in occupant_container.get_children():
+			if child.global_position == tile.global_position:
+				child.reparent(tile)
 
 	tiles_prototype.visible = false
 
@@ -56,25 +69,12 @@ func _process(_delta) -> void:
 	if Engine.is_editor_hint():
 		return
 
-	# if not initialized:
-	# 	initialize()
-
-# func initialize():
-# 	for tile in get_children():
-# 		tile.tile_index = tile.position / Vector2(X_RESOLUTION, Y_RESOLUTION)
-# 		tiles_dict[tile.tile_index] = tile
-
-# 	initialized = true
-
 func get_tile(vector_index):
 	if vector_index in tiles_dict:
 		return tiles_dict[vector_index]
 	return null
 
-func get_tile_path(from_tile_index, to_tile_index):
-	var from_tile = get_tile(from_tile_index)
-	var to_tile = get_tile(to_tile_index)
-
+func get_tile_path(from_tile, to_tile):
 	if from_tile == null or to_tile == null:
 		return []
 
@@ -124,9 +124,7 @@ func retread_path(from_tile, explored_tiles):
 	result.reverse()
 	return result
 
-func get_tile_explore_distance(from_tile_index, distance):
-	var from_tile = get_tile(from_tile_index)
-
+func get_tile_explore_distance(from_tile, distance):
 	if from_tile == null:
 		return []
 
@@ -165,7 +163,7 @@ func get_tile_explore_distance(from_tile_index, distance):
 			})
 
 			frontier.remove_at(i)
-	
+
 	return all_nodes(explored_tiles)
 
 func all_nodes(explored_tiles):

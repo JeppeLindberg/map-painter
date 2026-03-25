@@ -13,11 +13,10 @@ input_pickable = true
 script = ExtResource("1_ptnt1")
 
 [node name="visual" type="Node2D" parent="." unique_id=622426885]
-visible = false
 
 [node name="sprite_0" type="Sprite2D" parent="visual" unique_id=1878095178]
 self_modulate = Color(0.7403916, 0.66062826, 0.36694267, 1)
-scale = Vector2(0.3, 0.3)
+scale = Vector2(0.04958813, 0.04958813)
 texture = ExtResource("1_ixfgn")
 
 [node name="shape" type="CollisionShape2D" parent="." unique_id=38509093]
