@@ -63,7 +63,6 @@ func create_pathfinding_clickables():
 		pathfinding_clickable.tile = tile
 
 func pathfinding_clickable_clicked(caller):
-	print('bla')
 	target_tile = caller.tile
 	go_to_move_to_state()
 

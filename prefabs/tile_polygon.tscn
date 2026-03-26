@@ -7,6 +7,9 @@
 script = ExtResource("1_x2ukr")
 surface_polygon = NodePath("visual/surface")
 colorizable_polygon = NodePath("visual/colorizable")
+neutral_color = Color(0.8745098, 0.69411767, 0.69803923, 1)
+player_color = Color(0.24564964, 0.8468545, 0.9548462, 1)
+enemy_color = Color(0.98747045, 0.5224394, 0.6154208, 1)
 
 [node name="visual" type="Node2D" parent="." unique_id=431904697]
 

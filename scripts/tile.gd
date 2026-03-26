@@ -15,6 +15,10 @@ var color = 'neutral'
 @export var neighbour_paths = []
 @export_storage var polygon: PackedVector2Array
 
+@export var neutral_color: Color
+@export var player_color: Color
+@export var enemy_color: Color
+
 
 func create_visual():
 	var points = []
@@ -87,20 +91,11 @@ func _process(_delta: float) -> void:
 
 	match color:
 		'neutral':
-			pass
-			# visual_neutral.visible = true
-			# visual_player.visible = false
-			# visual_enemy.visible = false
+			colorizable_polygon.color = neutral_color
 		'player':
-			pass
-			# visual_neutral.visible = false
-			# visual_player.visible = true
-			# visual_enemy.visible = false
+			colorizable_polygon.color = player_color
 		'enemy':
-			pass
-			# visual_neutral.visible = false
-			# visual_player.visible = false
-			# visual_enemy.visible = true
+			colorizable_polygon.color = enemy_color
 
 func get_neighbours():
 	var neighbour_nodes = []
