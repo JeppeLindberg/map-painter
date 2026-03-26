@@ -46,6 +46,8 @@ func calculate_neighbours():
 	for tile in get_parent().get_children():
 		if tile.is_queued_for_deletion():
 			continue
+		if tile == self:
+			continue
 
 		var other_global_points = []
 		for point in tile.polygon:

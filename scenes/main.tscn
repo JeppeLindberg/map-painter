@@ -253,281 +253,281 @@ tile_polygon_prefab = ExtResource("10_choun")
 occupant_container = NodePath("../occupant_container")
 tiles_prototype = NodePath("../tiles_prototype")
 
-[node name="@Node2D@22821" type="Node2D" parent="tiles" unique_id=159405777 node_paths=PackedStringArray("surface_polygon", "colorizable_polygon") instance=ExtResource("10_choun")]
+[node name="@Node2D@32935" type="Node2D" parent="tiles" unique_id=159405777 node_paths=PackedStringArray("surface_polygon", "colorizable_polygon") instance=ExtResource("10_choun")]
 position = Vector2(-8.833333, -13.166667)
 script = ExtResource("12_eb6dy")
 surface_polygon = NodePath("visual/surface")
 colorizable_polygon = NodePath("visual/colorizable")
-neighbour_paths = [NodePath("."), NodePath("../@Node2D@22827"), NodePath("../@Node2D@22831"), NodePath("../@Node2D@22832"), NodePath("../@Node2D@22833"), NodePath("../@Node2D@22842"), NodePath("../@Node2D@22845")]
+neighbour_paths = [NodePath("../@Node2D@32941"), NodePath("../@Node2D@32945"), NodePath("../@Node2D@32946"), NodePath("../@Node2D@32947"), NodePath("../@Node2D@32956"), NodePath("../@Node2D@32959")]
 polygon = PackedVector2Array(15.833333, -19.833332, -22.166668, -15.833333, -26.166668, 7.166667, -19.166668, 28.166668, 5.833333, 6.166667, 45.833332, -5.833333)
-neutral_color = null
-player_color = null
-enemy_color = null
+neutral_color = Color(0.8745098, 0.69411767, 0.69803923, 1)
+player_color = Color(0.24564964, 0.8468545, 0.9548462, 1)
+enemy_color = Color(0.98747045, 0.5224394, 0.6154208, 1)
 
-[node name="@Node2D@22822" type="Node2D" parent="tiles" unique_id=837041997 node_paths=PackedStringArray("surface_polygon", "colorizable_polygon") instance=ExtResource("10_choun")]
+[node name="@Node2D@32936" type="Node2D" parent="tiles" unique_id=1992141955 node_paths=PackedStringArray("surface_polygon", "colorizable_polygon") instance=ExtResource("10_choun")]
 position = Vector2(57, 49.5)
 script = ExtResource("12_eb6dy")
 surface_polygon = NodePath("visual/surface")
 colorizable_polygon = NodePath("visual/colorizable")
-neighbour_paths = [NodePath("."), NodePath("../@Node2D@22823"), NodePath("../@Node2D@22828"), NodePath("../@Node2D@22837"), NodePath("../@Node2D@22844")]
+neighbour_paths = [NodePath("../@Node2D@32937"), NodePath("../@Node2D@32942"), NodePath("../@Node2D@32951"), NodePath("../@Node2D@32958")]
 polygon = PackedVector2Array(-12, -16.5, -24, 0.5, -17, 19.5, 15, 18.5, 24, 0.5, 14, -22.5)
-neutral_color = null
-player_color = null
-enemy_color = null
+neutral_color = Color(0.8745098, 0.69411767, 0.69803923, 1)
+player_color = Color(0.24564964, 0.8468545, 0.9548462, 1)
+enemy_color = Color(0.98747045, 0.5224394, 0.6154208, 1)
 
-[node name="@Node2D@22823" type="Node2D" parent="tiles" unique_id=2094471597 node_paths=PackedStringArray("surface_polygon", "colorizable_polygon") instance=ExtResource("10_choun")]
+[node name="@Node2D@32937" type="Node2D" parent="tiles" unique_id=1401798837 node_paths=PackedStringArray("surface_polygon", "colorizable_polygon") instance=ExtResource("10_choun")]
 position = Vector2(17.333334, 75.333336)
 script = ExtResource("12_eb6dy")
 surface_polygon = NodePath("visual/surface")
 colorizable_polygon = NodePath("visual/colorizable")
-neighbour_paths = [NodePath("../@Node2D@22822"), NodePath("."), NodePath("../@Node2D@22828"), NodePath("../@Node2D@22830"), NodePath("../@Node2D@22840")]
+neighbour_paths = [NodePath("../@Node2D@32936"), NodePath("../@Node2D@32942"), NodePath("../@Node2D@32944"), NodePath("../@Node2D@32954")]
 polygon = PackedVector2Array(-4.333334, -16.333336, -19.333334, 4.666664, -23.333334, 25.666664, 8.666666, 17.666664, 22.666666, -6.333336, 15.666666, -25.333336)
-neutral_color = null
-player_color = null
-enemy_color = null
+neutral_color = Color(0.8745098, 0.69411767, 0.69803923, 1)
+player_color = Color(0.24564964, 0.8468545, 0.9548462, 1)
+enemy_color = Color(0.98747045, 0.5224394, 0.6154208, 1)
 
-[node name="@Node2D@22824" type="Node2D" parent="tiles" unique_id=877391960 node_paths=PackedStringArray("surface_polygon", "colorizable_polygon") instance=ExtResource("10_choun")]
+[node name="@Node2D@32938" type="Node2D" parent="tiles" unique_id=1657973717 node_paths=PackedStringArray("surface_polygon", "colorizable_polygon") instance=ExtResource("10_choun")]
 position = Vector2(-107, 28.4)
 script = ExtResource("12_eb6dy")
 surface_polygon = NodePath("visual/surface")
 colorizable_polygon = NodePath("visual/colorizable")
-neighbour_paths = [NodePath("."), NodePath("../@Node2D@22826"), NodePath("../@Node2D@22834"), NodePath("../@Node2D@22839")]
+neighbour_paths = [NodePath("../@Node2D@32940"), NodePath("../@Node2D@32948"), NodePath("../@Node2D@32953")]
 polygon = PackedVector2Array(-2, -21.4, -21, -4.3999996, -11, 18.6, 17, 17.6, 17, -10.4)
-neutral_color = null
-player_color = null
-enemy_color = null
+neutral_color = Color(0.8745098, 0.69411767, 0.69803923, 1)
+player_color = Color(0.24564964, 0.8468545, 0.9548462, 1)
+enemy_color = Color(0.98747045, 0.5224394, 0.6154208, 1)
 
-[node name="@Node2D@22825" type="Node2D" parent="tiles" unique_id=1445922915 node_paths=PackedStringArray("surface_polygon", "colorizable_polygon") instance=ExtResource("10_choun")]
+[node name="@Node2D@32939" type="Node2D" parent="tiles" unique_id=275777179 node_paths=PackedStringArray("surface_polygon", "colorizable_polygon") instance=ExtResource("10_choun")]
 position = Vector2(-76.6, -48.6)
 script = ExtResource("12_eb6dy")
 surface_polygon = NodePath("visual/surface")
 colorizable_polygon = NodePath("visual/colorizable")
-neighbour_paths = [NodePath("."), NodePath("../@Node2D@22826"), NodePath("../@Node2D@22831"), NodePath("../@Node2D@22832")]
+neighbour_paths = [NodePath("../@Node2D@32940"), NodePath("../@Node2D@32945"), NodePath("../@Node2D@32946")]
 polygon = PackedVector2Array(24.599998, 4.5999985, 14.599998, -17.400002, -16.400002, -12.400002, -25.400002, 6.5999985, 2.5999985, 18.599998)
-neutral_color = null
-player_color = null
-enemy_color = null
+neutral_color = Color(0.8745098, 0.69411767, 0.69803923, 1)
+player_color = Color(0.24564964, 0.8468545, 0.9548462, 1)
+enemy_color = Color(0.98747045, 0.5224394, 0.6154208, 1)
 
-[node name="@Node2D@22826" type="Node2D" parent="tiles" unique_id=741513399 node_paths=PackedStringArray("surface_polygon", "colorizable_polygon") instance=ExtResource("10_choun")]
+[node name="@Node2D@32940" type="Node2D" parent="tiles" unique_id=866086756 node_paths=PackedStringArray("surface_polygon", "colorizable_polygon") instance=ExtResource("10_choun")]
 position = Vector2(-93.666664, -11.833333)
 script = ExtResource("12_eb6dy")
 surface_polygon = NodePath("visual/surface")
 colorizable_polygon = NodePath("visual/colorizable")
-neighbour_paths = [NodePath("../@Node2D@22824"), NodePath("../@Node2D@22825"), NodePath("."), NodePath("../@Node2D@22832"), NodePath("../@Node2D@22834")]
+neighbour_paths = [NodePath("../@Node2D@32938"), NodePath("../@Node2D@32939"), NodePath("../@Node2D@32946"), NodePath("../@Node2D@32948")]
 polygon = PackedVector2Array(17.666664, 5.833333, 19.666664, -18.166668, -8.333336, -30.166668, -17.333336, -6.166667, -15.333336, 18.833332, 3.6666641, 29.833332)
-neutral_color = null
-player_color = null
-enemy_color = null
+neutral_color = Color(0.8745098, 0.69411767, 0.69803923, 1)
+player_color = Color(0.24564964, 0.8468545, 0.9548462, 1)
+enemy_color = Color(0.98747045, 0.5224394, 0.6154208, 1)
 
-[node name="enemy_soldier" parent="tiles/@Node2D@22826" unique_id=1684205262 instance=ExtResource("12_a8y0u")]
+[node name="enemy_soldier" parent="tiles/@Node2D@32940" unique_id=1684205262 instance=ExtResource("12_a8y0u")]
 
-[node name="@Node2D@22827" type="Node2D" parent="tiles" unique_id=209494478 node_paths=PackedStringArray("surface_polygon", "colorizable_polygon") instance=ExtResource("10_choun")]
+[node name="@Node2D@32941" type="Node2D" parent="tiles" unique_id=1317672791 node_paths=PackedStringArray("surface_polygon", "colorizable_polygon") instance=ExtResource("10_choun")]
 position = Vector2(32.6, -45.2)
 script = ExtResource("12_eb6dy")
 surface_polygon = NodePath("visual/surface")
 colorizable_polygon = NodePath("visual/colorizable")
-neighbour_paths = [NodePath("../@Node2D@22821"), NodePath("."), NodePath("../@Node2D@22831"), NodePath("../@Node2D@22843")]
+neighbour_paths = [NodePath("../@Node2D@32935"), NodePath("../@Node2D@32945"), NodePath("../@Node2D@32957")]
 polygon = PackedVector2Array(-25.599998, 12.200001, -21.599998, -14.799999, 1.4000015, -23.8, 41.4, 0.20000076, 4.4000015, 26.2)
-neutral_color = null
-player_color = null
-enemy_color = null
+neutral_color = Color(0.8745098, 0.69411767, 0.69803923, 1)
+player_color = Color(0.24564964, 0.8468545, 0.9548462, 1)
+enemy_color = Color(0.98747045, 0.5224394, 0.6154208, 1)
 
-[node name="@Node2D@22828" type="Node2D" parent="tiles" unique_id=1371300663 node_paths=PackedStringArray("surface_polygon", "colorizable_polygon") instance=ExtResource("10_choun")]
+[node name="@Node2D@32942" type="Node2D" parent="tiles" unique_id=1770494967 node_paths=PackedStringArray("surface_polygon", "colorizable_polygon") instance=ExtResource("10_choun")]
 position = Vector2(19.666666, 36.166668)
 script = ExtResource("12_eb6dy")
 surface_polygon = NodePath("visual/surface")
 colorizable_polygon = NodePath("visual/colorizable")
-neighbour_paths = [NodePath("../@Node2D@22822"), NodePath("../@Node2D@22823"), NodePath("."), NodePath("../@Node2D@22830"), NodePath("../@Node2D@22842"), NodePath("../@Node2D@22844"), NodePath("../@Node2D@22845")]
+neighbour_paths = [NodePath("../@Node2D@32936"), NodePath("../@Node2D@32937"), NodePath("../@Node2D@32944"), NodePath("../@Node2D@32956"), NodePath("../@Node2D@32958"), NodePath("../@Node2D@32959")]
 polygon = PackedVector2Array(-22.666666, 4.833332, -16.666666, -16.166668, 7.333334, -22.166668, 25.333334, -3.166668, 13.333334, 13.833332, -6.666666, 22.833332)
-neutral_color = null
-player_color = null
-enemy_color = null
+neutral_color = Color(0.8745098, 0.69411767, 0.69803923, 1)
+player_color = Color(0.24564964, 0.8468545, 0.9548462, 1)
+enemy_color = Color(0.98747045, 0.5224394, 0.6154208, 1)
 
-[node name="@Node2D@22829" type="Node2D" parent="tiles" unique_id=1946256415 node_paths=PackedStringArray("surface_polygon", "colorizable_polygon") instance=ExtResource("10_choun")]
+[node name="@Node2D@32943" type="Node2D" parent="tiles" unique_id=1822494356 node_paths=PackedStringArray("surface_polygon", "colorizable_polygon") instance=ExtResource("10_choun")]
 position = Vector2(-36.4, 39)
 script = ExtResource("12_eb6dy")
 surface_polygon = NodePath("visual/surface")
 colorizable_polygon = NodePath("visual/colorizable")
-neighbour_paths = [NodePath("."), NodePath("../@Node2D@22830"), NodePath("../@Node2D@22833"), NodePath("../@Node2D@22835"), NodePath("../@Node2D@22838"), NodePath("../@Node2D@22845")]
+neighbour_paths = [NodePath("../@Node2D@32944"), NodePath("../@Node2D@32947"), NodePath("../@Node2D@32949"), NodePath("../@Node2D@32952"), NodePath("../@Node2D@32959")]
 polygon = PackedVector2Array(-22.599998, 13, -12.599998, -10, 8.400002, -24, 14.400002, -5, 12.400002, 26)
-neutral_color = null
-player_color = null
-enemy_color = null
+neutral_color = Color(0.8745098, 0.69411767, 0.69803923, 1)
+player_color = Color(0.24564964, 0.8468545, 0.9548462, 1)
+enemy_color = Color(0.98747045, 0.5224394, 0.6154208, 1)
 
-[node name="@Node2D@22830" type="Node2D" parent="tiles" unique_id=628244421 node_paths=PackedStringArray("surface_polygon", "colorizable_polygon") instance=ExtResource("10_choun")]
+[node name="@Node2D@32944" type="Node2D" parent="tiles" unique_id=1610477649 node_paths=PackedStringArray("surface_polygon", "colorizable_polygon") instance=ExtResource("10_choun")]
 position = Vector2(-7.6, 55.8)
 script = ExtResource("12_eb6dy")
 surface_polygon = NodePath("visual/surface")
 colorizable_polygon = NodePath("visual/colorizable")
-neighbour_paths = [NodePath("../@Node2D@22823"), NodePath("../@Node2D@22828"), NodePath("../@Node2D@22829"), NodePath("."), NodePath("../@Node2D@22840"), NodePath("../@Node2D@22845")]
+neighbour_paths = [NodePath("../@Node2D@32937"), NodePath("../@Node2D@32942"), NodePath("../@Node2D@32943"), NodePath("../@Node2D@32954"), NodePath("../@Node2D@32959")]
 polygon = PackedVector2Array(5.6000004, 24.199997, -16.4, 9.199997, -14.4, -21.800003, 4.6000004, -14.800003, 20.6, 3.199997)
-neutral_color = null
-player_color = null
-enemy_color = null
+neutral_color = Color(0.8745098, 0.69411767, 0.69803923, 1)
+player_color = Color(0.24564964, 0.8468545, 0.9548462, 1)
+enemy_color = Color(0.98747045, 0.5224394, 0.6154208, 1)
 
-[node name="@Node2D@22831" type="Node2D" parent="tiles" unique_id=810402560 node_paths=PackedStringArray("surface_polygon", "colorizable_polygon") instance=ExtResource("10_choun")]
+[node name="@Node2D@32945" type="Node2D" parent="tiles" unique_id=1552449824 node_paths=PackedStringArray("surface_polygon", "colorizable_polygon") instance=ExtResource("10_choun")]
 position = Vector2(-29.666666, -52)
 script = ExtResource("12_eb6dy")
 surface_polygon = NodePath("visual/surface")
 colorizable_polygon = NodePath("visual/colorizable")
-neighbour_paths = [NodePath("../@Node2D@22821"), NodePath("../@Node2D@22825"), NodePath("../@Node2D@22827"), NodePath("."), NodePath("../@Node2D@22832")]
+neighbour_paths = [NodePath("../@Node2D@32935"), NodePath("../@Node2D@32939"), NodePath("../@Node2D@32941"), NodePath("../@Node2D@32946")]
 polygon = PackedVector2Array(-1.333334, 23, -22.333334, 8, -32.333336, -14, -21.333334, -28, 40.666664, -8, 36.666664, 19)
-neutral_color = null
-player_color = null
-enemy_color = null
+neutral_color = Color(0.8745098, 0.69411767, 0.69803923, 1)
+player_color = Color(0.24564964, 0.8468545, 0.9548462, 1)
+enemy_color = Color(0.98747045, 0.5224394, 0.6154208, 1)
 
-[node name="@Node2D@22832" type="Node2D" parent="tiles" unique_id=1914469485 node_paths=PackedStringArray("surface_polygon", "colorizable_polygon") instance=ExtResource("10_choun")]
+[node name="@Node2D@32946" type="Node2D" parent="tiles" unique_id=832672775 node_paths=PackedStringArray("surface_polygon", "colorizable_polygon") instance=ExtResource("10_choun")]
 position = Vector2(-54, -17.833334)
 script = ExtResource("12_eb6dy")
 surface_polygon = NodePath("visual/surface")
 colorizable_polygon = NodePath("visual/colorizable")
-neighbour_paths = [NodePath("../@Node2D@22821"), NodePath("../@Node2D@22825"), NodePath("../@Node2D@22826"), NodePath("../@Node2D@22831"), NodePath("."), NodePath("../@Node2D@22833"), NodePath("../@Node2D@22834")]
+neighbour_paths = [NodePath("../@Node2D@32935"), NodePath("../@Node2D@32939"), NodePath("../@Node2D@32940"), NodePath("../@Node2D@32945"), NodePath("../@Node2D@32947"), NodePath("../@Node2D@32948")]
 polygon = PackedVector2Array(-22, 11.833334, -20, -12.166666, 2, -26.166666, 23, -11.166666, 19, 11.833334, -2, 25.833334)
-neutral_color = null
-player_color = null
-enemy_color = null
+neutral_color = Color(0.8745098, 0.69411767, 0.69803923, 1)
+player_color = Color(0.24564964, 0.8468545, 0.9548462, 1)
+enemy_color = Color(0.98747045, 0.5224394, 0.6154208, 1)
 
-[node name="@Node2D@22833" type="Node2D" parent="tiles" unique_id=2006042044 node_paths=PackedStringArray("surface_polygon", "colorizable_polygon") instance=ExtResource("10_choun")]
+[node name="@Node2D@32947" type="Node2D" parent="tiles" unique_id=1157770631 node_paths=PackedStringArray("surface_polygon", "colorizable_polygon") instance=ExtResource("10_choun")]
 position = Vector2(-46, 13.8)
 script = ExtResource("12_eb6dy")
 surface_polygon = NodePath("visual/surface")
 colorizable_polygon = NodePath("visual/colorizable")
-neighbour_paths = [NodePath("../@Node2D@22821"), NodePath("../@Node2D@22829"), NodePath("../@Node2D@22832"), NodePath("."), NodePath("../@Node2D@22834"), NodePath("../@Node2D@22835")]
+neighbour_paths = [NodePath("../@Node2D@32935"), NodePath("../@Node2D@32943"), NodePath("../@Node2D@32946"), NodePath("../@Node2D@32948"), NodePath("../@Node2D@32949")]
 polygon = PackedVector2Array(-10, -5.799999, 11, -19.8, 18, 1.2000008, -3, 15.200001, -16, 9.200001)
-neutral_color = null
-player_color = null
-enemy_color = null
+neutral_color = Color(0.8745098, 0.69411767, 0.69803923, 1)
+player_color = Color(0.24564964, 0.8468545, 0.9548462, 1)
+enemy_color = Color(0.98747045, 0.5224394, 0.6154208, 1)
 
-[node name="@Node2D@22834" type="Node2D" parent="tiles" unique_id=1178036364 node_paths=PackedStringArray("surface_polygon", "colorizable_polygon") instance=ExtResource("10_choun")]
+[node name="@Node2D@32948" type="Node2D" parent="tiles" unique_id=320963083 node_paths=PackedStringArray("surface_polygon", "colorizable_polygon") instance=ExtResource("10_choun")]
 position = Vector2(-74.8, 17.8)
 script = ExtResource("12_eb6dy")
 surface_polygon = NodePath("visual/surface")
 colorizable_polygon = NodePath("visual/colorizable")
-neighbour_paths = [NodePath("../@Node2D@22824"), NodePath("../@Node2D@22826"), NodePath("../@Node2D@22832"), NodePath("../@Node2D@22833"), NodePath("."), NodePath("../@Node2D@22835")]
+neighbour_paths = [NodePath("../@Node2D@32938"), NodePath("../@Node2D@32940"), NodePath("../@Node2D@32946"), NodePath("../@Node2D@32947"), NodePath("../@Node2D@32949")]
 polygon = PackedVector2Array(-15.199997, 0.20000076, -1.199997, -23.8, 18.800003, -9.799999, 12.800003, 5.200001, -15.199997, 28.2)
-neutral_color = null
-player_color = null
-enemy_color = null
+neutral_color = Color(0.8745098, 0.69411767, 0.69803923, 1)
+player_color = Color(0.24564964, 0.8468545, 0.9548462, 1)
+enemy_color = Color(0.98747045, 0.5224394, 0.6154208, 1)
 
-[node name="player_soldier" parent="tiles/@Node2D@22834" unique_id=1824605875 instance=ExtResource("12_trceg")]
+[node name="player_soldier" parent="tiles/@Node2D@32948" unique_id=1824605875 instance=ExtResource("12_trceg")]
 
-[node name="@Node2D@22835" type="Node2D" parent="tiles" unique_id=381256243 node_paths=PackedStringArray("surface_polygon", "colorizable_polygon") instance=ExtResource("10_choun")]
+[node name="@Node2D@32949" type="Node2D" parent="tiles" unique_id=1696055365 node_paths=PackedStringArray("surface_polygon", "colorizable_polygon") instance=ExtResource("10_choun")]
 position = Vector2(-66.8, 42.8)
 script = ExtResource("12_eb6dy")
 surface_polygon = NodePath("visual/surface")
 colorizable_polygon = NodePath("visual/colorizable")
-neighbour_paths = [NodePath("../@Node2D@22829"), NodePath("../@Node2D@22833"), NodePath("../@Node2D@22834"), NodePath("."), NodePath("../@Node2D@22838"), NodePath("../@Node2D@22839")]
+neighbour_paths = [NodePath("../@Node2D@32943"), NodePath("../@Node2D@32947"), NodePath("../@Node2D@32948"), NodePath("../@Node2D@32952"), NodePath("../@Node2D@32953")]
 polygon = PackedVector2Array(-23.199997, 3.2000008, 4.800003, -19.8, 17.800003, -13.799999, 7.800003, 9.200001, -7.199997, 21.2)
-neutral_color = null
-player_color = null
-enemy_color = null
+neutral_color = Color(0.8745098, 0.69411767, 0.69803923, 1)
+player_color = Color(0.24564964, 0.8468545, 0.9548462, 1)
+enemy_color = Color(0.98747045, 0.5224394, 0.6154208, 1)
 
-[node name="@Node2D@22836" type="Node2D" parent="tiles" unique_id=1954001508 node_paths=PackedStringArray("surface_polygon", "colorizable_polygon") instance=ExtResource("10_choun")]
+[node name="@Node2D@32950" type="Node2D" parent="tiles" unique_id=1532161574 node_paths=PackedStringArray("surface_polygon", "colorizable_polygon") instance=ExtResource("10_choun")]
 position = Vector2(83.333336, -6.3333335)
 script = ExtResource("12_eb6dy")
 surface_polygon = NodePath("visual/surface")
 colorizable_polygon = NodePath("visual/colorizable")
-neighbour_paths = [NodePath("."), NodePath("../@Node2D@22837"), NodePath("../@Node2D@22843"), NodePath("../@Node2D@22844")]
+neighbour_paths = [NodePath("../@Node2D@32951"), NodePath("../@Node2D@32957"), NodePath("../@Node2D@32958")]
 polygon = PackedVector2Array(-29.333336, 2.333334, -6.333336, -9.666666, 8.666664, -24.666666, 20.666664, -0.66666603, 15.666664, 13.333334, -9.333336, 19.333334)
-neutral_color = null
-player_color = null
-enemy_color = null
+neutral_color = Color(0.8745098, 0.69411767, 0.69803923, 1)
+player_color = Color(0.24564964, 0.8468545, 0.9548462, 1)
+enemy_color = Color(0.98747045, 0.5224394, 0.6154208, 1)
 
-[node name="@Node2D@22837" type="Node2D" parent="tiles" unique_id=685711491 node_paths=PackedStringArray("surface_polygon", "colorizable_polygon") instance=ExtResource("10_choun")]
+[node name="@Node2D@32951" type="Node2D" parent="tiles" unique_id=1583490846 node_paths=PackedStringArray("surface_polygon", "colorizable_polygon") instance=ExtResource("10_choun")]
 position = Vector2(88.8, 23.4)
 script = ExtResource("12_eb6dy")
 surface_polygon = NodePath("visual/surface")
 colorizable_polygon = NodePath("visual/colorizable")
-neighbour_paths = [NodePath("../@Node2D@22822"), NodePath("../@Node2D@22836"), NodePath("."), NodePath("../@Node2D@22844")]
+neighbour_paths = [NodePath("../@Node2D@32936"), NodePath("../@Node2D@32950"), NodePath("../@Node2D@32958")]
 polygon = PackedVector2Array(-17.800003, 3.6000004, -14.800003, -10.4, 10.199997, -16.4, 30.199997, -3.3999996, -7.800003, 26.6)
-neutral_color = null
-player_color = null
-enemy_color = null
+neutral_color = Color(0.8745098, 0.69411767, 0.69803923, 1)
+player_color = Color(0.24564964, 0.8468545, 0.9548462, 1)
+enemy_color = Color(0.98747045, 0.5224394, 0.6154208, 1)
 
-[node name="@Node2D@22838" type="Node2D" parent="tiles" unique_id=1818859066 node_paths=PackedStringArray("surface_polygon", "colorizable_polygon") instance=ExtResource("10_choun")]
+[node name="@Node2D@32952" type="Node2D" parent="tiles" unique_id=1764704160 node_paths=PackedStringArray("surface_polygon", "colorizable_polygon") instance=ExtResource("10_choun")]
 position = Vector2(-50.8, 72.4)
 script = ExtResource("12_eb6dy")
 surface_polygon = NodePath("visual/surface")
 colorizable_polygon = NodePath("visual/colorizable")
-neighbour_paths = [NodePath("../@Node2D@22829"), NodePath("../@Node2D@22835"), NodePath("."), NodePath("../@Node2D@22840"), NodePath("../@Node2D@22841")]
+neighbour_paths = [NodePath("../@Node2D@32943"), NodePath("../@Node2D@32949"), NodePath("../@Node2D@32954"), NodePath("../@Node2D@32955")]
 polygon = PackedVector2Array(-23.2, -8.400002, -8.200001, -20.400002, 26.8, -7.4000015, 18.8, 18.599998, -14.200001, 17.599998)
-neutral_color = null
-player_color = null
-enemy_color = null
+neutral_color = Color(0.8745098, 0.69411767, 0.69803923, 1)
+player_color = Color(0.24564964, 0.8468545, 0.9548462, 1)
+enemy_color = Color(0.98747045, 0.5224394, 0.6154208, 1)
 
-[node name="@Node2D@22839" type="Node2D" parent="tiles" unique_id=851683851 node_paths=PackedStringArray("surface_polygon", "colorizable_polygon") instance=ExtResource("10_choun")]
+[node name="@Node2D@32953" type="Node2D" parent="tiles" unique_id=1746943294 node_paths=PackedStringArray("surface_polygon", "colorizable_polygon") instance=ExtResource("10_choun")]
 position = Vector2(-104.2, 62.6)
 script = ExtResource("12_eb6dy")
 surface_polygon = NodePath("visual/surface")
 colorizable_polygon = NodePath("visual/colorizable")
-neighbour_paths = [NodePath("../@Node2D@22824"), NodePath("../@Node2D@22835"), NodePath("."), NodePath("../@Node2D@22841")]
+neighbour_paths = [NodePath("../@Node2D@32938"), NodePath("../@Node2D@32949"), NodePath("../@Node2D@32955")]
 polygon = PackedVector2Array(-13.800003, -15.599998, 14.199997, -16.599998, 30.199997, 1.4000015, -3.800003, 21.400002, -26.800003, 9.400002)
-neutral_color = null
-player_color = null
-enemy_color = null
+neutral_color = Color(0.8745098, 0.69411767, 0.69803923, 1)
+player_color = Color(0.24564964, 0.8468545, 0.9548462, 1)
+enemy_color = Color(0.98747045, 0.5224394, 0.6154208, 1)
 
-[node name="@Node2D@22840" type="Node2D" parent="tiles" unique_id=1717723891 node_paths=PackedStringArray("surface_polygon", "colorizable_polygon") instance=ExtResource("10_choun")]
+[node name="@Node2D@32954" type="Node2D" parent="tiles" unique_id=1199308778 node_paths=PackedStringArray("surface_polygon", "colorizable_polygon") instance=ExtResource("10_choun")]
 position = Vector2(-16, 84.25)
 script = ExtResource("12_eb6dy")
 surface_polygon = NodePath("visual/surface")
 colorizable_polygon = NodePath("visual/colorizable")
-neighbour_paths = [NodePath("../@Node2D@22823"), NodePath("../@Node2D@22830"), NodePath("../@Node2D@22838"), NodePath(".")]
+neighbour_paths = [NodePath("../@Node2D@32937"), NodePath("../@Node2D@32944"), NodePath("../@Node2D@32952")]
 polygon = PackedVector2Array(-16, 6.75, -8, -19.25, 14, -4.25, 10, 16.75)
-neutral_color = null
-player_color = null
-enemy_color = null
+neutral_color = Color(0.8745098, 0.69411767, 0.69803923, 1)
+player_color = Color(0.24564964, 0.8468545, 0.9548462, 1)
+enemy_color = Color(0.98747045, 0.5224394, 0.6154208, 1)
 
-[node name="@Node2D@22841" type="Node2D" parent="tiles" unique_id=1568030780 node_paths=PackedStringArray("surface_polygon", "colorizable_polygon") instance=ExtResource("10_choun")]
+[node name="@Node2D@32955" type="Node2D" parent="tiles" unique_id=471887932 node_paths=PackedStringArray("surface_polygon", "colorizable_polygon") instance=ExtResource("10_choun")]
 position = Vector2(-84.2, 89)
 script = ExtResource("12_eb6dy")
 surface_polygon = NodePath("visual/surface")
 colorizable_polygon = NodePath("visual/colorizable")
-neighbour_paths = [NodePath("../@Node2D@22838"), NodePath("../@Node2D@22839"), NodePath(".")]
+neighbour_paths = [NodePath("../@Node2D@32952"), NodePath("../@Node2D@32953")]
 polygon = PackedVector2Array(-23.800003, -5, 10.199997, -25, 19.199997, 1, 9.199997, 16, -14.800003, 13)
-neutral_color = null
-player_color = null
-enemy_color = null
+neutral_color = Color(0.8745098, 0.69411767, 0.69803923, 1)
+player_color = Color(0.24564964, 0.8468545, 0.9548462, 1)
+enemy_color = Color(0.98747045, 0.5224394, 0.6154208, 1)
 
-[node name="@Node2D@22842" type="Node2D" parent="tiles" unique_id=951647402 node_paths=PackedStringArray("surface_polygon", "colorizable_polygon") instance=ExtResource("10_choun")]
+[node name="@Node2D@32956" type="Node2D" parent="tiles" unique_id=372864616 node_paths=PackedStringArray("surface_polygon", "colorizable_polygon") instance=ExtResource("10_choun")]
 position = Vector2(23.6, 0.8)
 script = ExtResource("12_eb6dy")
 surface_polygon = NodePath("visual/surface")
 colorizable_polygon = NodePath("visual/colorizable")
-neighbour_paths = [NodePath("../@Node2D@22821"), NodePath("../@Node2D@22828"), NodePath("."), NodePath("../@Node2D@22843"), NodePath("../@Node2D@22844"), NodePath("../@Node2D@22845")]
+neighbour_paths = [NodePath("../@Node2D@32935"), NodePath("../@Node2D@32942"), NodePath("../@Node2D@32957"), NodePath("../@Node2D@32958"), NodePath("../@Node2D@32959")]
 polygon = PackedVector2Array(13.400002, -19.8, -26.599998, -7.799999, -20.599998, 19.2, 3.4000015, 13.200001, 30.400002, -4.799999)
-neutral_color = null
-player_color = null
-enemy_color = null
+neutral_color = Color(0.8745098, 0.69411767, 0.69803923, 1)
+player_color = Color(0.24564964, 0.8468545, 0.9548462, 1)
+enemy_color = Color(0.98747045, 0.5224394, 0.6154208, 1)
 
-[node name="@Node2D@22843" type="Node2D" parent="tiles" unique_id=1763808016 node_paths=PackedStringArray("surface_polygon", "colorizable_polygon") instance=ExtResource("10_choun")]
+[node name="@Node2D@32957" type="Node2D" parent="tiles" unique_id=213669494 node_paths=PackedStringArray("surface_polygon", "colorizable_polygon") instance=ExtResource("10_choun")]
 position = Vector2(66.8, -23)
 script = ExtResource("12_eb6dy")
 surface_polygon = NodePath("visual/surface")
 colorizable_polygon = NodePath("visual/colorizable")
-neighbour_paths = [NodePath("../@Node2D@22827"), NodePath("../@Node2D@22836"), NodePath("../@Node2D@22842"), NodePath(".")]
+neighbour_paths = [NodePath("../@Node2D@32941"), NodePath("../@Node2D@32950"), NodePath("../@Node2D@32956")]
 polygon = PackedVector2Array(7.199997, -22, -29.800003, 4, -12.800003, 19, 10.199997, 7, 25.199997, -8)
-neutral_color = null
-player_color = null
-enemy_color = null
+neutral_color = Color(0.8745098, 0.69411767, 0.69803923, 1)
+player_color = Color(0.24564964, 0.8468545, 0.9548462, 1)
+enemy_color = Color(0.98747045, 0.5224394, 0.6154208, 1)
 
-[node name="@Node2D@22844" type="Node2D" parent="tiles" unique_id=1612031539 node_paths=PackedStringArray("surface_polygon", "colorizable_polygon") instance=ExtResource("10_choun")]
+[node name="@Node2D@32958" type="Node2D" parent="tiles" unique_id=610905973 node_paths=PackedStringArray("surface_polygon", "colorizable_polygon") instance=ExtResource("10_choun")]
 position = Vector2(54.2, 16.6)
 script = ExtResource("12_eb6dy")
 surface_polygon = NodePath("visual/surface")
 colorizable_polygon = NodePath("visual/colorizable")
-neighbour_paths = [NodePath("../@Node2D@22822"), NodePath("../@Node2D@22828"), NodePath("../@Node2D@22836"), NodePath("../@Node2D@22837"), NodePath("../@Node2D@22842"), NodePath(".")]
+neighbour_paths = [NodePath("../@Node2D@32936"), NodePath("../@Node2D@32942"), NodePath("../@Node2D@32950"), NodePath("../@Node2D@32951"), NodePath("../@Node2D@32956")]
 polygon = PackedVector2Array(-0.20000076, -20.6, -27.2, -2.6000004, -9.200001, 16.4, 16.8, 10.4, 19.8, -3.6000004)
-neutral_color = null
-player_color = null
-enemy_color = null
+neutral_color = Color(0.8745098, 0.69411767, 0.69803923, 1)
+player_color = Color(0.24564964, 0.8468545, 0.9548462, 1)
+enemy_color = Color(0.98747045, 0.5224394, 0.6154208, 1)
 
-[node name="@Node2D@22845" type="Node2D" parent="tiles" unique_id=1344813721 node_paths=PackedStringArray("surface_polygon", "colorizable_polygon") instance=ExtResource("10_choun")]
+[node name="@Node2D@32959" type="Node2D" parent="tiles" unique_id=1447137754 node_paths=PackedStringArray("surface_polygon", "colorizable_polygon") instance=ExtResource("10_choun")]
 position = Vector2(-10.6, 20.6)
 script = ExtResource("12_eb6dy")
 surface_polygon = NodePath("visual/surface")
 colorizable_polygon = NodePath("visual/colorizable")
-neighbour_paths = [NodePath("../@Node2D@22821"), NodePath("../@Node2D@22828"), NodePath("../@Node2D@22829"), NodePath("../@Node2D@22830"), NodePath("../@Node2D@22842"), NodePath(".")]
+neighbour_paths = [NodePath("../@Node2D@32935"), NodePath("../@Node2D@32942"), NodePath("../@Node2D@32943"), NodePath("../@Node2D@32944"), NodePath("../@Node2D@32956")]
 polygon = PackedVector2Array(7.5999985, -27.599998, -17.400002, -5.5999985, -11.400002, 13.400002, 7.5999985, 20.400002, 13.599998, -0.5999985)
-neutral_color = null
-player_color = null
-enemy_color = null
+neutral_color = Color(0.8745098, 0.69411767, 0.69803923, 1)
+player_color = Color(0.24564964, 0.8468545, 0.9548462, 1)
+enemy_color = Color(0.98747045, 0.5224394, 0.6154208, 1)
