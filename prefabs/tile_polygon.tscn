@@ -3,10 +3,12 @@
 [ext_resource type="Texture2D" uid="uid://r7hr4d7px5f" path="res://sprites/white.png" id="1_u1ior"]
 [ext_resource type="Script" uid="uid://ch6eivoukap2y" path="res://scripts/tile.gd" id="1_x2ukr"]
 
-[node name="tile_polygon" type="Node2D" unique_id=159405777 node_paths=PackedStringArray("surface_polygon", "colorizable_polygon")]
+[node name="tile_polygon" type="StaticBody2D" unique_id=1600227972 node_paths=PackedStringArray("surface_polygon", "colorizable_polygon", "shape")]
+input_pickable = true
 script = ExtResource("1_x2ukr")
 surface_polygon = NodePath("visual/surface")
 colorizable_polygon = NodePath("visual/colorizable")
+shape = NodePath("shape")
 neutral_color = Color(0.8745098, 0.69411767, 0.69803923, 1)
 player_color = Color(0.24564964, 0.8468545, 0.9548462, 1)
 enemy_color = Color(0.98747045, 0.5224394, 0.6154208, 1)
@@ -28,3 +30,7 @@ antialiased = true
 texture = ExtResource("1_u1ior")
 polygon = PackedVector2Array(-4, 20, 16, 48, 60, 54, 68, 16)
 uv = PackedVector2Array(9, 12, 16, 48, 60, 54, 68, 16)
+
+[node name="shape" type="CollisionPolygon2D" parent="." unique_id=979643846]
+visible = false
+polygon = PackedVector2Array(-4, -4, 5, -6, 5, 5, -2, 5)

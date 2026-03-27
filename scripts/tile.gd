@@ -1,5 +1,5 @@
 @tool
-extends Node2D
+extends StaticBody2D
 
 var utils = preload("res://scripts/utils.gd").new()
 
@@ -11,24 +11,31 @@ var color = 'neutral'
 
 @export var surface_polygon: Polygon2D
 @export var colorizable_polygon: Polygon2D
+@export var shape: CollisionPolygon2D
 
-@export var neighbour_paths = []
+@export_storage var neighbour_paths = []
 @export_storage var polygon: PackedVector2Array
 
 @export var neutral_color: Color
 @export var player_color: Color
 @export var enemy_color: Color
 
+var hovering = false
+
+
 
 func create_visual():
 	var points = []
 	for point in polygon:
 		points.append(point)
+	if len(points) == 0:
+		return
 
 	points.sort_custom(ccw_sort)
 
 	colorizable_polygon.polygon = PackedVector2Array(points)
 	surface_polygon.polygon = PackedVector2Array(utils.shrink_polygon(points, 2.0, 0.5))
+	shape.polygon = PackedVector2Array(points)
 
 func ccw_sort(a, b):
 	var angle_a = Vector2.UP.angle_to(a)
@@ -66,10 +73,13 @@ func calculate_neighbours():
 			neighbour_paths.append(self.get_path_to(tile))
 
 func _ready() -> void:
+	create_visual()
+
 	if Engine.is_editor_hint():
 		return
 
-	create_visual()
+	connect('mouse_entered', _on_mouse_entered)
+	connect('mouse_exited', _on_mouse_exited)
 
 func get_relative_tile(vec):
 	return tiles.get_tile(tile_index + vec)
@@ -128,3 +138,19 @@ func contained_in(vec, vec_array):
 			return true
 	return false
 
+
+func _on_mouse_entered() -> void:
+	hovering = true
+
+func _on_mouse_exited() -> void:
+	hovering = false
+
+func _input_event(_viewport: Viewport, event: InputEvent, _shape_idx: int) -> void:
+	if not visible:
+		return
+
+	if event is InputEventMouseButton:
+		if event.pressed and hovering:
+			for child in get_children():
+				if child.has_method('left_click'):
+					child.left_click()
