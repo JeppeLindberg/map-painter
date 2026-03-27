@@ -83,9 +83,6 @@ func delete_pathfinding_clickables():
 		pathfinding_clickables[i].queue_free()
 		pathfinding_clickables.remove_at(i)
 
-func left_click():
-	select()
-
 func select():
 	selected = true
 	update()

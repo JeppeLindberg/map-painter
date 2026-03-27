@@ -3,6 +3,7 @@ extends StaticBody2D
 
 var utils = preload("res://scripts/utils.gd").new()
 
+@onready var selection_mgt = null
 @onready var tiles = get_parent()
 
 var tile_index:Vector2i
@@ -11,6 +12,7 @@ var color = 'neutral'
 
 @export var surface_polygon: Polygon2D
 @export var colorizable_polygon: Polygon2D
+@export var overlay_polygon: Polygon2D
 @export var shape: CollisionPolygon2D
 
 @export_storage var neighbour_paths = []
@@ -24,6 +26,17 @@ var hovering = false
 
 
 
+func _ready() -> void:
+	create_visual()
+
+	if Engine.is_editor_hint():
+		return
+
+	if selection_mgt == null:
+		selection_mgt = get_node('/root/main/selection_mgt')
+	connect('mouse_entered', _on_mouse_entered)
+	connect('mouse_exited', _on_mouse_exited)
+
 func create_visual():
 	var points = []
 	for point in polygon:
@@ -34,6 +47,7 @@ func create_visual():
 	points.sort_custom(ccw_sort)
 
 	colorizable_polygon.polygon = PackedVector2Array(points)
+	overlay_polygon.polygon = PackedVector2Array(points)
 	surface_polygon.polygon = PackedVector2Array(utils.shrink_polygon(points, 2.0, 0.5))
 	shape.polygon = PackedVector2Array(points)
 
@@ -72,14 +86,6 @@ func calculate_neighbours():
 		if add_neighbour:
 			neighbour_paths.append(self.get_path_to(tile))
 
-func _ready() -> void:
-	create_visual()
-
-	if Engine.is_editor_hint():
-		return
-
-	connect('mouse_entered', _on_mouse_entered)
-	connect('mouse_exited', _on_mouse_exited)
 
 func get_relative_tile(vec):
 	return tiles.get_tile(tile_index + vec)
@@ -99,7 +105,10 @@ func get_current_occupant():
 
 func _process(_delta: float) -> void:
 	if Engine.is_editor_hint():
+		neutral_color = colorizable_polygon.color
 		return
+
+	overlay_polygon.visible = hovering
 
 	match color:
 		'neutral':
@@ -150,7 +159,12 @@ func _input_event(_viewport: Viewport, event: InputEvent, _shape_idx: int) -> vo
 		return
 
 	if event is InputEventMouseButton:
-		if event.pressed and hovering:
+		if event.button_index == MouseButton.MOUSE_BUTTON_LEFT and event.pressed and hovering:
+			var clickable_clicked = false
 			for child in get_children():
 				if child.has_method('left_click'):
+					clickable_clicked = true
 					child.left_click()
+
+			if not clickable_clicked:
+				selection_mgt.tile_clicked(self)

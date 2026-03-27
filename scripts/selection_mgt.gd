@@ -14,3 +14,9 @@ func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("deselect"):
 		deselect_all()
 
+func tile_clicked(tile):
+	for child in tile.get_children():
+		if child.is_in_group('selectable'):
+			print(child)
+			child.select()
+

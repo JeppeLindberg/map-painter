@@ -3,17 +3,27 @@
 [ext_resource type="Texture2D" uid="uid://r7hr4d7px5f" path="res://sprites/white.png" id="1_u1ior"]
 [ext_resource type="Script" uid="uid://ch6eivoukap2y" path="res://scripts/tile.gd" id="1_x2ukr"]
 
-[node name="tile_polygon" type="StaticBody2D" unique_id=1600227972 node_paths=PackedStringArray("surface_polygon", "colorizable_polygon", "shape")]
+[node name="tile_polygon" type="StaticBody2D" unique_id=1600227972 node_paths=PackedStringArray("surface_polygon", "colorizable_polygon", "overlay_polygon", "shape")]
 input_pickable = true
 script = ExtResource("1_x2ukr")
 surface_polygon = NodePath("visual/surface")
 colorizable_polygon = NodePath("visual/colorizable")
+overlay_polygon = NodePath("visual/overlay")
 shape = NodePath("shape")
-neutral_color = Color(0.8745098, 0.69411767, 0.69803923, 1)
+neutral_color = Color(0.8737911, 0.6944265, 0.69791687, 1)
 player_color = Color(0.24564964, 0.8468545, 0.9548462, 1)
 enemy_color = Color(0.98747045, 0.5224394, 0.6154208, 1)
 
 [node name="visual" type="Node2D" parent="." unique_id=431904697]
+
+[node name="overlay" type="Polygon2D" parent="visual" unique_id=1191996157]
+z_index = 2
+texture_repeat = 2
+color = Color(1, 1, 1, 0.26666668)
+antialiased = true
+texture = ExtResource("1_u1ior")
+polygon = PackedVector2Array(-82.00003, 5.999668, 16, 48, 60, 54, 68, 16)
+uv = PackedVector2Array(9, 12, 16, 48, 60, 54, 68, 16)
 
 [node name="colorizable" type="Polygon2D" parent="visual" unique_id=1645437304]
 texture_repeat = 2
@@ -24,6 +34,7 @@ polygon = PackedVector2Array(-82.00003, 5.999668, 16, 48, 60, 54, 68, 16)
 uv = PackedVector2Array(9, 12, 16, 48, 60, 54, 68, 16)
 
 [node name="surface" type="Polygon2D" parent="visual" unique_id=771144924]
+z_index = 1
 texture_repeat = 2
 color = Color(0.98039216, 0.8901961, 0.8901961, 1)
 antialiased = true
