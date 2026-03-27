@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://crypkp54bqje4" path="res://scripts/turn_mgt.gd" id="2_choun"]
 [ext_resource type="Texture2D" uid="uid://cfn4c10oyciur" path="res://sprites/timer_1.png" id="2_o6xl0"]
 [ext_resource type="Texture2D" uid="uid://b0j11c77u6tu4" path="res://sprites/white_circle.png" id="2_tefeu"]
+[ext_resource type="Script" uid="uid://cfbahtcaev3m6" path="res://scripts/selection_mgt.gd" id="3_eb6dy"]
 [ext_resource type="Texture2D" uid="uid://ciiobs1rsylf6" path="res://sprites/timer_0.png" id="4_tipki"]
 [ext_resource type="PackedScene" uid="uid://ceskeiqst147p" path="res://prefabs/prototype_polygon.tscn" id="9_ya4ey"]
 [ext_resource type="PackedScene" uid="uid://7befx1u5v3fn" path="res://prefabs/tile_polygon.tscn" id="10_choun"]
@@ -118,6 +119,9 @@ script = ExtResource("1_tbgi4")
 [node name="turn_mgt" type="Node" parent="." unique_id=137792287 node_paths=PackedStringArray("timer")]
 script = ExtResource("2_choun")
 timer = NodePath("../camera/timer")
+
+[node name="selection_mgt" type="Node" parent="." unique_id=1854046563]
+script = ExtResource("3_eb6dy")
 
 [node name="camera" type="Camera2D" parent="." unique_id=1132405800]
 

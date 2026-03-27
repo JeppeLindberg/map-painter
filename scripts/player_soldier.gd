@@ -2,8 +2,6 @@ extends Node2D
 
 @export var pathfinding_clickable_prefab: PackedScene
 
-@onready var main = get_node('/root/main')
-
 var utils = preload("res://scripts/utils.gd").new()
 
 var state = 'idle'
@@ -43,7 +41,6 @@ func accept_turn():
 
 func update():
 	if selected and (prev_update['parent'] != get_parent()):
-		delete_pathfinding_clickables()
 		create_pathfinding_clickables()
 	else:
 		if (prev_update['selected'] and not selected):
