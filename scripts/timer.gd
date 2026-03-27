@@ -13,7 +13,7 @@ func _process(delta: float) -> void:
 	var trigger_turn = false
 	if not Engine.is_editor_hint():
 		if progress < 1.0:
-			progress += delta
+			progress += delta * 0.5
 			if progress >= 1.0:
 				progress = 1.0
 				trigger_turn = true

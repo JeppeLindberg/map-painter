@@ -1,17 +1,17 @@
 [gd_scene format=3 uid="uid://3qegwrydp4a5"]
 
 [ext_resource type="Script" uid="uid://dupy7lp1l560o" path="res://scripts/tiles.gd" id="1_jyhfs"]
-[ext_resource type="Script" uid="uid://v8r4mlgo8l88" path="res://scripts/main.gd" id="1_tbgi4"]
 [ext_resource type="PackedScene" uid="uid://gcfqmvwt4j8n" path="res://prefabs/tile.tscn" id="2_0wfyh"]
 [ext_resource type="Script" uid="uid://mgrik15wc4cg" path="res://scripts/timer.gd" id="2_85g3d"]
 [ext_resource type="Script" uid="uid://crypkp54bqje4" path="res://scripts/turn_mgt.gd" id="2_choun"]
 [ext_resource type="Texture2D" uid="uid://cfn4c10oyciur" path="res://sprites/timer_1.png" id="2_o6xl0"]
 [ext_resource type="Texture2D" uid="uid://b0j11c77u6tu4" path="res://sprites/white_circle.png" id="2_tefeu"]
 [ext_resource type="Script" uid="uid://cfbahtcaev3m6" path="res://scripts/selection_mgt.gd" id="3_eb6dy"]
+[ext_resource type="Script" uid="uid://dvrb3bh87y37l" path="res://scripts/ui_mgt.gd" id="3_trceg"]
 [ext_resource type="Texture2D" uid="uid://ciiobs1rsylf6" path="res://sprites/timer_0.png" id="4_tipki"]
+[ext_resource type="Script" uid="uid://u83l5gfua48x" path="res://scripts/tile_information.gd" id="7_trceg"]
 [ext_resource type="PackedScene" uid="uid://ceskeiqst147p" path="res://prefabs/prototype_polygon.tscn" id="9_ya4ey"]
 [ext_resource type="PackedScene" uid="uid://7befx1u5v3fn" path="res://prefabs/tile_polygon.tscn" id="10_choun"]
-[ext_resource type="Script" uid="uid://ch6eivoukap2y" path="res://scripts/tile.gd" id="11_trceg"]
 [ext_resource type="PackedScene" uid="uid://bq32grs3be8v5" path="res://prefabs/player_soldier.tscn" id="12_trceg"]
 
 [sub_resource type="Shader" id="Shader_tipki"]
@@ -114,8 +114,30 @@ shader_parameter/reflect_x = false
 shader_parameter/reflect_y = false
 shader_parameter/offset = Vector2(0, 0)
 
-[node name="main" type="Node2D" unique_id=613455683]
-script = ExtResource("1_tbgi4")
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eb6dy"]
+bg_color = Color(0.022, 0.05, 0.047666665, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_trceg"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(0.1, 0.1, 0.1, 0)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a8y0u"]
+bg_color = Color(0.70615333, 0.62780005, 0.73, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_color = Color(0.654902, 0.6039216, 0.67058825, 1)
+
+[node name="main" type="Node" unique_id=1914423807]
 
 [node name="turn_mgt" type="Node" parent="." unique_id=137792287 node_paths=PackedStringArray("timer")]
 script = ExtResource("2_choun")
@@ -123,6 +145,10 @@ timer = NodePath("../camera/timer")
 
 [node name="selection_mgt" type="Node" parent="." unique_id=1854046563]
 script = ExtResource("3_eb6dy")
+
+[node name="ui_mgt" type="Node" parent="." unique_id=605784947 node_paths=PackedStringArray("tile_information")]
+script = ExtResource("3_trceg")
+tile_information = NodePath("../camera/center/panel/hbox/left/tile_information_container/tile_information")
 
 [node name="camera" type="Camera2D" parent="." unique_id=1132405800]
 
@@ -144,6 +170,63 @@ texture = ExtResource("2_tefeu")
 material = SubResource("ShaderMaterial_85g3d")
 position = Vector2(0, 6)
 texture = ExtResource("2_tefeu")
+
+[node name="center" type="CenterContainer" parent="camera" unique_id=1046770806]
+z_index = 1000
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -576.0
+offset_top = -324.0
+offset_right = 576.0
+offset_bottom = 324.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="panel" type="PanelContainer" parent="camera/center" unique_id=756251072]
+custom_minimum_size = Vector2(576, 324)
+layout_mode = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_eb6dy")
+
+[node name="hbox" type="HBoxContainer" parent="camera/center/panel" unique_id=616782522]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="left" type="MarginContainer" parent="camera/center/panel/hbox" unique_id=294650938]
+custom_minimum_size = Vector2(192, 0)
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 50
+
+[node name="tile_information_container" type="PanelContainer" parent="camera/center/panel/hbox/left" unique_id=1306014571]
+layout_mode = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_trceg")
+
+[node name="tile_information" type="Panel" parent="camera/center/panel/hbox/left/tile_information_container" unique_id=285806680 node_paths=PackedStringArray("text_label")]
+custom_minimum_size = Vector2(0, 224)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_a8y0u")
+script = ExtResource("7_trceg")
+text_label = NodePath("label")
+
+[node name="label" type="RichTextLabel" parent="camera/center/panel/hbox/left/tile_information_container/tile_information" unique_id=110493673]
+self_modulate = Color(0, 0, 0, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Hej"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="occupant_container" type="Node2D" parent="." unique_id=1892342923]
 
@@ -256,354 +339,129 @@ tile_polygon_prefab = ExtResource("10_choun")
 occupant_container = NodePath("../occupant_container")
 tiles_prototype = NodePath("../tiles_prototype")
 
-[node name="@StaticBody2D@93986" type="StaticBody2D" parent="tiles" unique_id=1600227972 node_paths=PackedStringArray("surface_polygon", "colorizable_polygon", "overlay_polygon", "shape") instance=ExtResource("10_choun")]
+[node name="@StaticBody2D@93986" parent="tiles" unique_id=1600227972 instance=ExtResource("10_choun")]
 position = Vector2(-8.833333, -13.166667)
-input_pickable = true
-script = ExtResource("11_trceg")
-surface_polygon = NodePath("visual/surface")
-colorizable_polygon = NodePath("visual/colorizable")
-overlay_polygon = NodePath("visual/overlay")
-shape = NodePath("shape")
 neighbour_paths = [NodePath("../@StaticBody2D@93992"), NodePath("../@StaticBody2D@93996"), NodePath("../@StaticBody2D@93997"), NodePath("../@StaticBody2D@93998"), NodePath("../@StaticBody2D@94007"), NodePath("../@StaticBody2D@94010")]
 polygon = PackedVector2Array(15.833333, -19.833332, -22.166668, -15.833333, -26.166668, 7.166667, -19.166668, 28.166668, 5.833333, 6.166667, 45.833332, -5.833333)
-neutral_color = Color(0.8737911, 0.6944265, 0.69791687, 1)
-player_color = Color(0.24564964, 0.8468545, 0.9548462, 1)
-enemy_color = Color(0.98747045, 0.5224394, 0.6154208, 1)
 
-[node name="@StaticBody2D@93987" type="StaticBody2D" parent="tiles" unique_id=494984216 node_paths=PackedStringArray("surface_polygon", "colorizable_polygon", "overlay_polygon", "shape") instance=ExtResource("10_choun")]
+[node name="@StaticBody2D@93987" parent="tiles" unique_id=494984216 instance=ExtResource("10_choun")]
 position = Vector2(57, 49.5)
-input_pickable = true
-script = ExtResource("11_trceg")
-surface_polygon = NodePath("visual/surface")
-colorizable_polygon = NodePath("visual/colorizable")
-overlay_polygon = NodePath("visual/overlay")
-shape = NodePath("shape")
 neighbour_paths = [NodePath("../@StaticBody2D@93988"), NodePath("../@StaticBody2D@93993"), NodePath("../@StaticBody2D@94002"), NodePath("../@StaticBody2D@94009")]
 polygon = PackedVector2Array(-12, -16.5, -24, 0.5, -17, 19.5, 15, 18.5, 24, 0.5, 14, -22.5)
-neutral_color = Color(0.8737911, 0.6944265, 0.69791687, 1)
-player_color = Color(0.24564964, 0.8468545, 0.9548462, 1)
-enemy_color = Color(0.98747045, 0.5224394, 0.6154208, 1)
 
-[node name="@StaticBody2D@93988" type="StaticBody2D" parent="tiles" unique_id=37291663 node_paths=PackedStringArray("surface_polygon", "colorizable_polygon", "overlay_polygon", "shape") instance=ExtResource("10_choun")]
+[node name="@StaticBody2D@93988" parent="tiles" unique_id=37291663 instance=ExtResource("10_choun")]
 position = Vector2(17.333334, 75.333336)
-input_pickable = true
-script = ExtResource("11_trceg")
-surface_polygon = NodePath("visual/surface")
-colorizable_polygon = NodePath("visual/colorizable")
-overlay_polygon = NodePath("visual/overlay")
-shape = NodePath("shape")
 neighbour_paths = [NodePath("../@StaticBody2D@93987"), NodePath("../@StaticBody2D@93993"), NodePath("../@StaticBody2D@93995"), NodePath("../@StaticBody2D@94005")]
 polygon = PackedVector2Array(-4.333334, -16.333336, -19.333334, 4.666664, -23.333334, 25.666664, 8.666666, 17.666664, 22.666666, -6.333336, 15.666666, -25.333336)
-neutral_color = Color(0.8737911, 0.6944265, 0.69791687, 1)
-player_color = Color(0.24564964, 0.8468545, 0.9548462, 1)
-enemy_color = Color(0.98747045, 0.5224394, 0.6154208, 1)
 
-[node name="@StaticBody2D@93989" type="StaticBody2D" parent="tiles" unique_id=1358214880 node_paths=PackedStringArray("surface_polygon", "colorizable_polygon", "overlay_polygon", "shape") instance=ExtResource("10_choun")]
+[node name="@StaticBody2D@93989" parent="tiles" unique_id=1358214880 instance=ExtResource("10_choun")]
 position = Vector2(-107, 28.4)
-input_pickable = true
-script = ExtResource("11_trceg")
-surface_polygon = NodePath("visual/surface")
-colorizable_polygon = NodePath("visual/colorizable")
-overlay_polygon = NodePath("visual/overlay")
-shape = NodePath("shape")
 neighbour_paths = [NodePath("../@StaticBody2D@93991"), NodePath("../@StaticBody2D@93999"), NodePath("../@StaticBody2D@94004")]
 polygon = PackedVector2Array(-2, -21.4, -21, -4.3999996, -11, 18.6, 17, 17.6, 17, -10.4)
-neutral_color = Color(0.8737911, 0.6944265, 0.69791687, 1)
-player_color = Color(0.24564964, 0.8468545, 0.9548462, 1)
-enemy_color = Color(0.98747045, 0.5224394, 0.6154208, 1)
 
-[node name="@StaticBody2D@93990" type="StaticBody2D" parent="tiles" unique_id=1427550941 node_paths=PackedStringArray("surface_polygon", "colorizable_polygon", "overlay_polygon", "shape") instance=ExtResource("10_choun")]
+[node name="@StaticBody2D@93990" parent="tiles" unique_id=1427550941 instance=ExtResource("10_choun")]
 position = Vector2(-76.6, -48.6)
-input_pickable = true
-script = ExtResource("11_trceg")
-surface_polygon = NodePath("visual/surface")
-colorizable_polygon = NodePath("visual/colorizable")
-overlay_polygon = NodePath("visual/overlay")
-shape = NodePath("shape")
 neighbour_paths = [NodePath("../@StaticBody2D@93991"), NodePath("../@StaticBody2D@93996"), NodePath("../@StaticBody2D@93997")]
 polygon = PackedVector2Array(24.599998, 4.5999985, 14.599998, -17.400002, -16.400002, -12.400002, -25.400002, 6.5999985, 2.5999985, 18.599998)
-neutral_color = Color(0.8737911, 0.6944265, 0.69791687, 1)
-player_color = Color(0.24564964, 0.8468545, 0.9548462, 1)
-enemy_color = Color(0.98747045, 0.5224394, 0.6154208, 1)
 
-[node name="@StaticBody2D@93991" type="StaticBody2D" parent="tiles" unique_id=1086118359 node_paths=PackedStringArray("surface_polygon", "colorizable_polygon", "overlay_polygon", "shape") instance=ExtResource("10_choun")]
+[node name="@StaticBody2D@93991" parent="tiles" unique_id=1086118359 instance=ExtResource("10_choun")]
 position = Vector2(-93.666664, -11.833333)
-input_pickable = true
-script = ExtResource("11_trceg")
-surface_polygon = NodePath("visual/surface")
-colorizable_polygon = NodePath("visual/colorizable")
-overlay_polygon = NodePath("visual/overlay")
-shape = NodePath("shape")
 neighbour_paths = [NodePath("../@StaticBody2D@93989"), NodePath("../@StaticBody2D@93990"), NodePath("../@StaticBody2D@93997"), NodePath("../@StaticBody2D@93999")]
 polygon = PackedVector2Array(17.666664, 5.833333, 19.666664, -18.166668, -8.333336, -30.166668, -17.333336, -6.166667, -15.333336, 18.833332, 3.6666641, 29.833332)
-neutral_color = Color(0.8737911, 0.6944265, 0.69791687, 1)
-player_color = Color(0.24564964, 0.8468545, 0.9548462, 1)
-enemy_color = Color(0.98747045, 0.5224394, 0.6154208, 1)
 
-[node name="@StaticBody2D@93992" type="StaticBody2D" parent="tiles" unique_id=249103250 node_paths=PackedStringArray("surface_polygon", "colorizable_polygon", "overlay_polygon", "shape") instance=ExtResource("10_choun")]
+[node name="@StaticBody2D@93992" parent="tiles" unique_id=249103250 instance=ExtResource("10_choun")]
 position = Vector2(32.6, -45.2)
-input_pickable = true
-script = ExtResource("11_trceg")
-surface_polygon = NodePath("visual/surface")
-colorizable_polygon = NodePath("visual/colorizable")
-overlay_polygon = NodePath("visual/overlay")
-shape = NodePath("shape")
 neighbour_paths = [NodePath("../@StaticBody2D@93986"), NodePath("../@StaticBody2D@93996"), NodePath("../@StaticBody2D@94008")]
 polygon = PackedVector2Array(-25.599998, 12.200001, -21.599998, -14.799999, 1.4000015, -23.8, 41.4, 0.20000076, 4.4000015, 26.2)
-neutral_color = Color(0.8737911, 0.6944265, 0.69791687, 1)
-player_color = Color(0.24564964, 0.8468545, 0.9548462, 1)
-enemy_color = Color(0.98747045, 0.5224394, 0.6154208, 1)
 
-[node name="@StaticBody2D@93993" type="StaticBody2D" parent="tiles" unique_id=908882811 node_paths=PackedStringArray("surface_polygon", "colorizable_polygon", "overlay_polygon", "shape") instance=ExtResource("10_choun")]
+[node name="@StaticBody2D@93993" parent="tiles" unique_id=908882811 instance=ExtResource("10_choun")]
 position = Vector2(19.666666, 36.166668)
-input_pickable = true
-script = ExtResource("11_trceg")
-surface_polygon = NodePath("visual/surface")
-colorizable_polygon = NodePath("visual/colorizable")
-overlay_polygon = NodePath("visual/overlay")
-shape = NodePath("shape")
 neighbour_paths = [NodePath("../@StaticBody2D@93987"), NodePath("../@StaticBody2D@93988"), NodePath("../@StaticBody2D@93995"), NodePath("../@StaticBody2D@94007"), NodePath("../@StaticBody2D@94009"), NodePath("../@StaticBody2D@94010")]
 polygon = PackedVector2Array(-22.666666, 4.833332, -16.666666, -16.166668, 7.333334, -22.166668, 25.333334, -3.166668, 13.333334, 13.833332, -6.666666, 22.833332)
-neutral_color = Color(0.8737911, 0.6944265, 0.69791687, 1)
-player_color = Color(0.24564964, 0.8468545, 0.9548462, 1)
-enemy_color = Color(0.98747045, 0.5224394, 0.6154208, 1)
 
-[node name="@StaticBody2D@93994" type="StaticBody2D" parent="tiles" unique_id=1880081135 node_paths=PackedStringArray("surface_polygon", "colorizable_polygon", "overlay_polygon", "shape") instance=ExtResource("10_choun")]
+[node name="@StaticBody2D@93994" parent="tiles" unique_id=1880081135 instance=ExtResource("10_choun")]
 position = Vector2(-36.4, 39)
-input_pickable = true
-script = ExtResource("11_trceg")
-surface_polygon = NodePath("visual/surface")
-colorizable_polygon = NodePath("visual/colorizable")
-overlay_polygon = NodePath("visual/overlay")
-shape = NodePath("shape")
 neighbour_paths = [NodePath("../@StaticBody2D@93995"), NodePath("../@StaticBody2D@93998"), NodePath("../@StaticBody2D@94000"), NodePath("../@StaticBody2D@94003"), NodePath("../@StaticBody2D@94010")]
 polygon = PackedVector2Array(-22.599998, 13, -12.599998, -10, 8.400002, -24, 14.400002, -5, 12.400002, 26)
-neutral_color = Color(0.8737911, 0.6944265, 0.69791687, 1)
-player_color = Color(0.24564964, 0.8468545, 0.9548462, 1)
-enemy_color = Color(0.98747045, 0.5224394, 0.6154208, 1)
 
-[node name="@StaticBody2D@93995" type="StaticBody2D" parent="tiles" unique_id=1496612852 node_paths=PackedStringArray("surface_polygon", "colorizable_polygon", "overlay_polygon", "shape") instance=ExtResource("10_choun")]
+[node name="@StaticBody2D@93995" parent="tiles" unique_id=1496612852 instance=ExtResource("10_choun")]
 position = Vector2(-7.6, 55.8)
-input_pickable = true
-script = ExtResource("11_trceg")
-surface_polygon = NodePath("visual/surface")
-colorizable_polygon = NodePath("visual/colorizable")
-overlay_polygon = NodePath("visual/overlay")
-shape = NodePath("shape")
 neighbour_paths = [NodePath("../@StaticBody2D@93988"), NodePath("../@StaticBody2D@93993"), NodePath("../@StaticBody2D@93994"), NodePath("../@StaticBody2D@94005"), NodePath("../@StaticBody2D@94010")]
 polygon = PackedVector2Array(5.6000004, 24.199997, -16.4, 9.199997, -14.4, -21.800003, 4.6000004, -14.800003, 20.6, 3.199997)
-neutral_color = Color(0.8737911, 0.6944265, 0.69791687, 1)
-player_color = Color(0.24564964, 0.8468545, 0.9548462, 1)
-enemy_color = Color(0.98747045, 0.5224394, 0.6154208, 1)
 
-[node name="@StaticBody2D@93996" type="StaticBody2D" parent="tiles" unique_id=1413708290 node_paths=PackedStringArray("surface_polygon", "colorizable_polygon", "overlay_polygon", "shape") instance=ExtResource("10_choun")]
+[node name="@StaticBody2D@93996" parent="tiles" unique_id=1413708290 instance=ExtResource("10_choun")]
 position = Vector2(-29.666666, -52)
-input_pickable = true
-script = ExtResource("11_trceg")
-surface_polygon = NodePath("visual/surface")
-colorizable_polygon = NodePath("visual/colorizable")
-overlay_polygon = NodePath("visual/overlay")
-shape = NodePath("shape")
 neighbour_paths = [NodePath("../@StaticBody2D@93986"), NodePath("../@StaticBody2D@93990"), NodePath("../@StaticBody2D@93992"), NodePath("../@StaticBody2D@93997")]
 polygon = PackedVector2Array(-1.333334, 23, -22.333334, 8, -32.333336, -14, -21.333334, -28, 40.666664, -8, 36.666664, 19)
-neutral_color = Color(0.8737911, 0.6944265, 0.69791687, 1)
-player_color = Color(0.24564964, 0.8468545, 0.9548462, 1)
-enemy_color = Color(0.98747045, 0.5224394, 0.6154208, 1)
 
-[node name="@StaticBody2D@93997" type="StaticBody2D" parent="tiles" unique_id=2128572485 node_paths=PackedStringArray("surface_polygon", "colorizable_polygon", "overlay_polygon", "shape") instance=ExtResource("10_choun")]
+[node name="@StaticBody2D@93997" parent="tiles" unique_id=2128572485 instance=ExtResource("10_choun")]
 position = Vector2(-54, -17.833334)
-input_pickable = true
-script = ExtResource("11_trceg")
-surface_polygon = NodePath("visual/surface")
-colorizable_polygon = NodePath("visual/colorizable")
-overlay_polygon = NodePath("visual/overlay")
-shape = NodePath("shape")
 neighbour_paths = [NodePath("../@StaticBody2D@93986"), NodePath("../@StaticBody2D@93990"), NodePath("../@StaticBody2D@93991"), NodePath("../@StaticBody2D@93996"), NodePath("../@StaticBody2D@93998"), NodePath("../@StaticBody2D@93999")]
 polygon = PackedVector2Array(-22, 11.833334, -20, -12.166666, 2, -26.166666, 23, -11.166666, 19, 11.833334, -2, 25.833334)
-neutral_color = Color(0.8737911, 0.6944265, 0.69791687, 1)
-player_color = Color(0.24564964, 0.8468545, 0.9548462, 1)
-enemy_color = Color(0.98747045, 0.5224394, 0.6154208, 1)
 
-[node name="@StaticBody2D@93998" type="StaticBody2D" parent="tiles" unique_id=1210655577 node_paths=PackedStringArray("surface_polygon", "colorizable_polygon", "overlay_polygon", "shape") instance=ExtResource("10_choun")]
+[node name="@StaticBody2D@93998" parent="tiles" unique_id=1210655577 instance=ExtResource("10_choun")]
 position = Vector2(-46, 13.8)
-input_pickable = true
-script = ExtResource("11_trceg")
-surface_polygon = NodePath("visual/surface")
-colorizable_polygon = NodePath("visual/colorizable")
-overlay_polygon = NodePath("visual/overlay")
-shape = NodePath("shape")
 neighbour_paths = [NodePath("../@StaticBody2D@93986"), NodePath("../@StaticBody2D@93994"), NodePath("../@StaticBody2D@93997"), NodePath("../@StaticBody2D@93999"), NodePath("../@StaticBody2D@94000")]
 polygon = PackedVector2Array(-10, -5.799999, 11, -19.8, 18, 1.2000008, -3, 15.200001, -16, 9.200001)
-neutral_color = Color(0.8737911, 0.6944265, 0.69791687, 1)
-player_color = Color(0.24564964, 0.8468545, 0.9548462, 1)
-enemy_color = Color(0.98747045, 0.5224394, 0.6154208, 1)
 
-[node name="@StaticBody2D@93999" type="StaticBody2D" parent="tiles" unique_id=1183925627 node_paths=PackedStringArray("surface_polygon", "colorizable_polygon", "overlay_polygon", "shape") instance=ExtResource("10_choun")]
+[node name="@StaticBody2D@93999" parent="tiles" unique_id=1183925627 instance=ExtResource("10_choun")]
 position = Vector2(-74.8, 17.8)
-input_pickable = true
-script = ExtResource("11_trceg")
-surface_polygon = NodePath("visual/surface")
-colorizable_polygon = NodePath("visual/colorizable")
-overlay_polygon = NodePath("visual/overlay")
-shape = NodePath("shape")
 neighbour_paths = [NodePath("../@StaticBody2D@93989"), NodePath("../@StaticBody2D@93991"), NodePath("../@StaticBody2D@93997"), NodePath("../@StaticBody2D@93998"), NodePath("../@StaticBody2D@94000")]
 polygon = PackedVector2Array(-15.199997, 0.20000076, -1.199997, -23.8, 18.800003, -9.799999, 12.800003, 5.200001, -15.199997, 28.2)
-neutral_color = Color(0.8737911, 0.6944265, 0.69791687, 1)
-player_color = Color(0.24564964, 0.8468545, 0.9548462, 1)
-enemy_color = Color(0.98747045, 0.5224394, 0.6154208, 1)
 
 [node name="player_soldier" parent="tiles/@StaticBody2D@93999" unique_id=1824605875 instance=ExtResource("12_trceg")]
 
-[node name="@StaticBody2D@94000" type="StaticBody2D" parent="tiles" unique_id=1947002143 node_paths=PackedStringArray("surface_polygon", "colorizable_polygon", "overlay_polygon", "shape") instance=ExtResource("10_choun")]
+[node name="@StaticBody2D@94000" parent="tiles" unique_id=1947002143 instance=ExtResource("10_choun")]
 position = Vector2(-66.8, 42.8)
-input_pickable = true
-script = ExtResource("11_trceg")
-surface_polygon = NodePath("visual/surface")
-colorizable_polygon = NodePath("visual/colorizable")
-overlay_polygon = NodePath("visual/overlay")
-shape = NodePath("shape")
 neighbour_paths = [NodePath("../@StaticBody2D@93994"), NodePath("../@StaticBody2D@93998"), NodePath("../@StaticBody2D@93999"), NodePath("../@StaticBody2D@94003"), NodePath("../@StaticBody2D@94004")]
 polygon = PackedVector2Array(-23.199997, 3.2000008, 4.800003, -19.8, 17.800003, -13.799999, 7.800003, 9.200001, -7.199997, 21.2)
-neutral_color = Color(0.8737911, 0.6944265, 0.69791687, 1)
-player_color = Color(0.24564964, 0.8468545, 0.9548462, 1)
-enemy_color = Color(0.98747045, 0.5224394, 0.6154208, 1)
 
-[node name="@StaticBody2D@94001" type="StaticBody2D" parent="tiles" unique_id=1049797287 node_paths=PackedStringArray("surface_polygon", "colorizable_polygon", "overlay_polygon", "shape") instance=ExtResource("10_choun")]
+[node name="@StaticBody2D@94001" parent="tiles" unique_id=1049797287 instance=ExtResource("10_choun")]
 position = Vector2(83.333336, -6.3333335)
-input_pickable = true
-script = ExtResource("11_trceg")
-surface_polygon = NodePath("visual/surface")
-colorizable_polygon = NodePath("visual/colorizable")
-overlay_polygon = NodePath("visual/overlay")
-shape = NodePath("shape")
 neighbour_paths = [NodePath("../@StaticBody2D@94002"), NodePath("../@StaticBody2D@94008"), NodePath("../@StaticBody2D@94009")]
 polygon = PackedVector2Array(-29.333336, 2.333334, -6.333336, -9.666666, 8.666664, -24.666666, 20.666664, -0.66666603, 15.666664, 13.333334, -9.333336, 19.333334)
-neutral_color = Color(0.8737911, 0.6944265, 0.69791687, 1)
-player_color = Color(0.24564964, 0.8468545, 0.9548462, 1)
-enemy_color = Color(0.98747045, 0.5224394, 0.6154208, 1)
 
-[node name="@StaticBody2D@94002" type="StaticBody2D" parent="tiles" unique_id=1406048156 node_paths=PackedStringArray("surface_polygon", "colorizable_polygon", "overlay_polygon", "shape") instance=ExtResource("10_choun")]
+[node name="@StaticBody2D@94002" parent="tiles" unique_id=1406048156 instance=ExtResource("10_choun")]
 position = Vector2(88.8, 23.4)
-input_pickable = true
-script = ExtResource("11_trceg")
-surface_polygon = NodePath("visual/surface")
-colorizable_polygon = NodePath("visual/colorizable")
-overlay_polygon = NodePath("visual/overlay")
-shape = NodePath("shape")
 neighbour_paths = [NodePath("../@StaticBody2D@93987"), NodePath("../@StaticBody2D@94001"), NodePath("../@StaticBody2D@94009")]
 polygon = PackedVector2Array(-17.800003, 3.6000004, -14.800003, -10.4, 10.199997, -16.4, 30.199997, -3.3999996, -7.800003, 26.6)
-neutral_color = Color(0.8737911, 0.6944265, 0.69791687, 1)
-player_color = Color(0.24564964, 0.8468545, 0.9548462, 1)
-enemy_color = Color(0.98747045, 0.5224394, 0.6154208, 1)
 
-[node name="@StaticBody2D@94003" type="StaticBody2D" parent="tiles" unique_id=2064332537 node_paths=PackedStringArray("surface_polygon", "colorizable_polygon", "overlay_polygon", "shape") instance=ExtResource("10_choun")]
+[node name="@StaticBody2D@94003" parent="tiles" unique_id=2064332537 instance=ExtResource("10_choun")]
 position = Vector2(-50.8, 72.4)
-input_pickable = true
-script = ExtResource("11_trceg")
-surface_polygon = NodePath("visual/surface")
-colorizable_polygon = NodePath("visual/colorizable")
-overlay_polygon = NodePath("visual/overlay")
-shape = NodePath("shape")
 neighbour_paths = [NodePath("../@StaticBody2D@93994"), NodePath("../@StaticBody2D@94000"), NodePath("../@StaticBody2D@94005"), NodePath("../@StaticBody2D@94006")]
 polygon = PackedVector2Array(-23.2, -8.400002, -8.200001, -20.400002, 26.8, -7.4000015, 18.8, 18.599998, -14.200001, 17.599998)
-neutral_color = Color(0.8737911, 0.6944265, 0.69791687, 1)
-player_color = Color(0.24564964, 0.8468545, 0.9548462, 1)
-enemy_color = Color(0.98747045, 0.5224394, 0.6154208, 1)
 
-[node name="@StaticBody2D@94004" type="StaticBody2D" parent="tiles" unique_id=1942729811 node_paths=PackedStringArray("surface_polygon", "colorizable_polygon", "overlay_polygon", "shape") instance=ExtResource("10_choun")]
+[node name="@StaticBody2D@94004" parent="tiles" unique_id=1942729811 instance=ExtResource("10_choun")]
 position = Vector2(-104.2, 62.6)
-input_pickable = true
-script = ExtResource("11_trceg")
-surface_polygon = NodePath("visual/surface")
-colorizable_polygon = NodePath("visual/colorizable")
-overlay_polygon = NodePath("visual/overlay")
-shape = NodePath("shape")
 neighbour_paths = [NodePath("../@StaticBody2D@93989"), NodePath("../@StaticBody2D@94000"), NodePath("../@StaticBody2D@94006")]
 polygon = PackedVector2Array(-13.800003, -15.599998, 14.199997, -16.599998, 30.199997, 1.4000015, -3.800003, 21.400002, -26.800003, 9.400002)
-neutral_color = Color(0.8737911, 0.6944265, 0.69791687, 1)
-player_color = Color(0.24564964, 0.8468545, 0.9548462, 1)
-enemy_color = Color(0.98747045, 0.5224394, 0.6154208, 1)
 
-[node name="@StaticBody2D@94005" type="StaticBody2D" parent="tiles" unique_id=1256167854 node_paths=PackedStringArray("surface_polygon", "colorizable_polygon", "overlay_polygon", "shape") instance=ExtResource("10_choun")]
+[node name="@StaticBody2D@94005" parent="tiles" unique_id=1256167854 instance=ExtResource("10_choun")]
 position = Vector2(-16, 84.25)
-input_pickable = true
-script = ExtResource("11_trceg")
-surface_polygon = NodePath("visual/surface")
-colorizable_polygon = NodePath("visual/colorizable")
-overlay_polygon = NodePath("visual/overlay")
-shape = NodePath("shape")
 neighbour_paths = [NodePath("../@StaticBody2D@93988"), NodePath("../@StaticBody2D@93995"), NodePath("../@StaticBody2D@94003")]
 polygon = PackedVector2Array(-16, 6.75, -8, -19.25, 14, -4.25, 10, 16.75)
-neutral_color = Color(0.8737911, 0.6944265, 0.69791687, 1)
-player_color = Color(0.24564964, 0.8468545, 0.9548462, 1)
-enemy_color = Color(0.98747045, 0.5224394, 0.6154208, 1)
 
-[node name="@StaticBody2D@94006" type="StaticBody2D" parent="tiles" unique_id=713671988 node_paths=PackedStringArray("surface_polygon", "colorizable_polygon", "overlay_polygon", "shape") instance=ExtResource("10_choun")]
+[node name="@StaticBody2D@94006" parent="tiles" unique_id=713671988 instance=ExtResource("10_choun")]
 position = Vector2(-84.2, 89)
-input_pickable = true
-script = ExtResource("11_trceg")
-surface_polygon = NodePath("visual/surface")
-colorizable_polygon = NodePath("visual/colorizable")
-overlay_polygon = NodePath("visual/overlay")
-shape = NodePath("shape")
 neighbour_paths = [NodePath("../@StaticBody2D@94003"), NodePath("../@StaticBody2D@94004")]
 polygon = PackedVector2Array(-23.800003, -5, 10.199997, -25, 19.199997, 1, 9.199997, 16, -14.800003, 13)
-neutral_color = Color(0.8737911, 0.6944265, 0.69791687, 1)
-player_color = Color(0.24564964, 0.8468545, 0.9548462, 1)
-enemy_color = Color(0.98747045, 0.5224394, 0.6154208, 1)
 
-[node name="@StaticBody2D@94007" type="StaticBody2D" parent="tiles" unique_id=2083389737 node_paths=PackedStringArray("surface_polygon", "colorizable_polygon", "overlay_polygon", "shape") instance=ExtResource("10_choun")]
+[node name="@StaticBody2D@94007" parent="tiles" unique_id=2083389737 instance=ExtResource("10_choun")]
 position = Vector2(23.6, 0.8)
-input_pickable = true
-script = ExtResource("11_trceg")
-surface_polygon = NodePath("visual/surface")
-colorizable_polygon = NodePath("visual/colorizable")
-overlay_polygon = NodePath("visual/overlay")
-shape = NodePath("shape")
 neighbour_paths = [NodePath("../@StaticBody2D@93986"), NodePath("../@StaticBody2D@93993"), NodePath("../@StaticBody2D@94008"), NodePath("../@StaticBody2D@94009"), NodePath("../@StaticBody2D@94010")]
 polygon = PackedVector2Array(13.400002, -19.8, -26.599998, -7.799999, -20.599998, 19.2, 3.4000015, 13.200001, 30.400002, -4.799999)
-neutral_color = Color(0.8737911, 0.6944265, 0.69791687, 1)
-player_color = Color(0.24564964, 0.8468545, 0.9548462, 1)
-enemy_color = Color(0.98747045, 0.5224394, 0.6154208, 1)
 
-[node name="@StaticBody2D@94008" type="StaticBody2D" parent="tiles" unique_id=1423435641 node_paths=PackedStringArray("surface_polygon", "colorizable_polygon", "overlay_polygon", "shape") instance=ExtResource("10_choun")]
+[node name="@StaticBody2D@94008" parent="tiles" unique_id=1423435641 instance=ExtResource("10_choun")]
 position = Vector2(66.8, -23)
-input_pickable = true
-script = ExtResource("11_trceg")
-surface_polygon = NodePath("visual/surface")
-colorizable_polygon = NodePath("visual/colorizable")
-overlay_polygon = NodePath("visual/overlay")
-shape = NodePath("shape")
 neighbour_paths = [NodePath("../@StaticBody2D@93992"), NodePath("../@StaticBody2D@94001"), NodePath("../@StaticBody2D@94007")]
 polygon = PackedVector2Array(7.199997, -22, -29.800003, 4, -12.800003, 19, 10.199997, 7, 25.199997, -8)
-neutral_color = Color(0.8737911, 0.6944265, 0.69791687, 1)
-player_color = Color(0.24564964, 0.8468545, 0.9548462, 1)
-enemy_color = Color(0.98747045, 0.5224394, 0.6154208, 1)
 
-[node name="@StaticBody2D@94009" type="StaticBody2D" parent="tiles" unique_id=1260102797 node_paths=PackedStringArray("surface_polygon", "colorizable_polygon", "overlay_polygon", "shape") instance=ExtResource("10_choun")]
+[node name="@StaticBody2D@94009" parent="tiles" unique_id=1260102797 instance=ExtResource("10_choun")]
 position = Vector2(54.2, 16.6)
-input_pickable = true
-script = ExtResource("11_trceg")
-surface_polygon = NodePath("visual/surface")
-colorizable_polygon = NodePath("visual/colorizable")
-overlay_polygon = NodePath("visual/overlay")
-shape = NodePath("shape")
 neighbour_paths = [NodePath("../@StaticBody2D@93987"), NodePath("../@StaticBody2D@93993"), NodePath("../@StaticBody2D@94001"), NodePath("../@StaticBody2D@94002"), NodePath("../@StaticBody2D@94007")]
 polygon = PackedVector2Array(-0.20000076, -20.6, -27.2, -2.6000004, -9.200001, 16.4, 16.8, 10.4, 19.8, -3.6000004)
-neutral_color = Color(0.8737911, 0.6944265, 0.69791687, 1)
-player_color = Color(0.24564964, 0.8468545, 0.9548462, 1)
-enemy_color = Color(0.98747045, 0.5224394, 0.6154208, 1)
 
-[node name="@StaticBody2D@94010" type="StaticBody2D" parent="tiles" unique_id=1604847478 node_paths=PackedStringArray("surface_polygon", "colorizable_polygon", "overlay_polygon", "shape") instance=ExtResource("10_choun")]
+[node name="@StaticBody2D@94010" parent="tiles" unique_id=1604847478 instance=ExtResource("10_choun")]
 position = Vector2(-10.6, 20.6)
-input_pickable = true
-script = ExtResource("11_trceg")
-surface_polygon = NodePath("visual/surface")
-colorizable_polygon = NodePath("visual/colorizable")
-overlay_polygon = NodePath("visual/overlay")
-shape = NodePath("shape")
 neighbour_paths = [NodePath("../@StaticBody2D@93986"), NodePath("../@StaticBody2D@93993"), NodePath("../@StaticBody2D@93994"), NodePath("../@StaticBody2D@93995"), NodePath("../@StaticBody2D@94007")]
 polygon = PackedVector2Array(7.5999985, -27.599998, -17.400002, -5.5999985, -11.400002, 13.400002, 7.5999985, 20.400002, 13.599998, -0.5999985)
-neutral_color = Color(0.8737911, 0.6944265, 0.69791687, 1)
-player_color = Color(0.24564964, 0.8468545, 0.9548462, 1)
-enemy_color = Color(0.98747045, 0.5224394, 0.6154208, 1)

@@ -3,7 +3,8 @@ extends StaticBody2D
 
 var utils = preload("res://scripts/utils.gd").new()
 
-@onready var selection_mgt = null
+var ui_mgt = null
+var selection_mgt = null
 @onready var tiles = get_parent()
 
 var tile_index:Vector2i
@@ -32,6 +33,8 @@ func _ready() -> void:
 	if Engine.is_editor_hint():
 		return
 
+	if ui_mgt == null:
+		ui_mgt = get_node('/root/main/ui_mgt')
 	if selection_mgt == null:
 		selection_mgt = get_node('/root/main/selection_mgt')
 	connect('mouse_entered', _on_mouse_entered)
@@ -146,6 +149,9 @@ func contained_in(vec, vec_array):
 		if v.distance_to(vec) < 1.0:
 			return true
 	return false
+
+func show_information():
+	ui_mgt.open_left_window('lorem ipsum')
 
 
 func _on_mouse_entered() -> void:

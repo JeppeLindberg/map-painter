@@ -13,7 +13,7 @@ var selected = false
 func _ready() -> void:
 	add_to_group('occupant')
 	add_to_group('player_soldier')
-	add_to_group('selectable')
+	add_to_group('player_units')
 
 func _process(_delta: float) -> void:
 	if get_parent().get_color() != 'player':
