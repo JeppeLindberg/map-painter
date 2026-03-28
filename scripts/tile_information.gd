@@ -1,7 +1,9 @@
 @tool
 extends Panel
 
+@export var vbox: VBoxContainer
 @export var text_label: RichTextLabel
+
 
 @export_range(0.0,1.0) var expand_pct = 1.0
 

@@ -2,10 +2,22 @@
 
 [ext_resource type="Texture2D" uid="uid://r7hr4d7px5f" path="res://sprites/white.png" id="1_u1ior"]
 [ext_resource type="Script" uid="uid://ch6eivoukap2y" path="res://scripts/tile.gd" id="1_x2ukr"]
+[ext_resource type="Script" uid="uid://d6qqf3t745d5" path="res://scripts/tile_buildings.gd" id="2_b0sww"]
 
-[node name="tile_polygon" type="StaticBody2D" unique_id=1600227972 node_paths=PackedStringArray("surface_polygon", "colorizable_polygon", "overlay_polygon", "shape")]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x2ukr"]
+bg_color = Color(0.87058824, 0.69411767, 0.69411767, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_trdwn"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(0.98039216, 0.8901961, 0.8901961, 1)
+
+[node name="tile_polygon" type="StaticBody2D" unique_id=1600227972 node_paths=PackedStringArray("buildings", "surface_polygon", "colorizable_polygon", "overlay_polygon", "shape")]
 input_pickable = true
 script = ExtResource("1_x2ukr")
+buildings = NodePath("buildings")
 surface_polygon = NodePath("visual/surface")
 colorizable_polygon = NodePath("visual/colorizable")
 overlay_polygon = NodePath("visual/overlay")
@@ -14,9 +26,66 @@ neutral_color = Color(0.8737911, 0.6944265, 0.69791687, 1)
 player_color = Color(0.24564964, 0.8468545, 0.9548462, 1)
 enemy_color = Color(0.98747045, 0.5224394, 0.6154208, 1)
 
+[node name="buildings" type="Node2D" parent="." unique_id=1345035379]
+z_index = 5
+script = ExtResource("2_b0sww")
+
+[node name="center" type="CenterContainer" parent="buildings" unique_id=15186009]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -7.0
+offset_top = -11.0
+offset_right = 7.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+
+[node name="container" type="PanelContainer" parent="buildings/center" unique_id=922562621]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_x2ukr")
+
+[node name="outer_margin" type="MarginContainer" parent="buildings/center/container" unique_id=128534985]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 2
+theme_override_constants/margin_bottom = 0
+
+[node name="container" type="PanelContainer" parent="buildings/center/container/outer_margin" unique_id=281777670]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_trdwn")
+
+[node name="inner_margin" type="MarginContainer" parent="buildings/center/container/outer_margin/container" unique_id=1965169165]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 1
+theme_override_constants/margin_top = 1
+theme_override_constants/margin_right = 1
+theme_override_constants/margin_bottom = 0
+
+[node name="container" type="HBoxContainer" parent="buildings/center/container/outer_margin/container/inner_margin" unique_id=2120021026]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 1
+
 [node name="visual" type="Node2D" parent="." unique_id=431904697]
 
 [node name="overlay" type="Polygon2D" parent="visual" unique_id=1191996157]
+visible = false
 z_index = 2
 texture_repeat = 2
 color = Color(1, 1, 1, 0.26666668)

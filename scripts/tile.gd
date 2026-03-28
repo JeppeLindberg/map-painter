@@ -11,6 +11,8 @@ var tile_index:Vector2i
 
 var color = 'neutral'
 
+@export var buildings: Node2D
+
 @export var surface_polygon: Polygon2D
 @export var colorizable_polygon: Polygon2D
 @export var overlay_polygon: Polygon2D

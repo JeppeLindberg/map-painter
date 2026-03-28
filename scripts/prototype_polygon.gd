@@ -4,6 +4,9 @@ extends Polygon2D
 
 var prev_points = []
 
+@export var default_barracks_level = 0
+
+
 func _process(_delta: float) -> void:
 	if not Engine.is_editor_hint():
 		return
