@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://r7hr4d7px5f" path="res://sprites/white.png" id="1_u1ior"]
 [ext_resource type="Script" uid="uid://ch6eivoukap2y" path="res://scripts/tile.gd" id="1_x2ukr"]
 [ext_resource type="Script" uid="uid://d6qqf3t745d5" path="res://scripts/tile_buildings.gd" id="2_b0sww"]
+[ext_resource type="PackedScene" uid="uid://bakp0ftuu14al" path="res://prefabs/building_barracks.tscn" id="3_b0sww"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x2ukr"]
 bg_color = Color(0.87058824, 0.69411767, 0.69411767, 1)
@@ -26,9 +27,12 @@ neutral_color = Color(0.8737911, 0.6944265, 0.69791687, 1)
 player_color = Color(0.24564964, 0.8468545, 0.9548462, 1)
 enemy_color = Color(0.98747045, 0.5224394, 0.6154208, 1)
 
-[node name="buildings" type="Node2D" parent="." unique_id=1345035379]
+[node name="buildings" type="Node2D" parent="." unique_id=1345035379 node_paths=PackedStringArray("buildings_container")]
+visible = false
 z_index = 5
 script = ExtResource("2_b0sww")
+buildings_container = NodePath("center/container/outer_margin/container/inner_margin/buildings_container")
+barracks_prefab = ExtResource("3_b0sww")
 
 [node name="center" type="CenterContainer" parent="buildings" unique_id=15186009]
 anchors_preset = 7
@@ -77,7 +81,7 @@ theme_override_constants/margin_top = 1
 theme_override_constants/margin_right = 1
 theme_override_constants/margin_bottom = 0
 
-[node name="container" type="HBoxContainer" parent="buildings/center/container/outer_margin/container/inner_margin" unique_id=2120021026]
+[node name="buildings_container" type="HBoxContainer" parent="buildings/center/container/outer_margin/container/inner_margin" unique_id=2120021026]
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/separation = 1

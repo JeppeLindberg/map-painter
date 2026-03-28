@@ -18,6 +18,10 @@ var utils = preload("res://scripts/utils.gd").new()
 @export_tool_button("Recreate", "Callable") var recreate_callable = recreate
 @export_tool_button("Clear", "Callable") var clear_callable = clear
 
+func _ready() -> void:
+	if not Engine.is_editor_hint():
+		recreate()
+
 func clear():
 	for occupant in utils.get_children_in_group(self, 'occupant'):
 		occupant.reparent(occupant_container)
@@ -46,6 +50,10 @@ func recreate():
 			new_points.append(point - (avg_global_point - tile_prototype.global_position))
 
 		new_tile.polygon = PackedVector2Array(new_points)
+
+		print(tile_prototype.default_barracks_level)
+		if tile_prototype.default_barracks_level != 0:
+			new_tile.create_building('barracks', tile_prototype.default_barracks_level)
 		
 	for tile in get_children():
 		if tile.is_queued_for_deletion():

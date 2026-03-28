@@ -30,8 +30,6 @@ var hovering = false
 
 
 func _ready() -> void:
-	create_visual()
-
 	if Engine.is_editor_hint():
 		return
 
@@ -176,3 +174,6 @@ func _input_event(_viewport: Viewport, event: InputEvent, _shape_idx: int) -> vo
 
 			if not clickable_clicked:
 				selection_mgt.tile_clicked(self)
+
+func create_building(building_name, level):
+	buildings.create_building(building_name, level)

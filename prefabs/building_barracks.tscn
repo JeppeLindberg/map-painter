@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bakp0ftuu14al"]
 
 [ext_resource type="Texture2D" uid="uid://p8tckp5rerja" path="res://sprites/8x8 grid.png" id="1_ond2s"]
+[ext_resource type="Script" uid="uid://bdygtet8iv0pj" path="res://scripts/building.gd" id="1_sbj83"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_b0sww"]
 atlas = ExtResource("1_ond2s")
@@ -12,6 +13,7 @@ size_flags_horizontal = 0
 size_flags_vertical = 0
 mouse_filter = 2
 theme_override_constants/separation = 1
+script = ExtResource("1_sbj83")
 
 [node name="texture" type="TextureRect" parent="." unique_id=356708830]
 texture_filter = 1

@@ -4,7 +4,7 @@ extends Polygon2D
 
 var prev_points = []
 
-@export var default_barracks_level = 0
+@export var default_barracks_level:int = 0
 
 
 func _process(_delta: float) -> void:
