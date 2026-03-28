@@ -193,7 +193,7 @@ grow_vertical = 2
 mouse_filter = 2
 
 [node name="panel" type="PanelContainer" parent="camera/center" unique_id=756251072]
-custom_minimum_size = Vector2(576, 324)
+custom_minimum_size = Vector2(748.8, 421.2)
 layout_mode = 2
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_eb6dy")
