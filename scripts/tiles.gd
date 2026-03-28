@@ -42,7 +42,8 @@ func recreate():
 
 		var new_tile = tile_polygon_prefab.instantiate()
 		add_child(new_tile)
-		new_tile.owner = get_tree().edited_scene_root
+		if Engine.is_editor_hint():
+			new_tile.owner = get_tree().edited_scene_root
 		new_tile.global_position = avg_global_point
 		
 		var new_points = []
@@ -51,7 +52,6 @@ func recreate():
 
 		new_tile.polygon = PackedVector2Array(new_points)
 
-		print(tile_prototype.default_barracks_level)
 		if tile_prototype.default_barracks_level != 0:
 			new_tile.create_building('barracks', tile_prototype.default_barracks_level)
 		

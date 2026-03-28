@@ -21,5 +21,12 @@ func create_building(building_name, level):
 	buildings_container.add_child(new_building)
 	if Engine.is_editor_hint():
 		new_building.owner = get_tree().edited_scene_root
-	new_building.add_to_group('building_name')
-	new_building.set_level(level)
+	new_building.add_to_group(building_name)
+	new_building.level = level
+
+func get_level(building_name):
+	for building in buildings_container.get_children():
+		if building.is_in_group(building_name):
+			return building.level
+	
+	return 0

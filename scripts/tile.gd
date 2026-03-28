@@ -151,8 +151,7 @@ func contained_in(vec, vec_array):
 	return false
 
 func show_information():
-	ui_mgt.open_left_window('lorem ipsum')
-
+	ui_mgt.open_left_window(self)
 
 func _on_mouse_entered() -> void:
 	hovering = true
@@ -177,3 +176,6 @@ func _input_event(_viewport: Viewport, event: InputEvent, _shape_idx: int) -> vo
 
 func create_building(building_name, level):
 	buildings.create_building(building_name, level)
+
+func get_building_level(building_name):
+	return buildings.get_level(building_name)
