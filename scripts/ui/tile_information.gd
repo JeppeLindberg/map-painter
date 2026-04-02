@@ -1,10 +1,14 @@
 @tool
 extends Panel
 
+var utils = preload("res://scripts/utils.gd").new()
+
 @export var scroll: ScrollContainer
 @export var first_child_of_scroll: MarginContainer
 
-@export var barracks_level_text: RichTextLabel
+@export var buildings_main_vbox: Control
+
+@export var barracks_prefab: PackedScene
 
 
 @export_range(0.0,1.0) var expand_pct = 1.0
@@ -23,7 +27,16 @@ func _process(delta: float) -> void:
 		else:
 			expand_pct = max(expand_pct - (delta * 4.0), 0.0)
 			
-		barracks_level_text.text = str(barracks_level)
+		if barracks_level != -1:
+			var barracks_children = utils.get_children_in_group(buildings_main_vbox, 'barracks')
+			if barracks_children == []:
+				var barracks = barracks_prefab.instantiate()
+				buildings_main_vbox.add_child(barracks)
+				barracks.add_to_group('barracks')
+				barracks.level = barracks_level
+			else:
+				barracks_children[0].level = barracks_level
+
 
 	scroll.custom_minimum_size.y = first_child_of_scroll.size.y
 	custom_minimum_size.y = snapped(get_parent().size.y * expand_pct, 2.0)
