@@ -31,7 +31,7 @@ func _process(delta: float) -> void:
 		if tile != null:
 			var tile_tasks = tile.get_tasks()
 			if len(tile_tasks) > 0:
-				tasks_control.text = tile_tasks[0].text
+				tasks_control.task = tile_tasks[0]
 			else:
 				tasks_control.clear()
 				

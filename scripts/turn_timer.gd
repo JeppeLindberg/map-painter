@@ -23,16 +23,16 @@ func _process(delta: float) -> void:
 		if trigger_turn or between_turns:
 			visual_fill = 1.0
 		else:
-			visual_fill = dec
+			visual_fill = dec - floor(dec)
 
 	for sprite in radial_sprites:
 		sprite.material.set_shader_parameter('fill_ratio', visual_fill)
 
 	if trigger_turn:
+		dec = floor(dec)
+		turn += 1
 		between_turns = true
-		turn_mgt.accept_turn()
+		await turn_mgt.accept_turn()
 
 func start_timer():
-	turn += 1
 	between_turns = false
-	dec = floor(dec)
