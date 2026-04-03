@@ -12,6 +12,7 @@ var tile_index:Vector2i
 var color = 'neutral'
 
 @export var buildings: Node2D
+@export var tasks: Node2D
 
 @export var surface_polygon: Polygon2D
 @export var colorizable_polygon: Polygon2D
@@ -32,6 +33,8 @@ var hovering = false
 func _ready() -> void:
 	if Engine.is_editor_hint():
 		return
+	
+	add_to_group('tile')
 
 	if ui_mgt == null:
 		ui_mgt = get_node('/root/main/ui_mgt')
@@ -179,3 +182,9 @@ func create_building(building_name, level):
 
 func get_building_level(building_name):
 	return buildings.get_level(building_name)
+
+func get_tasks():
+	return tasks.get_children()
+
+func enqueue_task(task_name, parameter_1):
+	tasks.enqueue_task(task_name, parameter_1)

@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://df6y42k7idt3p"]
+
+[ext_resource type="Script" uid="uid://crbadmch7ygdn" path="res://scripts/tile_task.gd" id="1_crjal"]
+
+[node name="upgrade_barracks" type="Node2D" unique_id=1077068742]
+script = ExtResource("1_crjal")

@@ -6,17 +6,18 @@ var utils = preload("res://scripts/utils.gd").new()
 @export var scroll: ScrollContainer
 @export var first_child_of_scroll: MarginContainer
 
-@export var buildings_main_vbox: Control
+@export var buildings_control: Control
+@export var tasks_control: Control
 
 @export var barracks_prefab: PackedScene
 
 
 @export_range(0.0,1.0) var expand_pct = 1.0
 
+var tile = null
 var open = false
 
 var text = ''
-var barracks_level = 0
 
 
 func _process(delta: float) -> void:
@@ -26,16 +27,25 @@ func _process(delta: float) -> void:
 			expand_pct = min(get_parent().size.y * expand_pct, first_child_of_scroll.size.y) / max(get_parent().size.y, first_child_of_scroll.size.y)
 		else:
 			expand_pct = max(expand_pct - (delta * 4.0), 0.0)
-			
-		if barracks_level != -1:
-			var barracks_children = utils.get_children_in_group(buildings_main_vbox, 'barracks')
-			if barracks_children == []:
-				var barracks = barracks_prefab.instantiate()
-				buildings_main_vbox.add_child(barracks)
-				barracks.add_to_group('barracks')
-				barracks.level = barracks_level
+
+		if tile != null:
+			var tile_tasks = tile.get_tasks()
+			if len(tile_tasks) > 0:
+				tasks_control.text = tile_tasks[0].text
 			else:
-				barracks_children[0].level = barracks_level
+				tasks_control.clear()
+				
+			if tile.get_building_level('barracks') != -1:
+				if utils.get_children_in_group(buildings_control, 'barracks') == []:
+					var barracks = barracks_prefab.instantiate()
+					buildings_control.add_child(barracks)
+				
+				for building in utils.get_children_in_group(buildings_control, 'barracks'):
+					building.tile = tile
+			else:
+				for child in utils.get_children_in_group(buildings_control, 'barracks'):
+					child.queue_free()
+
 
 
 	scroll.custom_minimum_size.y = first_child_of_scroll.size.y

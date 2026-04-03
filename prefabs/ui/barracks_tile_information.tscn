@@ -17,6 +17,7 @@ theme_override_constants/margin_top = 0
 theme_override_constants/margin_right = 2
 theme_override_constants/margin_bottom = 0
 script = ExtResource("1_empw5")
+building_name = "barracks"
 level_text = NodePath("barracks/hbox/level_text")
 
 [node name="barracks" type="HBoxContainer" parent="." unique_id=1568491882]
@@ -79,3 +80,6 @@ theme_override_styles/pressed = ExtResource("3_iyccm")
 theme_override_styles/hover = ExtResource("3_iyccm")
 theme_override_styles/disabled = ExtResource("3_iyccm")
 theme_override_styles/focus = ExtResource("3_iyccm")
+
+[connection signal="pressed" from="barracks/hbox/minus" to="." method="_on_minus_pressed"]
+[connection signal="pressed" from="barracks/hbox/plus" to="." method="_on_plus_pressed"]
