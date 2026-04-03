@@ -53,7 +53,7 @@ func recreate():
 		new_tile.polygon = PackedVector2Array(new_points)
 
 		if tile_prototype.default_barracks_level != 0:
-			new_tile.create_building('barracks', tile_prototype.default_barracks_level)
+			new_tile.level_building_to('barracks', tile_prototype.default_barracks_level)
 		
 	for tile in get_children():
 		if tile.is_queued_for_deletion():

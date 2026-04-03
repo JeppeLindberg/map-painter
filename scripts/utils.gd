@@ -19,6 +19,14 @@ func _get_children_in_group_recursive(node, group):
 
         _get_children_in_group_recursive(child, group)
 
+func find_parent_in_group(node, group):
+    if node.is_in_group(group):
+        return node
+    elif node.is_in_group('main'):
+        return null
+    else:
+        return find_parent_in_group(node.get_parent(), group)
+
 func shrink_polygon(vertices, distance, vertical_mult):
     var n = len(vertices)
     var new_vertices = []

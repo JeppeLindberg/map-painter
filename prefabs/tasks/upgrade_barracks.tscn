@@ -1,6 +1,11 @@
 [gd_scene format=3 uid="uid://df6y42k7idt3p"]
 
 [ext_resource type="Script" uid="uid://crbadmch7ygdn" path="res://scripts/tile_task.gd" id="1_crjal"]
+[ext_resource type="Script" uid="uid://pwyttn8g8qp7" path="res://scripts/tasks/upgrade_building.gd" id="2_tdduf"]
 
 [node name="upgrade_barracks" type="Node2D" unique_id=1077068742]
 script = ExtResource("1_crjal")
+turn_duration = 3
+
+[node name="upgrade_building" type="Node2D" parent="." unique_id=699898698]
+script = ExtResource("2_tdduf")

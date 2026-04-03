@@ -177,8 +177,8 @@ func _input_event(_viewport: Viewport, event: InputEvent, _shape_idx: int) -> vo
 			if not clickable_clicked:
 				selection_mgt.tile_clicked(self)
 
-func create_building(building_name, level):
-	buildings.create_building(building_name, level)
+func level_building_to(building_name, level):
+	buildings.level_building_to(building_name, level)
 
 func get_building_level(building_name):
 	return buildings.get_level(building_name)

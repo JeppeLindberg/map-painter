@@ -9,7 +9,7 @@ var task = null
 
 func _process(_delta: float) -> void:
 	if task != null:
-		task_text.text = task.text
+		task_text.text = task.get_text()
 		countup.visible = true
 		countup.progress = task.progress
 		countup.remaining_turns = task.remaining_turns
