@@ -5,7 +5,6 @@
 
 [node name="upgrade_barracks" type="Node2D" unique_id=1077068742]
 script = ExtResource("1_crjal")
-turn_duration = 3
 
 [node name="upgrade_building" type="Node2D" parent="." unique_id=699898698]
 script = ExtResource("2_tdduf")

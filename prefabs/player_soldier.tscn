@@ -4,10 +4,60 @@
 [ext_resource type="Script" uid="uid://p17h7uyjao7v" path="res://scripts/player_soldier.gd" id="1_ktd4h"]
 [ext_resource type="PackedScene" uid="uid://bn2k2j1612fal" path="res://prefabs/pathfinding_clickable.tscn" id="2_vwbyv"]
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_me41t"]
+load_path = "res://.godot/imported/16x16 grid.png-2e9dd80d13fb18fc45f2aa27ea1a8705.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jlkl5"]
+atlas = SubResource("CompressedTexture2D_me41t")
+region = Rect2(1, 1, 16, 16)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4tnha"]
+texture = SubResource("AtlasTexture_jlkl5")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vwbyv"]
+bg_color = Color(0.29, 0.29, 0.29, 1)
+
 [node name="player_soldier" type="Node2D" unique_id=1824605875 groups=["occupant"]]
 z_index = 100
 script = ExtResource("1_ktd4h")
 pathfinding_clickable_prefab = ExtResource("2_vwbyv")
+
+[node name="tag" type="Node2D" parent="." unique_id=1012614075]
+position = Vector2(1, -48)
+
+[node name="center" type="CenterContainer" parent="tag" unique_id=248573807]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="vbox" type="VBoxContainer" parent="tag/center" unique_id=1321718561]
+layout_mode = 2
+
+[node name="border" type="PanelContainer" parent="tag/center/vbox" unique_id=1992697834]
+self_modulate = Color(0.70980394, 0.85882354, 1, 1)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_4tnha")
+
+[node name="margin" type="MarginContainer" parent="tag/center/vbox/border" unique_id=1542114904]
+z_index = -1
+layout_mode = 2
+theme_override_constants/margin_left = -2
+theme_override_constants/margin_top = -2
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = -2
+
+[node name="panel" type="PanelContainer" parent="tag/center/vbox/border/margin" unique_id=812096768]
+self_modulate = Color(0.84000003, 0.92266667, 1, 1)
+custom_minimum_size = Vector2(30, 14)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_vwbyv")
 
 [node name="visual" type="Node2D" parent="." unique_id=1842445425]
 

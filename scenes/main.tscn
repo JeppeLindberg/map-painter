@@ -208,8 +208,8 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_a8y0u")
 script = ExtResource("7_trceg")
 scroll = NodePath("vscroll")
 first_child_of_scroll = NodePath("vscroll/margin")
-buildings_control = NodePath("vscroll/margin/vbox/buildings/outer_vbox/main_vbox")
-tasks_control = NodePath("vscroll/margin/vbox/current_task/vbox/tasks")
+buildings_control = NodePath("vscroll/margin/main_box/buildings/outer_vbox/main_vbox")
+tasks_control = NodePath("vscroll/margin/main_box/current_task/vbox/tasks")
 barracks_prefab = ExtResource("10_pm3ni")
 
 [node name="vscroll" type="ScrollContainer" parent="camera/center/panel/hbox/left/vbox/tile_information" unique_id=1803388725]
@@ -231,34 +231,34 @@ size_flags_horizontal = 3
 size_flags_vertical = 2
 theme_override_constants/margin_right = 9
 
-[node name="vbox" type="VBoxContainer" parent="camera/center/panel/hbox/left/vbox/tile_information/vscroll/margin" unique_id=2054609499]
+[node name="main_box" type="VBoxContainer" parent="camera/center/panel/hbox/left/vbox/tile_information/vscroll/margin" unique_id=2054609499]
 layout_direction = 2
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 0
 theme_override_constants/separation = 0
 
-[node name="spacer" type="Panel" parent="camera/center/panel/hbox/left/vbox/tile_information/vscroll/margin/vbox" unique_id=962526191]
+[node name="spacer" type="Panel" parent="camera/center/panel/hbox/left/vbox/tile_information/vscroll/margin/main_box" unique_id=962526191]
 modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(0, 10)
 layout_mode = 2
 
-[node name="current_task" type="PanelContainer" parent="camera/center/panel/hbox/left/vbox/tile_information/vscroll/margin/vbox" unique_id=725522219]
+[node name="current_task" type="PanelContainer" parent="camera/center/panel/hbox/left/vbox/tile_information/vscroll/margin/main_box" unique_id=725522219]
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_muem4")
 
-[node name="vbox" type="VBoxContainer" parent="camera/center/panel/hbox/left/vbox/tile_information/vscroll/margin/vbox/current_task" unique_id=1423731502]
+[node name="vbox" type="VBoxContainer" parent="camera/center/panel/hbox/left/vbox/tile_information/vscroll/margin/main_box/current_task" unique_id=1423731502]
 layout_mode = 2
 theme_override_constants/separation = 2
 
-[node name="title_margin" type="MarginContainer" parent="camera/center/panel/hbox/left/vbox/tile_information/vscroll/margin/vbox/current_task/vbox" unique_id=1467255591]
+[node name="title_margin" type="MarginContainer" parent="camera/center/panel/hbox/left/vbox/tile_information/vscroll/margin/main_box/current_task/vbox" unique_id=1467255591]
 layout_mode = 2
 theme_override_constants/margin_left = 2
 theme_override_constants/margin_top = 0
 theme_override_constants/margin_right = 2
 theme_override_constants/margin_bottom = 0
 
-[node name="buildings_text" type="RichTextLabel" parent="camera/center/panel/hbox/left/vbox/tile_information/vscroll/margin/vbox/current_task/vbox/title_margin" unique_id=1309225093]
+[node name="buildings_text" type="RichTextLabel" parent="camera/center/panel/hbox/left/vbox/tile_information/vscroll/margin/main_box/current_task/vbox/title_margin" unique_id=1309225093]
 self_modulate = Color(0.23137255, 0.23137255, 0.23137255, 1)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -267,7 +267,7 @@ text = "Current task"
 fit_content = true
 vertical_alignment = 1
 
-[node name="tasks" type="MarginContainer" parent="camera/center/panel/hbox/left/vbox/tile_information/vscroll/margin/vbox/current_task/vbox" unique_id=408587130 node_paths=PackedStringArray("task_text", "countup")]
+[node name="tasks" type="MarginContainer" parent="camera/center/panel/hbox/left/vbox/tile_information/vscroll/margin/main_box/current_task/vbox" unique_id=408587130 node_paths=PackedStringArray("task_text", "countup")]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/margin_left = 2
@@ -278,11 +278,12 @@ script = ExtResource("13_og1vs")
 task_text = NodePath("container/text")
 countup = NodePath("container/countup")
 
-[node name="container" type="HBoxContainer" parent="camera/center/panel/hbox/left/vbox/tile_information/vscroll/margin/vbox/current_task/vbox/tasks" unique_id=1580022341]
+[node name="container" type="HBoxContainer" parent="camera/center/panel/hbox/left/vbox/tile_information/vscroll/margin/main_box/current_task/vbox/tasks" unique_id=1580022341]
 layout_mode = 2
 
-[node name="text" type="RichTextLabel" parent="camera/center/panel/hbox/left/vbox/tile_information/vscroll/margin/vbox/current_task/vbox/tasks/container" unique_id=482898610]
+[node name="text" type="RichTextLabel" parent="camera/center/panel/hbox/left/vbox/tile_information/vscroll/margin/main_box/current_task/vbox/tasks/container" unique_id=482898610]
 self_modulate = Color(0.23137255, 0.23137255, 0.23137255, 1)
+custom_minimum_size = Vector2(0, 15)
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/normal_font_size = 10
@@ -290,7 +291,7 @@ text = "Barracks level 1 → 2"
 fit_content = true
 vertical_alignment = 1
 
-[node name="countup" type="Panel" parent="camera/center/panel/hbox/left/vbox/tile_information/vscroll/margin/vbox/current_task/vbox/tasks/container" unique_id=652761368 node_paths=PackedStringArray("radial_textures", "remaining_turns_text")]
+[node name="countup" type="Panel" parent="camera/center/panel/hbox/left/vbox/tile_information/vscroll/margin/main_box/current_task/vbox/tasks/container" unique_id=652761368 node_paths=PackedStringArray("radial_textures", "remaining_turns_text")]
 custom_minimum_size = Vector2(30, 15)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_dp3eg")
@@ -298,7 +299,7 @@ script = ExtResource("12_jscy8")
 radial_textures = [NodePath("margin/hbox/vbox/texture_1"), NodePath("margin/hbox/vbox/texture_2")]
 remaining_turns_text = NodePath("margin/hbox/remaining_turns_text")
 
-[node name="margin" type="MarginContainer" parent="camera/center/panel/hbox/left/vbox/tile_information/vscroll/margin/vbox/current_task/vbox/tasks/container/countup" unique_id=1282375543]
+[node name="margin" type="MarginContainer" parent="camera/center/panel/hbox/left/vbox/tile_information/vscroll/margin/main_box/current_task/vbox/tasks/container/countup" unique_id=1282375543]
 layout_mode = 0
 offset_right = 4.0
 offset_bottom = 4.0
@@ -307,13 +308,13 @@ theme_override_constants/margin_top = 2
 theme_override_constants/margin_right = 4
 theme_override_constants/margin_bottom = 2
 
-[node name="hbox" type="HBoxContainer" parent="camera/center/panel/hbox/left/vbox/tile_information/vscroll/margin/vbox/current_task/vbox/tasks/container/countup/margin" unique_id=2099165140]
+[node name="hbox" type="HBoxContainer" parent="camera/center/panel/hbox/left/vbox/tile_information/vscroll/margin/main_box/current_task/vbox/tasks/container/countup/margin" unique_id=2099165140]
 custom_minimum_size = Vector2(22, 11)
 layout_mode = 2
 theme_override_constants/separation = 4
 alignment = 1
 
-[node name="remaining_turns_text" type="RichTextLabel" parent="camera/center/panel/hbox/left/vbox/tile_information/vscroll/margin/vbox/current_task/vbox/tasks/container/countup/margin/hbox" unique_id=1111733125]
+[node name="remaining_turns_text" type="RichTextLabel" parent="camera/center/panel/hbox/left/vbox/tile_information/vscroll/margin/main_box/current_task/vbox/tasks/container/countup/margin/hbox" unique_id=1111733125]
 self_modulate = Color(0.7058824, 0.627451, 0.7294118, 1)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -323,46 +324,46 @@ fit_content = true
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="vbox" type="VBoxContainer" parent="camera/center/panel/hbox/left/vbox/tile_information/vscroll/margin/vbox/current_task/vbox/tasks/container/countup/margin/hbox" unique_id=702799417]
+[node name="vbox" type="VBoxContainer" parent="camera/center/panel/hbox/left/vbox/tile_information/vscroll/margin/main_box/current_task/vbox/tasks/container/countup/margin/hbox" unique_id=702799417]
 layout_mode = 2
 theme_override_constants/separation = -9
 
-[node name="texture_1" type="TextureRect" parent="camera/center/panel/hbox/left/vbox/tile_information/vscroll/margin/vbox/current_task/vbox/tasks/container/countup/margin/hbox/vbox" unique_id=1282329140]
+[node name="texture_1" type="TextureRect" parent="camera/center/panel/hbox/left/vbox/tile_information/vscroll/margin/main_box/current_task/vbox/tasks/container/countup/margin/hbox/vbox" unique_id=1282329140]
 z_index = 1
 material = SubResource("ShaderMaterial_pm3ni")
 layout_mode = 2
 texture = ExtResource("14_jscy8")
 
-[node name="texture_2" type="TextureRect" parent="camera/center/panel/hbox/left/vbox/tile_information/vscroll/margin/vbox/current_task/vbox/tasks/container/countup/margin/hbox/vbox" unique_id=2026663419]
+[node name="texture_2" type="TextureRect" parent="camera/center/panel/hbox/left/vbox/tile_information/vscroll/margin/main_box/current_task/vbox/tasks/container/countup/margin/hbox/vbox" unique_id=2026663419]
 material = SubResource("ShaderMaterial_yc10j")
 layout_mode = 2
 texture = ExtResource("14_jscy8")
 
-[node name="spacer2" type="Panel" parent="camera/center/panel/hbox/left/vbox/tile_information/vscroll/margin/vbox" unique_id=1725119104]
+[node name="spacer2" type="Panel" parent="camera/center/panel/hbox/left/vbox/tile_information/vscroll/margin/main_box" unique_id=1725119104]
 modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(0, 10)
 layout_mode = 2
 
-[node name="buildings" type="PanelContainer" parent="camera/center/panel/hbox/left/vbox/tile_information/vscroll/margin/vbox" unique_id=1161709900]
+[node name="buildings" type="PanelContainer" parent="camera/center/panel/hbox/left/vbox/tile_information/vscroll/margin/main_box" unique_id=1161709900]
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_muem4")
 
-[node name="outer_vbox" type="VBoxContainer" parent="camera/center/panel/hbox/left/vbox/tile_information/vscroll/margin/vbox/buildings" unique_id=756979452]
+[node name="outer_vbox" type="VBoxContainer" parent="camera/center/panel/hbox/left/vbox/tile_information/vscroll/margin/main_box/buildings" unique_id=756979452]
 layout_mode = 2
 theme_override_constants/separation = 2
 
-[node name="vbox" type="VBoxContainer" parent="camera/center/panel/hbox/left/vbox/tile_information/vscroll/margin/vbox/buildings/outer_vbox" unique_id=599343717]
+[node name="vbox" type="VBoxContainer" parent="camera/center/panel/hbox/left/vbox/tile_information/vscroll/margin/main_box/buildings/outer_vbox" unique_id=599343717]
 layout_mode = 2
 theme_override_constants/separation = 2
 
-[node name="title_margin" type="MarginContainer" parent="camera/center/panel/hbox/left/vbox/tile_information/vscroll/margin/vbox/buildings/outer_vbox/vbox" unique_id=1027078299]
+[node name="title_margin" type="MarginContainer" parent="camera/center/panel/hbox/left/vbox/tile_information/vscroll/margin/main_box/buildings/outer_vbox/vbox" unique_id=1027078299]
 layout_mode = 2
 theme_override_constants/margin_left = 2
 theme_override_constants/margin_top = 0
 theme_override_constants/margin_right = 2
 theme_override_constants/margin_bottom = 0
 
-[node name="buildings_text" type="RichTextLabel" parent="camera/center/panel/hbox/left/vbox/tile_information/vscroll/margin/vbox/buildings/outer_vbox/vbox/title_margin" unique_id=1408957650]
+[node name="buildings_text" type="RichTextLabel" parent="camera/center/panel/hbox/left/vbox/tile_information/vscroll/margin/main_box/buildings/outer_vbox/vbox/title_margin" unique_id=1408957650]
 self_modulate = Color(0.23137255, 0.23137255, 0.23137255, 1)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -371,34 +372,34 @@ text = "Buildings"
 fit_content = true
 vertical_alignment = 1
 
-[node name="divider" type="Panel" parent="camera/center/panel/hbox/left/vbox/tile_information/vscroll/margin/vbox/buildings/outer_vbox/vbox" unique_id=781012552]
+[node name="divider" type="Panel" parent="camera/center/panel/hbox/left/vbox/tile_information/vscroll/margin/main_box/buildings/outer_vbox/vbox" unique_id=781012552]
 custom_minimum_size = Vector2(0, 2)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_muem4")
 
-[node name="columns_margin" type="MarginContainer" parent="camera/center/panel/hbox/left/vbox/tile_information/vscroll/margin/vbox/buildings/outer_vbox/vbox" unique_id=2130718026]
+[node name="columns_margin" type="MarginContainer" parent="camera/center/panel/hbox/left/vbox/tile_information/vscroll/margin/main_box/buildings/outer_vbox/vbox" unique_id=2130718026]
 layout_mode = 2
 theme_override_constants/margin_left = 2
 theme_override_constants/margin_top = 0
 theme_override_constants/margin_right = 2
 theme_override_constants/margin_bottom = 0
 
-[node name="columns" type="HBoxContainer" parent="camera/center/panel/hbox/left/vbox/tile_information/vscroll/margin/vbox/buildings/outer_vbox/vbox/columns_margin" unique_id=1244067129]
+[node name="columns" type="HBoxContainer" parent="camera/center/panel/hbox/left/vbox/tile_information/vscroll/margin/main_box/buildings/outer_vbox/vbox/columns_margin" unique_id=1244067129]
 layout_mode = 2
 theme_override_constants/separation = 0
 
-[node name="texture" type="TextureRect" parent="camera/center/panel/hbox/left/vbox/tile_information/vscroll/margin/vbox/buildings/outer_vbox/vbox/columns_margin/columns" unique_id=308681318]
+[node name="texture" type="TextureRect" parent="camera/center/panel/hbox/left/vbox/tile_information/vscroll/margin/main_box/buildings/outer_vbox/vbox/columns_margin/columns" unique_id=308681318]
 self_modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(16, 0)
 layout_mode = 2
 texture = SubResource("AtlasTexture_jbj1t")
 
-[node name="spacer3" type="Panel" parent="camera/center/panel/hbox/left/vbox/tile_information/vscroll/margin/vbox/buildings/outer_vbox/vbox/columns_margin/columns" unique_id=1802885054]
+[node name="spacer3" type="Panel" parent="camera/center/panel/hbox/left/vbox/tile_information/vscroll/margin/main_box/buildings/outer_vbox/vbox/columns_margin/columns" unique_id=1802885054]
 modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(3, 0)
 layout_mode = 2
 
-[node name="name_text" type="RichTextLabel" parent="camera/center/panel/hbox/left/vbox/tile_information/vscroll/margin/vbox/buildings/outer_vbox/vbox/columns_margin/columns" unique_id=2079654968]
+[node name="name_text" type="RichTextLabel" parent="camera/center/panel/hbox/left/vbox/tile_information/vscroll/margin/main_box/buildings/outer_vbox/vbox/columns_margin/columns" unique_id=2079654968]
 self_modulate = Color(0.45490196, 0.41960785, 0.46666667, 1)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -407,16 +408,16 @@ text = "Name"
 fit_content = true
 vertical_alignment = 1
 
-[node name="spacer2" type="Panel" parent="camera/center/panel/hbox/left/vbox/tile_information/vscroll/margin/vbox/buildings/outer_vbox/vbox/columns_margin/columns" unique_id=1340650470]
+[node name="spacer2" type="Panel" parent="camera/center/panel/hbox/left/vbox/tile_information/vscroll/margin/main_box/buildings/outer_vbox/vbox/columns_margin/columns" unique_id=1340650470]
 modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(10, 0)
 layout_mode = 2
 
-[node name="hboc" type="HBoxContainer" parent="camera/center/panel/hbox/left/vbox/tile_information/vscroll/margin/vbox/buildings/outer_vbox/vbox/columns_margin/columns" unique_id=243897264]
+[node name="hboc" type="HBoxContainer" parent="camera/center/panel/hbox/left/vbox/tile_information/vscroll/margin/main_box/buildings/outer_vbox/vbox/columns_margin/columns" unique_id=243897264]
 custom_minimum_size = Vector2(70, 0)
 layout_mode = 2
 
-[node name="level_text" type="RichTextLabel" parent="camera/center/panel/hbox/left/vbox/tile_information/vscroll/margin/vbox/buildings/outer_vbox/vbox/columns_margin/columns/hboc" unique_id=1616286033]
+[node name="level_text" type="RichTextLabel" parent="camera/center/panel/hbox/left/vbox/tile_information/vscroll/margin/main_box/buildings/outer_vbox/vbox/columns_margin/columns/hboc" unique_id=1616286033]
 self_modulate = Color(0.45490196, 0.41960785, 0.46666667, 1)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -426,11 +427,11 @@ fit_content = true
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="main_vbox" type="VBoxContainer" parent="camera/center/panel/hbox/left/vbox/tile_information/vscroll/margin/vbox/buildings/outer_vbox" unique_id=816569771]
+[node name="main_vbox" type="VBoxContainer" parent="camera/center/panel/hbox/left/vbox/tile_information/vscroll/margin/main_box/buildings/outer_vbox" unique_id=816569771]
 layout_mode = 2
 theme_override_constants/separation = 2
 
-[node name="spacer3" type="Panel" parent="camera/center/panel/hbox/left/vbox/tile_information/vscroll/margin/vbox" unique_id=1767673106]
+[node name="spacer3" type="Panel" parent="camera/center/panel/hbox/left/vbox/tile_information/vscroll/margin/main_box" unique_id=1767673106]
 modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(0, 10)
 layout_mode = 2
