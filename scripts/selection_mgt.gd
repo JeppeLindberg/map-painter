@@ -9,6 +9,7 @@ var current_selection = null
 
 
 func deselect_all():
+	current_selection = null
 	for node in utils.get_children_in_group(main, 'player_units'):
 		node.deselect()
 
@@ -19,16 +20,7 @@ func _process(_delta: float) -> void:
 		ui_mgt.close_left_window()
 
 func tile_clicked(tile):
-	current_selection = null
-
-	var something_selected = false
-	for child in tile.get_children():
-		if child.is_in_group('player_units'):
-			child.select()
-			current_selection = child
-			something_selected = true
+	deselect_all()
 		
-	if not something_selected:
-		tile.show_information()
-		current_selection = tile
-		something_selected = true
+	tile.show_information()
+	current_selection = tile

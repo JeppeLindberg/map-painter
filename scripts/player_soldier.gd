@@ -83,6 +83,9 @@ func delete_pathfinding_clickables():
 		pathfinding_clickables[i].queue_free()
 		pathfinding_clickables.remove_at(i)
 
+func unit_clicked():
+	select()
+
 func select():
 	selected = true
 	update()
@@ -91,4 +94,5 @@ func deselect():
 	selected = false
 	update()
 
-			
+func _on_panel_pressed() -> void:
+	unit_clicked()

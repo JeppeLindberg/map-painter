@@ -19,8 +19,7 @@ var utils = preload("res://scripts/utils.gd").new()
 @export_tool_button("Clear", "Callable") var clear_callable = clear
 
 func _ready() -> void:
-	if not Engine.is_editor_hint():
-		recreate()
+	recreate()
 
 func clear():
 	for occupant in utils.get_children_in_group(self, 'occupant'):
