@@ -1,0 +1,67 @@
+[gd_scene format=3 uid="uid://ppk84khpexjb"]
+
+[ext_resource type="Texture2D" uid="uid://dv4ijh8j4fpi8" path="res://sprites/16x16 grid.png" id="1_4irvp"]
+[ext_resource type="Script" uid="uid://fxi6llkyjvcp" path="res://scripts/ui/resource_indicator.gd" id="1_ukjet"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2wyq8"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(0.1, 0.1, 0.1, 0)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vxglm"]
+atlas = ExtResource("1_4irvp")
+region = Rect2(37, 1, 16, 16)
+
+[node name="resource_indicator" type="PanelContainer" unique_id=97628234 node_paths=PackedStringArray("resource_name", "gain_loss")]
+custom_minimum_size = Vector2(0, 10)
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_2wyq8")
+script = ExtResource("1_ukjet")
+resource_name = NodePath("hbox/resource_name")
+gain_loss = NodePath("hbox/margin/gain_loss")
+positive_color = Color(0.3137255, 0.45490196, 0.26666668, 1)
+neutral_color = Color(0.23137255, 0.23137255, 0.23137255, 1)
+negative_color = Color(0.45490196, 0.26666668, 0.27450982, 1)
+
+[node name="hbox" type="HBoxContainer" parent="." unique_id=1438140347]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="texture" type="TextureRect" parent="hbox" unique_id=1958280237]
+layout_mode = 2
+texture = SubResource("AtlasTexture_vxglm")
+
+[node name="margin" type="MarginContainer" parent="hbox" unique_id=1520587617]
+custom_minimum_size = Vector2(25, 0)
+layout_mode = 2
+size_flags_horizontal = 2
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_right = 2
+
+[node name="gain_loss" type="RichTextLabel" parent="hbox/margin" unique_id=175563807]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/normal_font_size = 8
+text = "+10.5"
+fit_content = true
+autowrap_mode = 0
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="resource_name" type="RichTextLabel" parent="hbox" unique_id=1084797442]
+self_modulate = Color(0.23137255, 0.23137255, 0.23137255, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+size_flags_stretch_ratio = 2.0
+theme_override_font_sizes/normal_font_size = 8
+text = "Stone"
+fit_content = true
+vertical_alignment = 1

@@ -1,8 +1,10 @@
 @tool
 extends Polygon2D
 
-
 var prev_points = []
+
+@export_enum('stone') var resource = 'stone'
+@export_enum('neutral', 'blue', 'red') var faction = 'neutral'
 
 @export var default_barracks_level:int = 0
 
@@ -28,6 +30,14 @@ func _process(_delta: float) -> void:
 					break
 
 		prev_points = points
+
+	match faction:
+		'neutral':
+			self_modulate = Color.WHITE
+		'blue':
+			self_modulate = Color.AQUAMARINE
+		'red':
+			self_modulate = Color.ROSY_BROWN
 
 
 func get_other_poly_points():

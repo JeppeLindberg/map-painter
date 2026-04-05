@@ -18,8 +18,12 @@ var utils = preload("res://scripts/utils.gd").new()
 @export_tool_button("Recreate", "Callable") var recreate_callable = recreate
 @export_tool_button("Clear", "Callable") var clear_callable = clear
 
-func _ready() -> void:
-	recreate()
+func _ready() -> void:	
+	if not Engine.is_editor_hint():
+		recreate()
+	else:
+		if get_child_count() > 0:
+			recreate()
 
 func clear():
 	for occupant in utils.get_children_in_group(self, 'occupant'):
@@ -53,6 +57,9 @@ func recreate():
 
 		if tile_prototype.default_barracks_level != 0:
 			new_tile.level_building_to('barracks', tile_prototype.default_barracks_level)
+		if tile_prototype.faction != 'neutral':
+			new_tile.faction = tile_prototype.faction
+		new_tile.resource = tile_prototype.resource
 		
 	for tile in get_children():
 		if tile.is_queued_for_deletion():

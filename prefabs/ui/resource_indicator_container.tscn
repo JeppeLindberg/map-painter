@@ -1,0 +1,4 @@
+[gd_scene format=3 uid="uid://pku5ralcaq28"]
+
+[node name="inner_container" type="HBoxContainer" unique_id=1323265382]
+theme_override_constants/separation = 0

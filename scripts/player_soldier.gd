@@ -16,8 +16,8 @@ func _ready() -> void:
 	add_to_group('player_units')
 
 func _process(_delta: float) -> void:
-	if get_parent().get_color() != 'player':
-		get_parent().paint('player')
+	if get_parent().get_faction() != 'blue':
+		get_parent().paint('blue')
 
 func accept_turn():
 	match state:
@@ -26,7 +26,7 @@ func accept_turn():
 			if (one_step_target != null) and (one_step_target.get_current_occupant() == null):
 				reparent(one_step_target)
 				position = Vector2.ZERO
-				one_step_target.paint('player')
+				one_step_target.paint('blue')
 
 				update()
 

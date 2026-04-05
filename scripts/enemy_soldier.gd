@@ -18,8 +18,8 @@ func _process(_delta):
 		intent_arrow.visible = true
 		intent_arrow.look_at(target_tile.global_position)
 
-	if get_parent().get_color() != 'enemy':
-		get_parent().paint('enemy')
+	if get_parent().get_faction() != 'red':
+		get_parent().paint('red')
 
 func accept_turn():
 	if target_tile == null:
@@ -28,6 +28,6 @@ func accept_turn():
 	if (target_tile != null) and (target_tile.get_current_occupant() == null):
 		reparent(target_tile)
 		position = Vector2.ZERO
-		target_tile.paint('enemy')
+		target_tile.paint('red')
 	
 	target_tile = null

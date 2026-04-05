@@ -9,7 +9,8 @@ var selection_mgt = null
 
 var tile_index:Vector2i
 
-var color = 'neutral'
+@export_enum('stone') var resource = 'stone'
+@export_enum('neutral', 'blue', 'red') var faction = 'neutral'
 
 @export var buildings: Node2D
 @export var tasks: Node2D
@@ -96,11 +97,11 @@ func calculate_neighbours():
 func get_relative_tile(vec):
 	return tiles.get_tile(tile_index + vec)
 
-func get_color():
-	return color
+func get_faction():
+	return faction
 
-func paint(new_color):
-	color = new_color
+func paint(new_faction):
+	faction = new_faction
 
 func get_current_occupant():
 	var occupants = utils.get_children_in_group(self, 'occupant')
@@ -112,16 +113,15 @@ func get_current_occupant():
 func _process(_delta: float) -> void:
 	if Engine.is_editor_hint():
 		neutral_color = colorizable_polygon.color
-		return
 
 	overlay_polygon.visible = hovering
 
-	match color:
+	match faction:
 		'neutral':
 			colorizable_polygon.color = neutral_color
-		'player':
+		'blue':
 			colorizable_polygon.color = player_color
-		'enemy':
+		'red':
 			colorizable_polygon.color = enemy_color
 
 func get_neighbours():
@@ -188,3 +188,6 @@ func get_tasks():
 
 func enqueue_task(task_name, parameter_1):
 	tasks.enqueue_task(task_name, parameter_1)
+
+func get_resource_production(resource_name):
+	return 1.0
