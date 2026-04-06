@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://ceyyfda0l2263"]
 
-[ext_resource type="Texture2D" uid="uid://dv4ijh8j4fpi8" path="res://sprites/16x16 grid.png" id="1_u2s3w"]
+[ext_resource type="Script" uid="uid://ce4ctcl4f3cc4" path="res://scripts/ui/resource_saved_information.gd" id="1_b35yu"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fv21b"]
 content_margin_left = 0.0
@@ -14,15 +14,20 @@ corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
 corner_detail = 5
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_vxglm"]
-atlas = ExtResource("1_u2s3w")
-region = Rect2(37, 1, 16, 16)
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_pgarh"]
+load_path = "res://.godot/imported/16x16 grid.png-2e9dd80d13fb18fc45f2aa27ea1a8705.ctex"
 
-[node name="resource" type="PanelContainer" unique_id=2079982733]
+[sub_resource type="AtlasTexture" id="AtlasTexture_xx0bm"]
+atlas = SubResource("CompressedTexture2D_pgarh")
+region = Rect2(55, 1, 16, 16)
+
+[node name="resource_saved" type="PanelContainer" unique_id=2079982733 node_paths=PackedStringArray("amount_label")]
 custom_minimum_size = Vector2(0, 10)
 size_flags_horizontal = 6
 size_flags_vertical = 4
 theme_override_styles/panel = SubResource("StyleBoxFlat_fv21b")
+script = ExtResource("1_b35yu")
+amount_label = NodePath("hbox/margin/amount")
 
 [node name="hbox" type="HBoxContainer" parent="." unique_id=220957210]
 layout_mode = 2
@@ -30,7 +35,7 @@ theme_override_constants/separation = 0
 
 [node name="texture" type="TextureRect" parent="hbox" unique_id=518441450]
 layout_mode = 2
-texture = SubResource("AtlasTexture_vxglm")
+texture = SubResource("AtlasTexture_xx0bm")
 
 [node name="margin" type="MarginContainer" parent="hbox" unique_id=878917734]
 custom_minimum_size = Vector2(25, 0)
@@ -39,7 +44,7 @@ size_flags_horizontal = 2
 theme_override_constants/margin_left = 2
 theme_override_constants/margin_right = 2
 
-[node name="inventory" type="RichTextLabel" parent="hbox/margin" unique_id=1637646031]
+[node name="amount" type="RichTextLabel" parent="hbox/margin" unique_id=1637646031]
 self_modulate = Color(0.23137255, 0.23137255, 0.23137255, 1)
 layout_mode = 2
 size_flags_horizontal = 3

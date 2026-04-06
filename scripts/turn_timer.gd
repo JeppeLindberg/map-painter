@@ -12,6 +12,10 @@ var turn = 0
 var between_turns = false
 
 
+func _ready() -> void:
+	if not Engine.is_editor_hint():
+		await turn_mgt.prepare_turn()
+
 func _process(delta: float) -> void:
 	var trigger_turn = false
 	if not Engine.is_editor_hint():
@@ -32,7 +36,12 @@ func _process(delta: float) -> void:
 		dec = floor(dec)
 		turn += 1
 		between_turns = true
-		await turn_mgt.accept_turn()
+		commit_turn()
+
+func commit_turn():
+	await turn_mgt.accept_turn()	
+	await turn_mgt.prepare_turn()
 
 func start_timer():
 	between_turns = false
+	print('bla 2')

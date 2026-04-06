@@ -8,9 +8,10 @@
 [ext_resource type="Texture2D" uid="uid://b0j11c77u6tu4" path="res://sprites/white_circle.png" id="2_tefeu"]
 [ext_resource type="Script" uid="uid://cfbahtcaev3m6" path="res://scripts/selection_mgt.gd" id="3_eb6dy"]
 [ext_resource type="Script" uid="uid://dvrb3bh87y37l" path="res://scripts/ui_mgt.gd" id="3_trceg"]
-[ext_resource type="Script" uid="uid://bejkxkfjtr0qb" path="res://scripts/faction_mgt.gd" id="4_qkpxi"]
+[ext_resource type="Script" uid="uid://bejkxkfjtr0qb" path="res://scripts/resource_mgt.gd" id="4_qkpxi"]
 [ext_resource type="Texture2D" uid="uid://ciiobs1rsylf6" path="res://sprites/timer_0.png" id="4_tipki"]
 [ext_resource type="Shader" uid="uid://dysv0u7mpo6od" path="res://shaders/timer.gdshader" id="5_0ld40"]
+[ext_resource type="Script" uid="uid://dxy82a5tlulm7" path="res://scripts/trade_mgt.gd" id="5_5q0nq"]
 [ext_resource type="Script" uid="uid://u83l5gfua48x" path="res://scripts/ui/tile_information.gd" id="7_trceg"]
 [ext_resource type="Theme" uid="uid://bt3iq21ixn45k" path="res://theme.tres" id="9_a8y0u"]
 [ext_resource type="StyleBox" uid="uid://cxvta636uomo7" path="res://panel_pink.tres" id="9_fv21b"]
@@ -30,8 +31,8 @@
 [ext_resource type="StyleBox" uid="uid://btyctje1ax8td" path="res://panel_grey.tres" id="14_og1vs"]
 [ext_resource type="Texture2D" uid="uid://c1ucwe2ovxqka" path="res://clip_studio_paint/ui reference.png" id="17_muem4"]
 [ext_resource type="PackedScene" uid="uid://ca3vad74n5w2k" path="res://prefabs/ui/resource_indicator_filler.tscn" id="22_2f3dj"]
-[ext_resource type="Script" uid="uid://bcopiopi5m10g" path="res://scripts/ui/resources_information.gd" id="24_qkpxi"]
-[ext_resource type="PackedScene" uid="uid://ceyyfda0l2263" path="res://prefabs/ui/resource_information.tscn" id="25_tel4y"]
+[ext_resource type="Script" uid="uid://bcopiopi5m10g" path="res://scripts/ui/resources_saved_information.gd" id="24_qkpxi"]
+[ext_resource type="PackedScene" uid="uid://ceyyfda0l2263" path="res://prefabs/ui/resource_saved_information.tscn" id="25_tel4y"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_85g3d"]
 load_path = "res://.godot/imported/transparent.png-3c672f4f7b33af5d623e125c39241dfd.ctex"
@@ -152,10 +153,11 @@ script = ExtResource("3_eb6dy")
 script = ExtResource("3_trceg")
 tile_information = NodePath("../camera/center/panel/hbox/left/vbox/tile_information")
 
-[node name="faction_mgt" type="Node" parent="." unique_id=137585148]
+[node name="resource_mgt" type="Node" parent="." unique_id=137585148]
 script = ExtResource("4_qkpxi")
 
-[node name="blue" type="Node" parent="faction_mgt" unique_id=233458999]
+[node name="trade_mgt" type="Node" parent="." unique_id=82153317]
+script = ExtResource("5_5q0nq")
 
 [node name="camera" type="Camera2D" parent="." unique_id=1132405800]
 
@@ -484,7 +486,7 @@ theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 20
 
-[node name="resources_information" type="PanelContainer" parent="camera/center/panel/hbox/middle" unique_id=113851102 node_paths=PackedStringArray("resources_container")]
+[node name="resources_saved" type="PanelContainer" parent="camera/center/panel/hbox/middle" unique_id=113851102 node_paths=PackedStringArray("resources_container")]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
@@ -493,7 +495,7 @@ script = ExtResource("24_qkpxi")
 resource_prefab = ExtResource("25_tel4y")
 resources_container = NodePath("hbox")
 
-[node name="hbox" type="HBoxContainer" parent="camera/center/panel/hbox/middle/resources_information" unique_id=1379151102]
+[node name="hbox" type="HBoxContainer" parent="camera/center/panel/hbox/middle/resources_saved" unique_id=1379151102]
 layout_mode = 2
 alignment = 1
 

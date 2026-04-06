@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bakp0ftuu14al" path="res://prefabs/building_barracks.tscn" id="3_b0sww"]
 [ext_resource type="PackedScene" uid="uid://df6y42k7idt3p" path="res://prefabs/tasks/upgrade_barracks.tscn" id="3_t40h0"]
 [ext_resource type="Script" uid="uid://ct4gmlu7pnyfc" path="res://scripts/tile_resources.gd" id="4_sadij"]
+[ext_resource type="PackedScene" uid="uid://bp0yg4axxnu6b" path="res://prefabs/resource_packet.tscn" id="5_xjcts"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x2ukr"]
 bg_color = Color(0.87058824, 0.69411767, 0.69411767, 1)
@@ -38,6 +39,7 @@ upgrade_barracks_prefab = ExtResource("3_t40h0")
 
 [node name="resources" type="Node2D" parent="." unique_id=1955980198]
 script = ExtResource("4_sadij")
+resource_packet_prefab = ExtResource("5_xjcts")
 
 [node name="buildings" type="Node2D" parent="." unique_id=1345035379 node_paths=PackedStringArray("buildings_container")]
 visible = false

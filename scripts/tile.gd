@@ -6,6 +6,7 @@ var utils = preload("res://scripts/utils.gd").new()
 var ui_mgt = null
 var selection_mgt = null
 @onready var tiles = get_parent()
+var resource_mgt = null
 
 var tile_index:Vector2i
 
@@ -41,6 +42,8 @@ func _ready() -> void:
 		ui_mgt = get_node('/root/main/ui_mgt')
 	if selection_mgt == null:
 		selection_mgt = get_node('/root/main/selection_mgt')
+	if resource_mgt == null:
+		resource_mgt = get_node('/root/main/resource_mgt')
 	connect('mouse_entered', _on_mouse_entered)
 	connect('mouse_exited', _on_mouse_exited)
 
@@ -191,3 +194,7 @@ func enqueue_task(task_name, parameter_1):
 
 func get_resource_production(resource_name):
 	return resources.get_resource_production(resource_name)
+
+func create_resource_packets():
+	await resources.create_packets()
+
