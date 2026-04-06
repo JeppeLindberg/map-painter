@@ -1,0 +1,51 @@
+[gd_scene format=3 uid="uid://ceyyfda0l2263"]
+
+[ext_resource type="Texture2D" uid="uid://dv4ijh8j4fpi8" path="res://sprites/16x16 grid.png" id="1_u2s3w"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fv21b"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(0.6, 0.6, 0.6, 0)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vxglm"]
+atlas = ExtResource("1_u2s3w")
+region = Rect2(37, 1, 16, 16)
+
+[node name="resource" type="PanelContainer" unique_id=2079982733]
+custom_minimum_size = Vector2(0, 10)
+size_flags_horizontal = 6
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_fv21b")
+
+[node name="hbox" type="HBoxContainer" parent="." unique_id=220957210]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="texture" type="TextureRect" parent="hbox" unique_id=518441450]
+layout_mode = 2
+texture = SubResource("AtlasTexture_vxglm")
+
+[node name="margin" type="MarginContainer" parent="hbox" unique_id=878917734]
+custom_minimum_size = Vector2(25, 0)
+layout_mode = 2
+size_flags_horizontal = 2
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_right = 2
+
+[node name="inventory" type="RichTextLabel" parent="hbox/margin" unique_id=1637646031]
+self_modulate = Color(0.23137255, 0.23137255, 0.23137255, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/normal_font_size = 8
+text = "100"
+fit_content = true
+autowrap_mode = 0
+horizontal_alignment = 2
+vertical_alignment = 1

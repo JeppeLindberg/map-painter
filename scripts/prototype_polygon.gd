@@ -3,11 +3,23 @@ extends Polygon2D
 
 var prev_points = []
 
-@export_enum('stone') var resource = 'stone'
-@export_enum('neutral', 'blue', 'red') var faction = 'neutral'
 
+@export_category('Tile')
+@export_tool_button("Randomize resource", "Callable") var resource_callable = randomize_resource
+@export_enum('stone') var resource = 'stone'
+@export_tool_button("Randomize base production", "Callable") var base_production_callable = randomize_base_production
+@export var base_production = 0.0
+
+@export_category('Faction')
+@export_enum('neutral', 'blue', 'red') var faction = 'neutral'
 @export var default_barracks_level:int = 0
 
+
+func randomize_resource():
+	resource = ['stone'].pick_random()
+
+func randomize_base_production():
+	base_production = snapped(randf_range(0.8, 1.3), 0.1)
 
 func _process(_delta: float) -> void:
 	if not Engine.is_editor_hint():

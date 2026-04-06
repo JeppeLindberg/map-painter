@@ -18,9 +18,9 @@ func set_info(res_name, production):
 
 	gain_loss.text = str(snapped(production, 0.1))
 	if production >= 0.0:
-		gain_loss.text = '+ ' + gain_loss.text
+		gain_loss.text = '+' + gain_loss.text
 	else:
-		gain_loss.text = '- ' + gain_loss.text
+		gain_loss.text = '-' + gain_loss.text
 
 	if production > 0.0:
 		gain_loss.self_modulate = positive_color

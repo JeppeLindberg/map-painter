@@ -9,11 +9,11 @@ var selection_mgt = null
 
 var tile_index:Vector2i
 
-@export_enum('stone') var resource = 'stone'
 @export_enum('neutral', 'blue', 'red') var faction = 'neutral'
 
 @export var buildings: Node2D
 @export var tasks: Node2D
+@export var resources: Node2D
 
 @export var surface_polygon: Polygon2D
 @export var colorizable_polygon: Polygon2D
@@ -190,4 +190,4 @@ func enqueue_task(task_name, parameter_1):
 	tasks.enqueue_task(task_name, parameter_1)
 
 func get_resource_production(resource_name):
-	return 1.0
+	return resources.get_resource_production(resource_name)

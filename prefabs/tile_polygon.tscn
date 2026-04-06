@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://d6qqf3t745d5" path="res://scripts/tile_buildings.gd" id="2_b0sww"]
 [ext_resource type="PackedScene" uid="uid://bakp0ftuu14al" path="res://prefabs/building_barracks.tscn" id="3_b0sww"]
 [ext_resource type="PackedScene" uid="uid://df6y42k7idt3p" path="res://prefabs/tasks/upgrade_barracks.tscn" id="3_t40h0"]
+[ext_resource type="Script" uid="uid://ct4gmlu7pnyfc" path="res://scripts/tile_resources.gd" id="4_sadij"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x2ukr"]
 bg_color = Color(0.87058824, 0.69411767, 0.69411767, 1)
@@ -17,11 +18,12 @@ content_margin_right = 0.0
 content_margin_bottom = 0.0
 bg_color = Color(0.98039216, 0.8901961, 0.8901961, 1)
 
-[node name="tile_polygon" type="StaticBody2D" unique_id=1600227972 node_paths=PackedStringArray("buildings", "tasks", "surface_polygon", "colorizable_polygon", "overlay_polygon", "shape")]
+[node name="tile_polygon" type="StaticBody2D" unique_id=1600227972 node_paths=PackedStringArray("buildings", "tasks", "resources", "surface_polygon", "colorizable_polygon", "overlay_polygon", "shape")]
 input_pickable = true
 script = ExtResource("1_x2ukr")
 buildings = NodePath("buildings")
 tasks = NodePath("tasks")
+resources = NodePath("resources")
 surface_polygon = NodePath("visual/surface")
 colorizable_polygon = NodePath("visual/colorizable")
 overlay_polygon = NodePath("visual/overlay")
@@ -33,6 +35,9 @@ enemy_color = Color(0.98747045, 0.5224394, 0.6154208, 1)
 [node name="tasks" type="Node2D" parent="." unique_id=1929731219]
 script = ExtResource("2_0jc5j")
 upgrade_barracks_prefab = ExtResource("3_t40h0")
+
+[node name="resources" type="Node2D" parent="." unique_id=1955980198]
+script = ExtResource("4_sadij")
 
 [node name="buildings" type="Node2D" parent="." unique_id=1345035379 node_paths=PackedStringArray("buildings_container")]
 visible = false

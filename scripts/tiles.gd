@@ -59,7 +59,9 @@ func recreate():
 			new_tile.level_building_to('barracks', tile_prototype.default_barracks_level)
 		if tile_prototype.faction != 'neutral':
 			new_tile.faction = tile_prototype.faction
-		new_tile.resource = tile_prototype.resource
+		match tile_prototype.resource:
+			'stone':
+				new_tile.resources.base_stone_production = tile_prototype.base_production 
 		
 	for tile in get_children():
 		if tile.is_queued_for_deletion():

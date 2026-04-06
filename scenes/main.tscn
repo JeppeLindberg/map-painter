@@ -8,10 +8,12 @@
 [ext_resource type="Texture2D" uid="uid://b0j11c77u6tu4" path="res://sprites/white_circle.png" id="2_tefeu"]
 [ext_resource type="Script" uid="uid://cfbahtcaev3m6" path="res://scripts/selection_mgt.gd" id="3_eb6dy"]
 [ext_resource type="Script" uid="uid://dvrb3bh87y37l" path="res://scripts/ui_mgt.gd" id="3_trceg"]
+[ext_resource type="Script" uid="uid://bejkxkfjtr0qb" path="res://scripts/faction_mgt.gd" id="4_qkpxi"]
 [ext_resource type="Texture2D" uid="uid://ciiobs1rsylf6" path="res://sprites/timer_0.png" id="4_tipki"]
 [ext_resource type="Shader" uid="uid://dysv0u7mpo6od" path="res://shaders/timer.gdshader" id="5_0ld40"]
 [ext_resource type="Script" uid="uid://u83l5gfua48x" path="res://scripts/ui/tile_information.gd" id="7_trceg"]
 [ext_resource type="Theme" uid="uid://bt3iq21ixn45k" path="res://theme.tres" id="9_a8y0u"]
+[ext_resource type="StyleBox" uid="uid://cxvta636uomo7" path="res://panel_pink.tres" id="9_fv21b"]
 [ext_resource type="PackedScene" uid="uid://ceskeiqst147p" path="res://prefabs/prototype_polygon.tscn" id="9_ya4ey"]
 [ext_resource type="PackedScene" uid="uid://7befx1u5v3fn" path="res://prefabs/tile_polygon.tscn" id="10_choun"]
 [ext_resource type="Texture2D" uid="uid://p8tckp5rerja" path="res://sprites/8x8 grid.png" id="10_jkv2x"]
@@ -28,6 +30,8 @@
 [ext_resource type="StyleBox" uid="uid://btyctje1ax8td" path="res://panel_grey.tres" id="14_og1vs"]
 [ext_resource type="Texture2D" uid="uid://c1ucwe2ovxqka" path="res://clip_studio_paint/ui reference.png" id="17_muem4"]
 [ext_resource type="PackedScene" uid="uid://ca3vad74n5w2k" path="res://prefabs/ui/resource_indicator_filler.tscn" id="22_2f3dj"]
+[ext_resource type="Script" uid="uid://bcopiopi5m10g" path="res://scripts/ui/resources_information.gd" id="24_qkpxi"]
+[ext_resource type="PackedScene" uid="uid://ceyyfda0l2263" path="res://prefabs/ui/resource_information.tscn" id="25_tel4y"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_85g3d"]
 load_path = "res://.godot/imported/transparent.png-3c672f4f7b33af5d623e125c39241dfd.ctex"
@@ -61,14 +65,6 @@ shader_parameter/offset = Vector2(0, 0)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eb6dy"]
 bg_color = Color(0.022, 0.05, 0.047666665, 0)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a8y0u"]
-bg_color = Color(0.70615333, 0.62780005, 0.73, 1)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
-shadow_color = Color(0.654902, 0.6039216, 0.67058825, 1)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_muem4"]
 atlas = ExtResource("10_jkv2x")
@@ -131,6 +127,18 @@ corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
 corner_detail = 5
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tel4y"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
+bg_color = Color(0.70615333, 0.62780005, 0.73, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_color = Color(0.654902, 0.6039216, 0.67058825, 1)
+
 [node name="main" type="Node" unique_id=1914423807 groups=["main"]]
 
 [node name="turn_mgt" type="Node" parent="." unique_id=137792287 node_paths=PackedStringArray("timer")]
@@ -143,6 +151,11 @@ script = ExtResource("3_eb6dy")
 [node name="ui_mgt" type="Node" parent="." unique_id=605784947 node_paths=PackedStringArray("tile_information")]
 script = ExtResource("3_trceg")
 tile_information = NodePath("../camera/center/panel/hbox/left/vbox/tile_information")
+
+[node name="faction_mgt" type="Node" parent="." unique_id=137585148]
+script = ExtResource("4_qkpxi")
+
+[node name="blue" type="Node" parent="faction_mgt" unique_id=233458999]
 
 [node name="camera" type="Camera2D" parent="." unique_id=1132405800]
 
@@ -207,7 +220,7 @@ clip_contents = true
 custom_minimum_size = Vector2(0, 322)
 layout_mode = 2
 size_flags_vertical = 0
-theme_override_styles/panel = SubResource("StyleBoxFlat_a8y0u")
+theme_override_styles/panel = ExtResource("9_fv21b")
 script = ExtResource("7_trceg")
 scroll = NodePath("vscroll")
 first_child_of_scroll = NodePath("vscroll/margin")
@@ -463,6 +476,27 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_muem4")
 layout_mode = 2
 theme_override_constants/separation = 0
 
+[node name="middle" type="MarginContainer" parent="camera/center/panel/hbox" unique_id=766097383]
+custom_minimum_size = Vector2(268, 0)
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="resources_information" type="PanelContainer" parent="camera/center/panel/hbox/middle" unique_id=113851102 node_paths=PackedStringArray("resources_container")]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_tel4y")
+script = ExtResource("24_qkpxi")
+resource_prefab = ExtResource("25_tel4y")
+resources_container = NodePath("hbox")
+
+[node name="hbox" type="HBoxContainer" parent="camera/center/panel/hbox/middle/resources_information" unique_id=1379151102]
+layout_mode = 2
+alignment = 1
+
 [node name="occupant_container" type="Node2D" parent="." unique_id=1892342923]
 
 [node name="player_soldier" parent="occupant_container" unique_id=1824605875 instance=ExtResource("12_trceg")]
@@ -473,6 +507,7 @@ position = Vector2(-74.8, 17.8)
 [node name="prototype_polygon" parent="tiles_prototype" unique_id=1814504689 instance=ExtResource("9_ya4ey")]
 self_modulate = Color(0.49803922, 1, 0.83137256, 1)
 polygon = PackedVector2Array(7, -33, -31, -29, -35, -6, -28, 15, -3, -7, 37, -19)
+base_production = 1.2000000000000002
 faction = "blue"
 default_barracks_level = 1
 
@@ -480,132 +515,156 @@ default_barracks_level = 1
 self_modulate = Color(0.7372549, 0.56078434, 0.56078434, 1)
 position = Vector2(75, 75)
 polygon = PackedVector2Array(-30, -42, -42, -25, -35, -6, -3, -7, 6, -25, -4, -48)
+base_production = 1.3
 faction = "red"
 
 [node name="prototype_polygon22" parent="tiles_prototype" unique_id=266433373 instance=ExtResource("9_ya4ey")]
 self_modulate = Color(0.7372549, 0.56078434, 0.56078434, 1)
 position = Vector2(29, 91)
 polygon = PackedVector2Array(-16, -32, -31, -11, -35, 10, -3, 2, 11, -22, 4, -41)
+base_production = 1.2000000000000002
 faction = "red"
 
 [node name="prototype_polygon17" parent="tiles_prototype" unique_id=357765890 instance=ExtResource("9_ya4ey")]
 self_modulate = Color(0.49803922, 1, 0.83137256, 1)
 position = Vector2(-119, 43)
 polygon = PackedVector2Array(10, -36, -9, -19, 1, 4, 29, 3, 29, -25)
+base_production = 1.1
 faction = "blue"
 
 [node name="prototype_polygon15" parent="tiles_prototype" unique_id=1038131669 instance=ExtResource("9_ya4ey")]
 self_modulate = Color(0.49803922, 1, 0.83137256, 1)
 position = Vector2(-99, -35)
 polygon = PackedVector2Array(47, -9, 37, -31, 6, -26, -3, -7, 25, 5)
+base_production = 1.0
 faction = "blue"
 
 [node name="prototype_polygon16" parent="tiles_prototype" unique_id=163103883 instance=ExtResource("9_ya4ey")]
 self_modulate = Color(0.49803922, 1, 0.83137256, 1)
 position = Vector2(-125, -2)
 polygon = PackedVector2Array(49, -4, 51, -28, 23, -40, 14, -16, 16, 9, 35, 20)
+base_production = 0.8
 faction = "blue"
 
 [node name="prototype_polygon2" parent="tiles_prototype" unique_id=868231572 instance=ExtResource("9_ya4ey")]
 self_modulate = Color(0.49803922, 1, 0.83137256, 1)
 position = Vector2(27, -36)
 polygon = PackedVector2Array(-20, 3, -16, -24, 7, -33, 47, -9, 10, 17)
+base_production = 1.0
 faction = "blue"
 
 [node name="prototype_polygon8" parent="tiles_prototype" unique_id=1326908515 instance=ExtResource("9_ya4ey")]
 self_modulate = Color(0.7372549, 0.56078434, 0.56078434, 1)
 position = Vector2(33, 56)
 polygon = PackedVector2Array(-36, -15, -30, -36, -6, -42, 12, -23, 0, -6, -20, 3)
+base_production = 1.2000000000000002
 faction = "red"
 
 [node name="prototype_polygon9" parent="tiles_prototype" unique_id=850194613 instance=ExtResource("9_ya4ey")]
 self_modulate = Color(0.7372549, 0.56078434, 0.56078434, 1)
 position = Vector2(-33, 84)
 polygon = PackedVector2Array(-26, -32, -16, -55, 5, -69, 11, -50, 9, -19)
+base_production = 1.0
 faction = "red"
 
 [node name="prototype_polygon10" parent="tiles_prototype" unique_id=497230311 instance=ExtResource("9_ya4ey")]
 self_modulate = Color(0.7372549, 0.56078434, 0.56078434, 1)
 position = Vector2(3, 122)
 polygon = PackedVector2Array(-5, -42, -27, -57, -25, -88, -6, -81, 10, -63)
+base_production = 1.0
 faction = "red"
 
 [node name="prototype_polygon3" parent="tiles_prototype" unique_id=1226260224 instance=ExtResource("9_ya4ey")]
 self_modulate = Color(0.49803922, 1, 0.83137256, 1)
 position = Vector2(-26, -63)
 polygon = PackedVector2Array(-5, 34, -26, 19, -36, -3, -25, -17, 37, 3, 33, 30)
+base_production = 1.1
 faction = "blue"
 
 [node name="prototype_polygon4" parent="tiles_prototype" unique_id=1971531950 instance=ExtResource("9_ya4ey")]
 self_modulate = Color(0.49803922, 1, 0.83137256, 1)
 position = Vector2(-80, -45)
 polygon = PackedVector2Array(4, 39, 6, 15, 28, 1, 49, 16, 45, 39, 24, 53)
+base_production = 1.0
 faction = "blue"
 
 [node name="prototype_polygon5" parent="tiles_prototype" unique_id=684568272 instance=ExtResource("9_ya4ey")]
 self_modulate = Color(0.49803922, 1, 0.83137256, 1)
 position = Vector2(-70, -15)
 polygon = PackedVector2Array(14, 23, 35, 9, 42, 30, 21, 44, 8, 38)
+base_production = 1.3
 faction = "blue"
 
 [node name="prototype_polygon11" parent="tiles_prototype" unique_id=1443496576 instance=ExtResource("9_ya4ey")]
 self_modulate = Color(0.49803922, 1, 0.83137256, 1)
 position = Vector2(-77, 18)
 polygon = PackedVector2Array(-13, 0, 1, -24, 21, -10, 15, 5, -13, 28)
+base_production = 1.0
 faction = "blue"
 
 [node name="prototype_polygon12" parent="tiles_prototype" unique_id=738210872 instance=ExtResource("9_ya4ey")]
 position = Vector2(-73, 49)
 polygon = PackedVector2Array(-17, -3, 11, -26, 24, -20, 14, 3, -1, 15)
+base_production = 1.2000000000000002
 
 [node name="prototype_polygon24" parent="tiles_prototype" unique_id=1332665231 instance=ExtResource("9_ya4ey")]
 position = Vector2(77, 9)
 polygon = PackedVector2Array(-23, -13, 0, -25, 15, -40, 27, -16, 22, -2, -3, 4)
+base_production = 1.1
 
 [node name="prototype_polygon25" parent="tiles_prototype" unique_id=674350028 instance=ExtResource("9_ya4ey")]
 position = Vector2(92, 36)
 polygon = PackedVector2Array(-21, -9, -18, -23, 7, -29, 27, -16, -11, 14)
+base_production = 1.1
 
 [node name="prototype_polygon13" parent="tiles_prototype" unique_id=1487833319 instance=ExtResource("9_ya4ey")]
 self_modulate = Color(0.7372549, 0.56078434, 0.56078434, 1)
 position = Vector2(-48, 74)
 polygon = PackedVector2Array(-26, -10, -11, -22, 24, -9, 16, 17, -17, 16)
+base_production = 0.9
 faction = "red"
 
 [node name="prototype_polygon18" parent="tiles_prototype" unique_id=1986459205 instance=ExtResource("9_ya4ey")]
 position = Vector2(-100, 69)
 polygon = PackedVector2Array(-18, -22, 10, -23, 26, -5, -8, 15, -31, 3)
+base_production = 0.9
 
 [node name="prototype_polygon14" parent="tiles_prototype" unique_id=276641483 instance=ExtResource("9_ya4ey")]
 self_modulate = Color(0.7372549, 0.56078434, 0.56078434, 1)
 position = Vector2(-9, 87)
 polygon = PackedVector2Array(-23, 4, -15, -22, 7, -7, 3, 14)
+base_production = 0.9
 faction = "red"
 
 [node name="prototype_polygon19" parent="tiles_prototype" unique_id=441376564 instance=ExtResource("9_ya4ey")]
 position = Vector2(-78, 91)
 polygon = PackedVector2Array(-30, -7, 4, -27, 13, -1, 3, 14, -21, 11)
+base_production = 1.0
 
 [node name="prototype_polygon6" parent="tiles_prototype" unique_id=1549958769 instance=ExtResource("9_ya4ey")]
 self_modulate = Color(0.7372549, 0.56078434, 0.56078434, 1)
 position = Vector2(61, 21)
 polygon = PackedVector2Array(-24, -40, -64, -28, -58, -1, -34, -7, -7, -25)
+base_production = 0.9
 faction = "red"
 
 [node name="prototype_polygon23" parent="tiles_prototype" unique_id=1394126055 instance=ExtResource("9_ya4ey")]
 position = Vector2(124, -1)
 polygon = PackedVector2Array(-50, -44, -87, -18, -70, -3, -47, -15, -32, -30)
+base_production = 0.9
 
 [node name="prototype_polygon20" parent="tiles_prototype" unique_id=1075843516 instance=ExtResource("9_ya4ey")]
 self_modulate = Color(0.7372549, 0.56078434, 0.56078434, 1)
 position = Vector2(110, 35)
 polygon = PackedVector2Array(-56, -39, -83, -21, -65, -2, -39, -8, -36, -22)
+base_production = 1.1
 faction = "red"
 
 [node name="prototype_polygon7" parent="tiles_prototype" unique_id=656887146 instance=ExtResource("9_ya4ey")]
 self_modulate = Color(0.7372549, 0.56078434, 0.56078434, 1)
 position = Vector2(24, 57)
 polygon = PackedVector2Array(-27, -64, -52, -42, -46, -23, -27, -16, -21, -37)
+base_production = 0.9
 faction = "red"
 
 [node name="tiles" type="Node2D" parent="." unique_id=276516360 node_paths=PackedStringArray("occupant_container", "tiles_prototype")]
@@ -616,6 +675,7 @@ occupant_container = NodePath("../occupant_container")
 tiles_prototype = NodePath("../tiles_prototype")
 
 [node name="UiReference" type="Sprite2D" parent="." unique_id=416144034]
+visible = false
 z_index = 100
 position = Vector2(247, -13)
 scale = Vector2(0.5, 0.5)
