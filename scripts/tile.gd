@@ -198,3 +198,6 @@ func get_resource_production(resource_name):
 func create_resource_packets():
 	await resources.create_packets()
 
+func get_resource_packets():
+	return resources.get_packets()
+

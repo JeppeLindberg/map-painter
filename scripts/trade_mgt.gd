@@ -1,11 +1,13 @@
 extends Node
 
 @onready var resource_mgt = get_node('/root/main/resource_mgt')
+@onready var tiles = get_node('/root/main/tiles')
+
 
 func accept_turn():
-	# TODO: Consume resource packs to gain ducats
-	pass
+	for tile in tiles.get_children():
+		var packets = tile.get_resource_packets()
 
-func add_resource(faction, resource_name, amount):
-	if faction == 'blue' and resource_name == 'stone':
-		await resource_mgt.add_resource(faction, 'ducats', amount * 0.5)
+		for i in range(len(packets) -1, -1, -1):
+			await resource_mgt.add_resource(tile.faction, 'ducats', packets[i].amount * 0.1)
+			packets[i].queue_free();

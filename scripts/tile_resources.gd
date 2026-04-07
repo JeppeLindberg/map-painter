@@ -21,3 +21,7 @@ func create_packets():
 		add_child(stone)
 		stone.resource_name = 'stone'
 		stone.amount = base_stone_production
+
+func get_packets():
+	return get_children()
+

@@ -44,4 +44,3 @@ func commit_turn():
 
 func start_timer():
 	between_turns = false
-	print('bla 2')
