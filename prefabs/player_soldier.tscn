@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://b0j11c77u6tu4" path="res://sprites/white_circle.png" id="1_3gerb"]
 [ext_resource type="Script" uid="uid://p17h7uyjao7v" path="res://scripts/player_soldier.gd" id="1_ktd4h"]
 [ext_resource type="PackedScene" uid="uid://bn2k2j1612fal" path="res://prefabs/pathfinding_clickable.tscn" id="2_vwbyv"]
-[ext_resource type="StyleBox" uid="uid://btyctje1ax8td" path="res://panel_grey.tres" id="3_gejsm"]
+[ext_resource type="StyleBox" uid="uid://btyctje1ax8td" path="res://themes/panel_grey.tres" id="3_gejsm"]
 [ext_resource type="Texture2D" uid="uid://p8tckp5rerja" path="res://sprites/8x8 grid.png" id="7_ky70u"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jv46q"]

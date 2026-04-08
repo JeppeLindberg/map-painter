@@ -13,8 +13,8 @@
 [ext_resource type="Shader" uid="uid://dysv0u7mpo6od" path="res://shaders/timer.gdshader" id="5_0ld40"]
 [ext_resource type="Script" uid="uid://dxy82a5tlulm7" path="res://scripts/trade_mgt.gd" id="5_5q0nq"]
 [ext_resource type="Script" uid="uid://u83l5gfua48x" path="res://scripts/ui/tile_information.gd" id="7_trceg"]
-[ext_resource type="Theme" uid="uid://bt3iq21ixn45k" path="res://theme.tres" id="9_a8y0u"]
-[ext_resource type="StyleBox" uid="uid://cxvta636uomo7" path="res://panel_pink.tres" id="9_fv21b"]
+[ext_resource type="Theme" uid="uid://bt3iq21ixn45k" path="res://themes/theme.tres" id="9_a8y0u"]
+[ext_resource type="StyleBox" uid="uid://cxvta636uomo7" path="res://themes/panel_pink.tres" id="9_fv21b"]
 [ext_resource type="PackedScene" uid="uid://ceskeiqst147p" path="res://prefabs/prototype_polygon.tscn" id="9_ya4ey"]
 [ext_resource type="PackedScene" uid="uid://7befx1u5v3fn" path="res://prefabs/tile_polygon.tscn" id="10_choun"]
 [ext_resource type="Texture2D" uid="uid://p8tckp5rerja" path="res://sprites/8x8 grid.png" id="10_jkv2x"]
@@ -28,7 +28,7 @@
 [ext_resource type="Texture2D" uid="uid://bmxkptie73hjy" path="res://sprites/small_transparent.png" id="12_yc10j"]
 [ext_resource type="Script" uid="uid://byanqs1jgvbp3" path="res://scripts/ui/tasks_tile_information.gd" id="13_og1vs"]
 [ext_resource type="Texture2D" uid="uid://ci7o626e7o1mm" path="res://sprites/small_white.png" id="14_jscy8"]
-[ext_resource type="StyleBox" uid="uid://btyctje1ax8td" path="res://panel_grey.tres" id="14_og1vs"]
+[ext_resource type="StyleBox" uid="uid://btyctje1ax8td" path="res://themes/panel_grey.tres" id="14_og1vs"]
 [ext_resource type="Texture2D" uid="uid://c1ucwe2ovxqka" path="res://clip_studio_paint/ui reference.png" id="17_muem4"]
 [ext_resource type="PackedScene" uid="uid://ca3vad74n5w2k" path="res://prefabs/ui/resource_indicator_filler.tscn" id="22_2f3dj"]
 [ext_resource type="Script" uid="uid://bcopiopi5m10g" path="res://scripts/ui/resources_saved_information.gd" id="24_qkpxi"]
@@ -561,6 +561,7 @@ position = Vector2(33, 56)
 polygon = PackedVector2Array(-36, -15, -30, -36, -6, -42, 12, -23, 0, -6, -20, 3)
 base_production = 1.2000000000000002
 faction = "red"
+capital = true
 
 [node name="prototype_polygon9" parent="tiles_prototype" unique_id=850194613 instance=ExtResource("9_ya4ey")]
 self_modulate = Color(0.7372549, 0.56078434, 0.56078434, 1)
@@ -589,6 +590,7 @@ position = Vector2(-80, -45)
 polygon = PackedVector2Array(4, 39, 6, 15, 28, 1, 49, 16, 45, 39, 24, 53)
 base_production = 1.0
 faction = "blue"
+capital = true
 
 [node name="prototype_polygon5" parent="tiles_prototype" unique_id=684568272 instance=ExtResource("9_ya4ey")]
 self_modulate = Color(0.49803922, 1, 0.83137256, 1)

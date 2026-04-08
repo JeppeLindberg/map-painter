@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://p8tckp5rerja" path="res://sprites/8x8 grid.png" id="1_clgrl"]
 [ext_resource type="Script" uid="uid://dwps0gsggsdh8" path="res://scripts/ui/building_tile_information.gd" id="1_empw5"]
 [ext_resource type="Texture2D" uid="uid://b1prv175hbn4n" path="res://sprites/button_minus.png" id="2_empw5"]
-[ext_resource type="StyleBox" uid="uid://5rjsq7kb7gt4" path="res://button_transparent.tres" id="3_iyccm"]
+[ext_resource type="StyleBox" uid="uid://5rjsq7kb7gt4" path="res://themes/button_transparent.tres" id="3_iyccm"]
 [ext_resource type="Texture2D" uid="uid://m6xlpusmavr7" path="res://sprites/button_plus.png" id="4_m5nje"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2wyq8"]

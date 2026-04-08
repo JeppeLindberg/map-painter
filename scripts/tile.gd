@@ -16,10 +16,13 @@ var tile_index:Vector2i
 @export var tasks: Node2D
 @export var resources: Node2D
 
+@export var capital = false
+
 @export var surface_polygon: Polygon2D
 @export var colorizable_polygon: Polygon2D
 @export var overlay_polygon: Polygon2D
 @export var shape: CollisionPolygon2D
+@export var capital_indicator: Control
 
 @export_storage var neighbour_paths = []
 @export_storage var polygon: PackedVector2Array
@@ -96,7 +99,6 @@ func calculate_neighbours():
 		if add_neighbour:
 			neighbour_paths.append(self.get_path_to(tile))
 
-
 func get_relative_tile(vec):
 	return tiles.get_tile(tile_index + vec)
 
@@ -126,6 +128,8 @@ func _process(_delta: float) -> void:
 			colorizable_polygon.color = player_color
 		'red':
 			colorizable_polygon.color = enemy_color
+
+	capital_indicator.visible = capital
 
 func get_neighbours():
 	var neighbour_nodes = []
@@ -200,4 +204,3 @@ func create_resource_packets():
 
 func get_resource_packets():
 	return resources.get_packets()
-

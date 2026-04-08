@@ -61,7 +61,8 @@ func recreate():
 			new_tile.faction = tile_prototype.faction
 		match tile_prototype.resource:
 			'stone':
-				new_tile.resources.base_stone_production = tile_prototype.base_production 
+				new_tile.resources.base_stone_production = tile_prototype.base_production
+		new_tile.capital = tile_prototype.capital
 		
 	for tile in get_children():
 		if tile.is_queued_for_deletion():

@@ -13,7 +13,9 @@ Added simple resource trading:
 	End of turn:
 		Deletes all resource packs, and add 0.1 ducats for each on blue tile
 
+## 26-04-08
 
+Oprettede indikator for capital cities
 
 
 # TODO

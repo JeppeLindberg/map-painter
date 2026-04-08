@@ -8,12 +8,6 @@ var utils = preload("res://scripts/utils.gd").new()
 @export var barracks_prefab: PackedScene
 
 
-func _process(_delta: float) -> void:
-	if buildings_container.get_child_count() == 0:
-		visible = false
-	else:
-		visible = true
-
 func level_building_to(building_name, level):
 	var existing_buildings = utils.get_children_in_group(buildings_container, building_name)
 

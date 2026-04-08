@@ -12,6 +12,7 @@ var prev_points = []
 
 @export_category('Faction')
 @export_enum('neutral', 'blue', 'red') var faction = 'neutral'
+@export var capital:bool = false
 @export var default_barracks_level:int = 0
 
 
