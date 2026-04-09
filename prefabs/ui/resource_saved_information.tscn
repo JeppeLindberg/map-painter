@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://ceyyfda0l2263"]
 
 [ext_resource type="Script" uid="uid://ce4ctcl4f3cc4" path="res://scripts/ui/resource_saved_information.gd" id="1_b35yu"]
+[ext_resource type="Texture2D" uid="uid://dv4ijh8j4fpi8" path="res://sprites/16x16 grid.png" id="2_xx0bm"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fv21b"]
 content_margin_left = 0.0
@@ -14,6 +15,14 @@ corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
 corner_detail = 5
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_70e88"]
+atlas = ExtResource("2_xx0bm")
+region = Rect2(55, 1, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_prdfs"]
+atlas = ExtResource("2_xx0bm")
+region = Rect2(73, 1, 16, 16)
+
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_pgarh"]
 load_path = "res://.godot/imported/16x16 grid.png-2e9dd80d13fb18fc45f2aa27ea1a8705.ctex"
 
@@ -21,13 +30,16 @@ load_path = "res://.godot/imported/16x16 grid.png-2e9dd80d13fb18fc45f2aa27ea1a87
 atlas = SubResource("CompressedTexture2D_pgarh")
 region = Rect2(55, 1, 16, 16)
 
-[node name="resource_saved" type="PanelContainer" unique_id=2079982733 node_paths=PackedStringArray("amount_label")]
+[node name="resource_saved" type="PanelContainer" unique_id=2079982733 node_paths=PackedStringArray("amount_label", "texture_control")]
 custom_minimum_size = Vector2(0, 10)
 size_flags_horizontal = 6
 size_flags_vertical = 4
 theme_override_styles/panel = SubResource("StyleBoxFlat_fv21b")
 script = ExtResource("1_b35yu")
 amount_label = NodePath("hbox/margin/amount")
+ducats_texture = SubResource("AtlasTexture_70e88")
+manpower_texture = SubResource("AtlasTexture_prdfs")
+texture_control = NodePath("hbox/texture")
 
 [node name="hbox" type="HBoxContainer" parent="." unique_id=220957210]
 layout_mode = 2

@@ -4,12 +4,15 @@ extends Node
 @onready var tiles = get_node('/root/main/tiles')
 
 var ducats = 1.0
+var manpower = 1.0
 
 
 
 func get_resource(faction, resource_name):
 	if faction == 'blue' and resource_name == 'ducats':
 		return ducats
+	if faction == 'blue' and resource_name == 'manpower':
+		return manpower
 
 func prepare_turn():
 	for tile in tiles.get_children():

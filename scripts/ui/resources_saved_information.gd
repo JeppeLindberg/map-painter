@@ -12,7 +12,7 @@ var resources_information_state = []
 func _process(_delta):
 	var new_resources_information_state = []
 
-	for resource in ['ducats']:
+	for resource in ['ducats', 'manpower']:
 		new_resources_information_state.append({
 			'faction': 'blue',
 			'resource': resource,
@@ -28,6 +28,6 @@ func _process(_delta):
 		for state in resources_information_state:
 			var new_resource_info = resource_prefab.instantiate()
 			resources_container.add_child(new_resource_info)
-			new_resource_info.set_amount(state['amount'])
+			new_resource_info.set_amount(state['resource'], state['amount'])
 			
 			
