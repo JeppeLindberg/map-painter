@@ -9,5 +9,6 @@ func accept_turn():
 		var packets = tile.get_resource_packets()
 
 		for i in range(len(packets) -1, -1, -1):
-			await resource_mgt.add_resource(tile.faction, 'ducats', packets[i].amount * 0.1)
-			packets[i].queue_free();
+			if packets[i].resource_name == 'stone':
+				await resource_mgt.add_resource(tile.faction, 'ducats', packets[i].amount * 0.1)
+				packets[i].queue_free();

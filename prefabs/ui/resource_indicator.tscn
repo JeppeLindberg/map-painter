@@ -15,15 +15,26 @@ corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
 corner_detail = 5
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_ukjet"]
+atlas = ExtResource("1_4irvp")
+region = Rect2(37, 1, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tc44u"]
+atlas = ExtResource("1_4irvp")
+region = Rect2(73, 1, 16, 16)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_vxglm"]
 atlas = ExtResource("1_4irvp")
 region = Rect2(37, 1, 16, 16)
 
-[node name="resource_indicator" type="PanelContainer" unique_id=97628234 node_paths=PackedStringArray("resource_name", "gain_loss")]
+[node name="resource_indicator" type="PanelContainer" unique_id=97628234 node_paths=PackedStringArray("texture", "resource_name", "gain_loss")]
 custom_minimum_size = Vector2(0, 10)
 size_flags_horizontal = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_2wyq8")
 script = ExtResource("1_ukjet")
+stone_texture = SubResource("AtlasTexture_ukjet")
+manpower_texture = SubResource("AtlasTexture_tc44u")
+texture = NodePath("hbox/texture")
 resource_name = NodePath("hbox/resource_name")
 gain_loss = NodePath("hbox/margin/gain_loss")
 positive_color = Color(0.3137255, 0.45490196, 0.26666668, 1)

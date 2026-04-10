@@ -17,6 +17,9 @@ Added simple resource trading:
 
 Oprettede indikator for capital cities
 
+## 26-04-10
+
+Oprettede manpower ressource og gjorde det muligt at tjene det via barracks
 
 # TODO
 

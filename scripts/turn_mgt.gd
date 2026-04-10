@@ -18,6 +18,8 @@ func accept_turn():
 	await get_tree().process_frame
 
 	await trade_mgt.accept_turn()
+	
+	await resource_mgt.accept_turn()
 
 	for task in utils.get_children_in_group(main, 'task'):
 		await task.accept_turn()

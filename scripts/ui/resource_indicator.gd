@@ -1,6 +1,10 @@
 extends PanelContainer
 
 
+@export var stone_texture: Texture2D
+@export var manpower_texture: Texture2D
+
+@export var texture: TextureRect
 @export var resource_name: RichTextLabel
 @export var gain_loss: RichTextLabel
 
@@ -13,8 +17,10 @@ func set_info(res_name, production):
 	match res_name:
 		'stone':
 			resource_name.text = 'Stone'
-		'lead':
-			resource_name.text = 'Lead'
+			texture.texture = stone_texture
+		'manpower':
+			resource_name.text = 'Manpower'
+			texture.texture = manpower_texture
 
 	gain_loss.text = str(snapped(production, 0.1))
 	if production >= 0.0:
