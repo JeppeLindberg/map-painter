@@ -7,10 +7,13 @@ var utils = preload("res://scripts/utils.gd").new()
 @export var first_child_of_scroll: MarginContainer
 
 @export var buildings_control: Control
+@export var troops_control: Control
 @export var tasks_control: Control
 @export var resources_control: Control
 
 @export var barracks_prefab: PackedScene
+
+@export var troop_tile_information_prefab: PackedScene
 
 @export var resource_indicator_container_prefab: PackedScene
 @export var resource_indicator_prefab: PackedScene
@@ -41,16 +44,26 @@ func _process(delta: float) -> void:
 			else:
 				tasks_control.clear()
 				
-			if tile.get_building_level('barracks') != -1:
-				if utils.get_children_in_group(buildings_control, 'barracks') == []:
-					var barracks = barracks_prefab.instantiate()
-					buildings_control.add_child(barracks)
+			if utils.get_children_in_group(buildings_control, 'barracks') == []:
+				var barracks = barracks_prefab.instantiate()
+				buildings_control.add_child(barracks)
+			
+			for building in utils.get_children_in_group(buildings_control, 'barracks'):
+				building.tile = tile
 				
-				for building in utils.get_children_in_group(buildings_control, 'barracks'):
-					building.tile = tile
+			if tile.get_building_level('barracks') != 0:
+				if troops_control.main_vbox.get_child_count() == 0:
+					var troop = troop_tile_information_prefab.instantiate()
+					troops_control.main_vbox.add_child(troop)
+
+				for child in troops_control.main_vbox.get_children():
+					child.tile = tile
+
+				troops_control.visible = true
 			else:
-				for child in utils.get_children_in_group(buildings_control, 'barracks'):
+				for child in troops_control.main_vbox.get_children():
 					child.queue_free()
+				troops_control.visible = false
 			
 			var resources_to_add = []
 			for resource_name in ['stone', 'manpower']:

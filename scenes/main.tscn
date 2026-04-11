@@ -27,12 +27,14 @@
 [ext_resource type="PackedScene" uid="uid://bq32grs3be8v5" path="res://prefabs/player_soldier.tscn" id="12_trceg"]
 [ext_resource type="Texture2D" uid="uid://bmxkptie73hjy" path="res://sprites/small_transparent.png" id="12_yc10j"]
 [ext_resource type="Script" uid="uid://byanqs1jgvbp3" path="res://scripts/ui/tasks_tile_information.gd" id="13_og1vs"]
+[ext_resource type="PackedScene" uid="uid://c3us5n00l88ec" path="res://prefabs/ui/troop_tile_information.tscn" id="14_dgi5k"]
 [ext_resource type="Texture2D" uid="uid://ci7o626e7o1mm" path="res://sprites/small_white.png" id="14_jscy8"]
 [ext_resource type="StyleBox" uid="uid://btyctje1ax8td" path="res://themes/panel_grey.tres" id="14_og1vs"]
 [ext_resource type="Texture2D" uid="uid://c1ucwe2ovxqka" path="res://clip_studio_paint/ui reference.png" id="17_muem4"]
 [ext_resource type="PackedScene" uid="uid://ca3vad74n5w2k" path="res://prefabs/ui/resource_indicator_filler.tscn" id="22_2f3dj"]
 [ext_resource type="Script" uid="uid://bcopiopi5m10g" path="res://scripts/ui/resources_saved_information.gd" id="24_qkpxi"]
 [ext_resource type="PackedScene" uid="uid://ceyyfda0l2263" path="res://prefabs/ui/resource_saved_information.tscn" id="25_tel4y"]
+[ext_resource type="Script" uid="uid://cosnm0i7cvh22" path="res://scripts/ui/troops_tile_information.gd" id="27_j8jky"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_85g3d"]
 load_path = "res://.godot/imported/transparent.png-3c672f4f7b33af5d623e125c39241dfd.ctex"
@@ -217,7 +219,7 @@ layout_mode = 2
 mouse_filter = 2
 alignment = 1
 
-[node name="tile_information" type="Panel" parent="camera/center/panel/hbox/left/vbox" unique_id=285806680 node_paths=PackedStringArray("scroll", "first_child_of_scroll", "buildings_control", "tasks_control", "resources_control")]
+[node name="tile_information" type="Panel" parent="camera/center/panel/hbox/left/vbox" unique_id=285806680 node_paths=PackedStringArray("scroll", "first_child_of_scroll", "buildings_control", "troops_control", "tasks_control", "resources_control")]
 clip_contents = true
 custom_minimum_size = Vector2(0, 322)
 layout_mode = 2
@@ -227,15 +229,17 @@ script = ExtResource("7_trceg")
 scroll = NodePath("vscroll")
 first_child_of_scroll = NodePath("vscroll/margin")
 buildings_control = NodePath("vscroll/margin/main_box/buildings/outer_vbox/main_vbox")
+troops_control = NodePath("vscroll/margin/main_box/troops")
 tasks_control = NodePath("vscroll/margin/main_box/current_task/vbox/tasks")
 resources_control = NodePath("vscroll/margin/main_box/production_consumption/title_margin/vbox/outer_container")
 barracks_prefab = ExtResource("10_pm3ni")
+troop_tile_information_prefab = ExtResource("14_dgi5k")
 resource_indicator_container_prefab = ExtResource("11_vxglm")
 resource_indicator_prefab = ExtResource("12_2f3dj")
 resource_indicator_filler_prefab = ExtResource("22_2f3dj")
 
 [node name="vscroll" type="ScrollContainer" parent="camera/center/panel/hbox/left/vbox/tile_information" unique_id=1803388725]
-custom_minimum_size = Vector2(0, 133)
+custom_minimum_size = Vector2(0, 198)
 layout_direction = 3
 layout_mode = 1
 anchors_preset = 15
@@ -445,6 +449,84 @@ vertical_alignment = 1
 layout_mode = 2
 theme_override_constants/separation = 2
 
+[node name="troops" type="PanelContainer" parent="camera/center/panel/hbox/left/vbox/tile_information/vscroll/margin/main_box" unique_id=1275567607 node_paths=PackedStringArray("main_vbox")]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_muem4")
+script = ExtResource("27_j8jky")
+main_vbox = NodePath("outer_vbox/main_vbox")
+
+[node name="outer_vbox" type="VBoxContainer" parent="camera/center/panel/hbox/left/vbox/tile_information/vscroll/margin/main_box/troops" unique_id=605872064]
+layout_mode = 2
+theme_override_constants/separation = 2
+
+[node name="vbox" type="VBoxContainer" parent="camera/center/panel/hbox/left/vbox/tile_information/vscroll/margin/main_box/troops/outer_vbox" unique_id=438189362]
+layout_mode = 2
+theme_override_constants/separation = 2
+
+[node name="title_margin" type="MarginContainer" parent="camera/center/panel/hbox/left/vbox/tile_information/vscroll/margin/main_box/troops/outer_vbox/vbox" unique_id=4844027]
+layout_mode = 2
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 2
+theme_override_constants/margin_bottom = 0
+
+[node name="troops_text" type="RichTextLabel" parent="camera/center/panel/hbox/left/vbox/tile_information/vscroll/margin/main_box/troops/outer_vbox/vbox/title_margin" unique_id=902936122]
+self_modulate = Color(0.23137255, 0.23137255, 0.23137255, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/normal_font_size = 10
+text = "Troops"
+fit_content = true
+vertical_alignment = 1
+
+[node name="divider" type="Panel" parent="camera/center/panel/hbox/left/vbox/tile_information/vscroll/margin/main_box/troops/outer_vbox/vbox" unique_id=1903086]
+custom_minimum_size = Vector2(0, 2)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_muem4")
+
+[node name="columns_margin" type="MarginContainer" parent="camera/center/panel/hbox/left/vbox/tile_information/vscroll/margin/main_box/troops/outer_vbox/vbox" unique_id=1665600625]
+layout_mode = 2
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 2
+theme_override_constants/margin_bottom = 0
+
+[node name="columns" type="HBoxContainer" parent="camera/center/panel/hbox/left/vbox/tile_information/vscroll/margin/main_box/troops/outer_vbox/vbox/columns_margin" unique_id=1611148508]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="texture" type="TextureRect" parent="camera/center/panel/hbox/left/vbox/tile_information/vscroll/margin/main_box/troops/outer_vbox/vbox/columns_margin/columns" unique_id=2009966254]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(16, 0)
+layout_mode = 2
+texture = SubResource("AtlasTexture_jbj1t")
+
+[node name="spacer3" type="Panel" parent="camera/center/panel/hbox/left/vbox/tile_information/vscroll/margin/main_box/troops/outer_vbox/vbox/columns_margin/columns" unique_id=1107228184]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(3, 0)
+layout_mode = 2
+
+[node name="name_text" type="RichTextLabel" parent="camera/center/panel/hbox/left/vbox/tile_information/vscroll/margin/main_box/troops/outer_vbox/vbox/columns_margin/columns" unique_id=213328170]
+self_modulate = Color(0.45490196, 0.41960785, 0.46666667, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/normal_font_size = 6
+text = "Name"
+fit_content = true
+vertical_alignment = 1
+
+[node name="spacer2" type="Panel" parent="camera/center/panel/hbox/left/vbox/tile_information/vscroll/margin/main_box/troops/outer_vbox/vbox/columns_margin/columns" unique_id=501256541]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+
+[node name="main_vbox" type="VBoxContainer" parent="camera/center/panel/hbox/left/vbox/tile_information/vscroll/margin/main_box/troops/outer_vbox" unique_id=318856056]
+layout_mode = 2
+theme_override_constants/separation = 2
+
+[node name="troop_margin" parent="camera/center/panel/hbox/left/vbox/tile_information/vscroll/margin/main_box/troops/outer_vbox/main_vbox" unique_id=127105068 instance=ExtResource("14_dgi5k")]
+layout_mode = 2
+
 [node name="production_consumption" type="PanelContainer" parent="camera/center/panel/hbox/left/vbox/tile_information/vscroll/margin/main_box" unique_id=782550131]
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_og1vs")
@@ -562,6 +644,7 @@ polygon = PackedVector2Array(-36, -15, -30, -36, -6, -42, 12, -23, 0, -6, -20, 3
 base_production = 1.2000000000000002
 faction = "red"
 capital = true
+default_barracks_level = 1
 
 [node name="prototype_polygon9" parent="tiles_prototype" unique_id=850194613 instance=ExtResource("9_ya4ey")]
 self_modulate = Color(0.7372549, 0.56078434, 0.56078434, 1)
