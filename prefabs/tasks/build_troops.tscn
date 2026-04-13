@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://d1aqaqu52exi1"]
+
+[ext_resource type="Script" uid="uid://crbadmch7ygdn" path="res://scripts/tile_task.gd" id="1_sxdko"]
+[ext_resource type="Script" uid="uid://bjxvo63djxopt" path="res://scripts/tasks/build_troops.gd" id="2_sxdko"]
+
+[node name="build_troops" type="Node2D" unique_id=1077068742]
+script = ExtResource("1_sxdko")
+
+[node name="build_troops" type="Node2D" parent="." unique_id=699898698]
+script = ExtResource("2_sxdko")

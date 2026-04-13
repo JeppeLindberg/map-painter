@@ -1,6 +1,7 @@
 extends Node2D
 
 @export var upgrade_barracks_prefab: PackedScene
+@export var build_troops_prefab: PackedScene
 
 @onready var turn_timer = get_node('/root/main/camera/turn_timer')
 
@@ -9,6 +10,8 @@ func enqueue_task(task_name, parameter_1):
 	var new_task = null
 	if task_name == 'upgrade' and parameter_1 == 'barracks':
 		new_task = upgrade_barracks_prefab.instantiate()
+	if task_name == 'build' and parameter_1 == 'troop':
+		new_task = build_troops_prefab.instantiate()
 
 	if new_task != null:
 		if get_child_count() == 0:

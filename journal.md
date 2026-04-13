@@ -21,6 +21,14 @@ Oprettede indikator for capital cities
 
 Oprettede manpower ressource og gjorde det muligt at tjene det via barracks
 
+## 26-04-11
+
+Oprettede UI elementer som skal kunne lave troops snart
+
+## 26-04-13
+
+Oprettede stump til at lave tropper
+
 # TODO
 
 ## Next:
