@@ -7,7 +7,7 @@ var target_tile = null
 
 
 func _ready() -> void:
-	add_to_group('occupant')
+	add_to_group('troop')
 	add_to_group('enemy_soldier')
 
 func _process(_delta):
@@ -21,11 +21,11 @@ func _process(_delta):
 	if get_parent().get_faction() != 'red':
 		get_parent().paint('red')
 
-func accept_turn():
+func commit_turn():
 	if target_tile == null:
 		target_tile = get_parent().get_neighbours().pick_random()
 
-	if (target_tile != null) and (target_tile.get_current_occupant() == null):
+	if (target_tile != null):
 		reparent(target_tile)
 		position = Vector2.ZERO
 		target_tile.paint('red')

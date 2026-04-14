@@ -29,12 +29,13 @@ atlas = SubResource("CompressedTexture2D_s5iui")
 region = Rect2(31, 1, 8, 8)
 filter_clip = true
 
-[node name="tile_polygon" type="StaticBody2D" unique_id=1600227972 node_paths=PackedStringArray("buildings", "tasks", "resources", "surface_polygon", "colorizable_polygon", "overlay_polygon", "shape", "capital_indicator")]
+[node name="tile_polygon" type="StaticBody2D" unique_id=1600227972 node_paths=PackedStringArray("buildings", "tasks", "resources", "troops", "surface_polygon", "colorizable_polygon", "overlay_polygon", "shape", "capital_indicator")]
 input_pickable = true
 script = ExtResource("1_x2ukr")
 buildings = NodePath("buildings")
 tasks = NodePath("tasks")
 resources = NodePath("resources")
+troops = NodePath("troops")
 surface_polygon = NodePath("visual/surface")
 colorizable_polygon = NodePath("visual/colorizable")
 overlay_polygon = NodePath("visual/overlay")
@@ -43,6 +44,8 @@ capital_indicator = NodePath("buildings/center/vbox/capital_container/outer_marg
 neutral_color = Color(0.8737911, 0.6944265, 0.69791687, 1)
 player_color = Color(0.24564964, 0.8468545, 0.9548462, 1)
 enemy_color = Color(0.98747045, 0.5224394, 0.6154208, 1)
+
+[node name="troops" type="Node2D" parent="." unique_id=572128152]
 
 [node name="tasks" type="Node2D" parent="." unique_id=1929731219]
 script = ExtResource("2_0jc5j")

@@ -15,6 +15,7 @@ var tile_index:Vector2i
 @export var buildings: Node2D
 @export var tasks: Node2D
 @export var resources: Node2D
+@export var troops: Node2D
 
 @export var capital = false
 
@@ -108,12 +109,15 @@ func get_faction():
 func paint(new_faction):
 	faction = new_faction
 
-func get_current_occupant():
-	var occupants = utils.get_children_in_group(self, 'occupant')
-	if occupants == []:
+func get_player_troop():	
+	var player_troops = utils.get_children_in_group(troops, 'player_troop')
+	if player_troops == []:
 		return null
 	else:
-		return occupants[0]
+		return player_troops[0]
+
+func add_troop(troop_node):
+	troop_node.reparent(troops)
 
 func _process(_delta: float) -> void:
 	if Engine.is_editor_hint():

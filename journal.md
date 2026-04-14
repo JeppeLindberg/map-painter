@@ -29,6 +29,10 @@ Oprettede UI elementer som skal kunne lave troops snart
 
 Oprettede stump til at lave tropper
 
+## 26-04-14
+
+Refaktorede troops til at have en seperat node de kan være i i tiles
+
 # TODO
 
 ## Next:

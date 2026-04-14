@@ -26,7 +26,7 @@ func _ready() -> void:
 			recreate()
 
 func clear():
-	for occupant in utils.get_children_in_group(self, 'occupant'):
+	for occupant in utils.get_children_in_group(self, 'troop'):
 		occupant.reparent(occupant_container)
 
 	for child in get_children():
@@ -77,7 +77,7 @@ func recreate():
 		
 		for child in occupant_container.get_children():
 			if child.global_position == tile.global_position:
-				child.reparent(tile)
+				child.reparent(tile.troops)
 
 	tiles_prototype.visible = false
 

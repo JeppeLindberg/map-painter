@@ -30,7 +30,7 @@ func get_text():
 	
 	return 'Task'
 
-func accept_turn():
+func commit_turn():
 	for child in get_children():
 		if remaining_turns == 0:
 			if child.has_method('task_finished'):

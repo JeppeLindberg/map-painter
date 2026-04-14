@@ -11,36 +11,38 @@ var selected = false
 
 
 func _ready() -> void:
-	add_to_group('occupant')
-	add_to_group('player_soldier')
-	add_to_group('player_units')
+	add_to_group('troop')
+	add_to_group('player_troop')
 
 func _process(_delta: float) -> void:
-	if get_parent().get_faction() != 'blue':
-		get_parent().paint('blue')
+	if get_tile().get_faction() != 'blue':
+		get_tile().paint('blue')
 
-func accept_turn():
+func get_tile():
+	return get_parent().get_parent()
+
+func commit_turn():
 	match state:
 		'move_to':
-			var one_step_target = get_parent().get_step_toward(target_tile)
-			if (one_step_target != null) and (one_step_target.get_current_occupant() == null):
-				reparent(one_step_target)
+			var one_step_target = get_tile().get_step_toward(target_tile)
+			if (one_step_target != null):
+				one_step_target.add_troop(self)
 				position = Vector2.ZERO
 				one_step_target.paint('blue')
 
 				update()
 
-			if target_tile == get_parent():
+			if target_tile == get_tile():
 				go_to_idle_state()
 
 
 @onready var prev_update = {
 	'selected': selected,
-	'parent': get_parent()
+	'tile': get_tile()
 }
 
 func update():
-	if selected and (prev_update['parent'] != get_parent()):
+	if selected and (prev_update['tile'] != get_tile()):
 		create_pathfinding_clickables()
 	else:
 		if (prev_update['selected'] and not selected):
@@ -50,7 +52,7 @@ func update():
 
 	prev_update = {
 		'selected': selected,
-		'parent': get_parent()
+		'tile': get_tile()
 	}
 
 
@@ -65,7 +67,7 @@ var pathfinding_clickables = []
 func create_pathfinding_clickables():
 	delete_pathfinding_clickables()
 
-	for tile in get_parent().get_tiles_explore(10):
+	for tile in get_tile().get_tiles_explore(10):
 		var pathfinding_clickable = pathfinding_clickable_prefab.instantiate()
 		tile.add_child(pathfinding_clickable)
 		pathfinding_clickable.position = Vector2.ZERO

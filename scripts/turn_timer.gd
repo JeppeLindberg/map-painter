@@ -36,10 +36,10 @@ func _process(delta: float) -> void:
 		dec = floor(dec)
 		turn += 1
 		between_turns = true
-		commit_turn()
+		accept_turn()
 
-func commit_turn():
-	await turn_mgt.accept_turn()	
+func accept_turn():
+	await turn_mgt.commit_turn()	
 	await turn_mgt.prepare_turn()
 
 func start_timer():

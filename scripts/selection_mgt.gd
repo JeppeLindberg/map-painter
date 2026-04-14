@@ -10,7 +10,7 @@ var current_selection = null
 
 func deselect_all():
 	current_selection = null
-	for node in utils.get_children_in_group(main, 'player_units'):
+	for node in utils.get_children_in_group(main, 'player_troop'):
 		node.deselect()
 
 

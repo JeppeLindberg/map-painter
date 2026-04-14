@@ -18,7 +18,7 @@ func prepare_turn():
 	for tile in tiles.get_children():
 		await tile.create_resource_packets()
 
-func accept_turn():
+func commit_turn():
 	for tile in tiles.get_children():
 		var packets = tile.get_resource_packets()
 

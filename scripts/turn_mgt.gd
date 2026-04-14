@@ -14,20 +14,20 @@ func prepare_turn():
 	
 	await resource_mgt.prepare_turn()
 
-func accept_turn():
+func commit_turn():
 	await get_tree().process_frame
 
-	await trade_mgt.accept_turn()
+	await trade_mgt.commit_turn()
 	
-	await resource_mgt.accept_turn()
+	await resource_mgt.commit_turn()
 
 	for task in utils.get_children_in_group(main, 'task'):
-		await task.accept_turn()
+		await task.commit_turn()
 
-	for player_soldier in utils.get_children_in_group(main, 'player_soldier'):
-		await player_soldier.accept_turn()
+	for player_soldier in utils.get_children_in_group(main, 'player_troop'):
+		await player_soldier.commit_turn()
 
 	for enemy_soldier in utils.get_children_in_group(main, 'enemy_soldier'):
-		await enemy_soldier.accept_turn()
+		await enemy_soldier.commit_turn()
 
 	timer.start_timer()

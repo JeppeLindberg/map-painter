@@ -4,7 +4,7 @@ extends Node
 @onready var tiles = get_node('/root/main/tiles')
 
 
-func accept_turn():
+func commit_turn():
 	for tile in tiles.get_children():
 		var packets = tile.get_resource_packets()
 
