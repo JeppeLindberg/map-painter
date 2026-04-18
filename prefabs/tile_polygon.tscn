@@ -4,6 +4,8 @@
 [ext_resource type="Script" uid="uid://ch6eivoukap2y" path="res://scripts/tile.gd" id="1_x2ukr"]
 [ext_resource type="Script" uid="uid://d0lpayjbfnqs2" path="res://scripts/tile_tasks.gd" id="2_0jc5j"]
 [ext_resource type="Script" uid="uid://d6qqf3t745d5" path="res://scripts/tile_buildings.gd" id="2_b0sww"]
+[ext_resource type="Script" uid="uid://b37lly6y2cgul" path="res://scripts/tile_troops.gd" id="2_wp65r"]
+[ext_resource type="PackedScene" uid="uid://bq32grs3be8v5" path="res://prefabs/player_soldier.tscn" id="3_5yo16"]
 [ext_resource type="PackedScene" uid="uid://bakp0ftuu14al" path="res://prefabs/building_barracks.tscn" id="3_b0sww"]
 [ext_resource type="PackedScene" uid="uid://df6y42k7idt3p" path="res://prefabs/tasks/upgrade_barracks.tscn" id="3_t40h0"]
 [ext_resource type="PackedScene" uid="uid://d1aqaqu52exi1" path="res://prefabs/tasks/build_troops.tscn" id="4_q8h8k"]
@@ -46,6 +48,8 @@ player_color = Color(0.24564964, 0.8468545, 0.9548462, 1)
 enemy_color = Color(0.98747045, 0.5224394, 0.6154208, 1)
 
 [node name="troops" type="Node2D" parent="." unique_id=572128152]
+script = ExtResource("2_wp65r")
+troop_prefab = ExtResource("3_5yo16")
 
 [node name="tasks" type="Node2D" parent="." unique_id=1929731219]
 script = ExtResource("2_0jc5j")

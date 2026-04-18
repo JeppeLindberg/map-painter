@@ -109,7 +109,10 @@ func get_faction():
 func paint(new_faction):
 	faction = new_faction
 
-func get_player_troop():	
+func spawn_troop():
+	troops.spawn_troop()
+
+func get_player_troop():
 	var player_troops = utils.get_children_in_group(troops, 'player_troop')
 	if player_troops == []:
 		return null
@@ -117,7 +120,7 @@ func get_player_troop():
 		return player_troops[0]
 
 func add_troop(troop_node):
-	troop_node.reparent(troops)
+	troops.add_troop(troop_node)
 
 func _process(_delta: float) -> void:
 	if Engine.is_editor_hint():

@@ -14,5 +14,4 @@ func task_finished():
 	if tile == null:
 		return
 
-	print('bla')
-	# tile.level_building_to(building_name, tile.get_building_level(building_name) + 1)
+	tile.spawn_troop()
