@@ -14,6 +14,9 @@ func prepare_turn():
 	
 	await resource_mgt.prepare_turn()
 
+	for tile in utils.get_children_in_group(main, 'tile'):
+		await tile.prepare_turn()
+
 func commit_turn():
 	await get_tree().process_frame
 
@@ -27,7 +30,7 @@ func commit_turn():
 	for player_soldier in utils.get_children_in_group(main, 'player_troop'):
 		await player_soldier.commit_turn()
 
-	for enemy_soldier in utils.get_children_in_group(main, 'enemy_soldier'):
+	for enemy_soldier in utils.get_children_in_group(main, 'enemy_troop'):
 		await enemy_soldier.commit_turn()
 
 	timer.start_timer()

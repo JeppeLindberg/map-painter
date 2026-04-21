@@ -33,6 +33,18 @@ Oprettede stump til at lave tropper
 
 Refaktorede troops til at have en seperat node de kan være i i tiles
 
+## 26-04-18
+
+Kan nu lave troops :)
+
+# 26-04-21
+
+Det er nu muligt at lave fjende troops
+
+Når en player troop står på en fjende troop, printer BATTLE
+
+Klar til at implementere battles
+
 # TODO
 
 ## Next:

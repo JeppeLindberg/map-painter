@@ -35,7 +35,6 @@ func commit_turn():
 			if target_tile == get_tile():
 				go_to_idle_state()
 
-
 @onready var prev_update = {
 	'selected': selected,
 	'tile': get_tile()

@@ -24,7 +24,7 @@
 [ext_resource type="PackedScene" uid="uid://ppk84khpexjb" path="res://prefabs/ui/resource_indicator.tscn" id="12_2f3dj"]
 [ext_resource type="Texture2D" uid="uid://ca34fjxcfgemr" path="res://sprites/small_timer_2.png" id="12_dp3eg"]
 [ext_resource type="Script" uid="uid://bd7jxot1kw1au" path="res://scripts/ui_countup.gd" id="12_jscy8"]
-[ext_resource type="PackedScene" uid="uid://bq32grs3be8v5" path="res://prefabs/player_soldier.tscn" id="12_trceg"]
+[ext_resource type="PackedScene" uid="uid://bq32grs3be8v5" path="res://prefabs/player_troop.tscn" id="12_trceg"]
 [ext_resource type="Texture2D" uid="uid://bmxkptie73hjy" path="res://sprites/small_transparent.png" id="12_yc10j"]
 [ext_resource type="Script" uid="uid://byanqs1jgvbp3" path="res://scripts/ui/tasks_tile_information.gd" id="13_og1vs"]
 [ext_resource type="PackedScene" uid="uid://c3us5n00l88ec" path="res://prefabs/ui/troop_tile_information.tscn" id="14_dgi5k"]

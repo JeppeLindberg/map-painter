@@ -16,6 +16,7 @@ var tile_index:Vector2i
 @export var tasks: Node2D
 @export var resources: Node2D
 @export var troops: Node2D
+@export var battle: Node2D
 
 @export var capital = false
 
@@ -100,6 +101,9 @@ func calculate_neighbours():
 		if add_neighbour:
 			neighbour_paths.append(self.get_path_to(tile))
 
+func prepare_turn():
+	await battle.auto_create_battle()
+
 func get_relative_tile(vec):
 	return tiles.get_tile(tile_index + vec)
 
@@ -110,7 +114,7 @@ func paint(new_faction):
 	faction = new_faction
 
 func spawn_troop():
-	troops.spawn_troop()
+	troops.spawn_troop(faction)
 
 func get_player_troop():
 	var player_troops = utils.get_children_in_group(troops, 'player_troop')

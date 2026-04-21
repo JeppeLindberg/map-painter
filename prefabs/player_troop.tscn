@@ -1,19 +1,19 @@
 [gd_scene format=3 uid="uid://bq32grs3be8v5"]
 
-[ext_resource type="Texture2D" uid="uid://b0j11c77u6tu4" path="res://sprites/white_circle.png" id="1_3gerb"]
-[ext_resource type="Script" uid="uid://p17h7uyjao7v" path="res://scripts/player_soldier.gd" id="1_ktd4h"]
-[ext_resource type="PackedScene" uid="uid://bn2k2j1612fal" path="res://prefabs/pathfinding_clickable.tscn" id="2_vwbyv"]
-[ext_resource type="StyleBox" uid="uid://btyctje1ax8td" path="res://themes/panel_grey.tres" id="3_gejsm"]
-[ext_resource type="Texture2D" uid="uid://p8tckp5rerja" path="res://sprites/8x8 grid.png" id="7_ky70u"]
+[ext_resource type="Script" uid="uid://p17h7uyjao7v" path="res://scripts/player_troop.gd" id="1_8cjuf"]
+[ext_resource type="PackedScene" uid="uid://bn2k2j1612fal" path="res://prefabs/pathfinding_clickable.tscn" id="2_nxc4g"]
+[ext_resource type="StyleBox" uid="uid://btyctje1ax8td" path="res://themes/panel_grey.tres" id="3_qgpvi"]
+[ext_resource type="Texture2D" uid="uid://p8tckp5rerja" path="res://sprites/8x8 grid.png" id="4_1ki7x"]
+[ext_resource type="Texture2D" uid="uid://b0j11c77u6tu4" path="res://sprites/white_circle.png" id="5_7vraf"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jv46q"]
-atlas = ExtResource("7_ky70u")
+atlas = ExtResource("4_1ki7x")
 region = Rect2(21, 1, 8, 8)
 
-[node name="player_soldier" type="Node2D" unique_id=1824605875 groups=["occupant"]]
+[node name="player_troop" type="Node2D" unique_id=1824605875 groups=["occupant"]]
 z_index = 100
-script = ExtResource("1_ktd4h")
-pathfinding_clickable_prefab = ExtResource("2_vwbyv")
+script = ExtResource("1_8cjuf")
+pathfinding_clickable_prefab = ExtResource("2_nxc4g")
 
 [node name="tag" type="Node2D" parent="." unique_id=1012614075]
 position = Vector2(0, -26)
@@ -31,11 +31,11 @@ use_top_left = true
 [node name="panel" type="Button" parent="tag/center" unique_id=1599816362]
 custom_minimum_size = Vector2(30, 14)
 layout_mode = 2
-theme_override_styles/normal = ExtResource("3_gejsm")
-theme_override_styles/pressed = ExtResource("3_gejsm")
-theme_override_styles/hover = ExtResource("3_gejsm")
-theme_override_styles/disabled = ExtResource("3_gejsm")
-theme_override_styles/focus = ExtResource("3_gejsm")
+theme_override_styles/normal = ExtResource("3_qgpvi")
+theme_override_styles/pressed = ExtResource("3_qgpvi")
+theme_override_styles/hover = ExtResource("3_qgpvi")
+theme_override_styles/disabled = ExtResource("3_qgpvi")
+theme_override_styles/focus = ExtResource("3_qgpvi")
 
 [node name="margin" type="MarginContainer" parent="tag/center/panel" unique_id=892965504]
 layout_mode = 1
@@ -111,26 +111,26 @@ self_modulate = Color(0.71000004, 0.85983336, 1, 1)
 z_index = 3
 position = Vector2(0, -5.5540524)
 scale = Vector2(0.09147851, 0.09147851)
-texture = ExtResource("1_3gerb")
+texture = ExtResource("5_7vraf")
 
 [node name="sprite_2" type="Sprite2D" parent="visual" unique_id=1791376955]
 self_modulate = Color(0.5358, 0.74463665, 0.94, 1)
 z_index = 2
 position = Vector2(0, -2.9403808)
 scale = Vector2(0.08167724, 0.08167724)
-texture = ExtResource("1_3gerb")
+texture = ExtResource("5_7vraf")
 
 [node name="sprite_0" type="Sprite2D" parent="visual" unique_id=1623962829]
 self_modulate = Color(0.2668, 0.42861998, 0.58, 1)
 position = Vector2(0, 0.3267096)
 scale = Vector2(0.09801269, 0.09801269)
-texture = ExtResource("1_3gerb")
+texture = ExtResource("5_7vraf")
 
 [node name="sprite_1" type="Sprite2D" parent="visual" unique_id=848406634]
 self_modulate = Color(0.30100003, 0.5898167, 0.86, 1)
 z_index = 1
 position = Vector2(0, -0.65341794)
 scale = Vector2(0.09801269, 0.09801269)
-texture = ExtResource("1_3gerb")
+texture = ExtResource("5_7vraf")
 
 [connection signal="pressed" from="tag/center/panel" to="." method="_on_panel_pressed"]
