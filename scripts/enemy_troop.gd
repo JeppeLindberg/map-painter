@@ -5,6 +5,9 @@ var target_tile = null
 
 @export var intent_arrow: Node2D
 
+var morale = 100.0
+var broken_meter = 100.0
+
 
 func _ready() -> void:
 	add_to_group('troop')

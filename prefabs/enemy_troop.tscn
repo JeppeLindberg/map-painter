@@ -1,12 +1,108 @@
 [gd_scene format=3 uid="uid://d1p1edh501dns"]
 
 [ext_resource type="Script" uid="uid://dfdnrqhpd81qr" path="res://scripts/enemy_troop.gd" id="1_1tklm"]
+[ext_resource type="StyleBox" uid="uid://btyctje1ax8td" path="res://themes/panel_grey.tres" id="2_7lpkt"]
 [ext_resource type="Texture2D" uid="uid://b2it70gowf7it" path="res://sprites/arrow.png" id="2_knqmj"]
 [ext_resource type="Texture2D" uid="uid://b0j11c77u6tu4" path="res://sprites/white_circle.png" id="3_7lpkt"]
+[ext_resource type="Texture2D" uid="uid://p8tckp5rerja" path="res://sprites/8x8 grid.png" id="3_v6c8k"]
 
-[node name="enemy_troop" type="Node2D" unique_id=1684205262 node_paths=PackedStringArray("intent_arrow") groups=["occupant"]]
+[sub_resource type="AtlasTexture" id="AtlasTexture_yttwq"]
+atlas = ExtResource("3_v6c8k")
+region = Rect2(21, 1, 8, 8)
+
+[node name="enemy_troop" type="Node2D" unique_id=1684205262 node_paths=PackedStringArray("intent_arrow") groups=["troop"]]
+z_index = 100
 script = ExtResource("1_1tklm")
 intent_arrow = NodePath("visual/intent_arrow")
+
+[node name="tag" type="Node2D" parent="." unique_id=846256452]
+position = Vector2(0, -26)
+
+[node name="center" type="CenterContainer" parent="tag" unique_id=475731670]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+use_top_left = true
+
+[node name="panel" type="Button" parent="tag/center" unique_id=1389009827]
+custom_minimum_size = Vector2(30, 14)
+layout_mode = 2
+theme_override_styles/normal = ExtResource("2_7lpkt")
+theme_override_styles/pressed = ExtResource("2_7lpkt")
+theme_override_styles/hover = ExtResource("2_7lpkt")
+theme_override_styles/disabled = ExtResource("2_7lpkt")
+theme_override_styles/focus = ExtResource("2_7lpkt")
+
+[node name="margin" type="MarginContainer" parent="tag/center/panel" unique_id=871532150]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -16.0
+offset_top = -7.5
+offset_right = 16.0
+offset_bottom = 7.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 1
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 1
+
+[node name="hbox" type="HBoxContainer" parent="tag/center/panel/margin" unique_id=979827742]
+custom_minimum_size = Vector2(22, 9)
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 4
+alignment = 1
+
+[node name="container" type="MarginContainer" parent="tag/center/panel/margin/hbox" unique_id=502434883]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 0
+
+[node name="unit_count" type="RichTextLabel" parent="tag/center/panel/margin/hbox/container" unique_id=1470988602]
+self_modulate = Color(0.9411765, 0.54509807, 0.54901963, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 7
+text = "5"
+fit_content = true
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="vbox" type="VBoxContainer" parent="tag/center/panel/margin/hbox" unique_id=243462690]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = -9
+alignment = 1
+
+[node name="texture_1" type="TextureRect" parent="tag/center/panel/margin/hbox/vbox" unique_id=1256758551]
+self_modulate = Color(0.85311514, 0.33722886, 0.36710012, 1)
+layout_mode = 2
+mouse_filter = 2
+texture = SubResource("AtlasTexture_yttwq")
+
+[node name="texture_2" type="TextureRect" parent="tag/center/panel/margin/hbox/vbox" unique_id=1793057112]
+self_modulate = Color(0.93950003, 0.54636633, 0.55024433, 1)
+z_index = 1
+layout_mode = 2
+mouse_filter = 2
+texture = SubResource("AtlasTexture_yttwq")
 
 [node name="visual" type="Node2D" parent="." unique_id=795287941]
 z_index = 100

@@ -35,6 +35,7 @@
 [ext_resource type="Script" uid="uid://bcopiopi5m10g" path="res://scripts/ui/resources_saved_information.gd" id="24_qkpxi"]
 [ext_resource type="PackedScene" uid="uid://ceyyfda0l2263" path="res://prefabs/ui/resource_saved_information.tscn" id="25_tel4y"]
 [ext_resource type="Script" uid="uid://cosnm0i7cvh22" path="res://scripts/ui/troops_tile_information.gd" id="27_j8jky"]
+[ext_resource type="PackedScene" uid="uid://d1p1edh501dns" path="res://prefabs/enemy_troop.tscn" id="37_j2jfr"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_85g3d"]
 load_path = "res://.godot/imported/transparent.png-3c672f4f7b33af5d623e125c39241dfd.ctex"
@@ -583,8 +584,11 @@ alignment = 1
 
 [node name="occupant_container" type="Node2D" parent="." unique_id=1892342923]
 
-[node name="player_soldier" parent="occupant_container" unique_id=1824605875 instance=ExtResource("12_trceg")]
+[node name="player_troop" parent="occupant_container" unique_id=1824605875 instance=ExtResource("12_trceg")]
 position = Vector2(-74.8, 17.8)
+
+[node name="enemy_troop" parent="occupant_container" unique_id=1684205262 instance=ExtResource("37_j2jfr")]
+position = Vector2(-10.6, 20.6)
 
 [node name="tiles_prototype" type="Node2D" parent="." unique_id=503774185]
 

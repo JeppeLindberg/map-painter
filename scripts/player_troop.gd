@@ -9,6 +9,9 @@ var state = 'idle'
 var target_tile = null
 var selected = false
 
+var morale = 100.0
+var broken_meter = 100.0
+
 
 func _ready() -> void:
 	add_to_group('troop')

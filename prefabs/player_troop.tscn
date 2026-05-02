@@ -10,7 +10,7 @@
 atlas = ExtResource("4_1ki7x")
 region = Rect2(21, 1, 8, 8)
 
-[node name="player_troop" type="Node2D" unique_id=1824605875 groups=["occupant"]]
+[node name="player_troop" type="Node2D" unique_id=1824605875 groups=["troop"]]
 z_index = 100
 script = ExtResource("1_8cjuf")
 pathfinding_clickable_prefab = ExtResource("2_nxc4g")
