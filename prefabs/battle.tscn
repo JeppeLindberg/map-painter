@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://cf6l7hyaajuos"]
+
+[ext_resource type="Script" uid="uid://b3ltehuiich4v" path="res://scripts/battle.gd" id="1_2gxmc"]
+[ext_resource type="Texture2D" uid="uid://0rg010ggopy4" path="res://clip_studio_paint/battle_reference.png" id="2_jgugy"]
+
+[node name="battle" type="Node2D" unique_id=1062362693]
+z_index = 100
+script = ExtResource("1_2gxmc")
+
+[node name="visual" type="Node2D" parent="." unique_id=2125751662]
+
+[node name="sprite" type="Sprite2D" parent="visual" unique_id=1211388440]
+position = Vector2(0, -40)
+scale = Vector2(0.26164958, 0.26164958)
+texture = ExtResource("2_jgugy")

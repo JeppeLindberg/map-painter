@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://bp0yg4axxnu6b" path="res://prefabs/resource_packet.tscn" id="5_xjcts"]
 [ext_resource type="Script" uid="uid://fmx7e8x8a6s3" path="res://scripts/ui/hide_if_control_empty.gd" id="8_s5iui"]
 [ext_resource type="Script" uid="uid://x5eoh4e6vrxe" path="res://scripts/tile_battle.gd" id="10_2ghdr"]
+[ext_resource type="PackedScene" uid="uid://cf6l7hyaajuos" path="res://prefabs/battle.tscn" id="11_ltk1s"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x2ukr"]
 bg_color = Color(0.87058824, 0.69411767, 0.69411767, 1)
@@ -66,6 +67,7 @@ resource_packet_prefab = ExtResource("5_xjcts")
 
 [node name="battle" type="Node2D" parent="." unique_id=1973487880]
 script = ExtResource("10_2ghdr")
+battle = ExtResource("11_ltk1s")
 
 [node name="buildings" type="Node2D" parent="." unique_id=1345035379 node_paths=PackedStringArray("buildings_container")]
 z_index = 5

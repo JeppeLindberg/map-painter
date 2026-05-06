@@ -3,6 +3,8 @@ extends Node2D
 
 @onready var troops = get_node('../troops')
 
+@export var battle:PackedScene
+
 
 func auto_create_battle():
 	var containing_groups = []
@@ -14,6 +16,7 @@ func auto_create_battle():
 			containing_groups.append('enemy_troop')
 
 	if containing_groups.has('player_troop') and containing_groups.has('enemy_troop'):
-		print('BATTLE')
+		var new_battle = battle.instantiate()
+		add_child(new_battle)
 
 
