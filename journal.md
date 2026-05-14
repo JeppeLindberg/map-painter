@@ -53,6 +53,10 @@ Små UI ændringer
 
 Lavede baseline battle prefab
 
+## 26-05-14
+
+Battle panels
+
 # TODO
 
 ## Next:

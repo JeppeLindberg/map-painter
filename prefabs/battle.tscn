@@ -2,13 +2,8 @@
 
 [ext_resource type="Script" uid="uid://b3ltehuiich4v" path="res://scripts/battle.gd" id="1_2gxmc"]
 [ext_resource type="Texture2D" uid="uid://0rg010ggopy4" path="res://clip_studio_paint/battle_reference.png" id="2_jgugy"]
-[ext_resource type="StyleBox" uid="uid://btyctje1ax8td" path="res://themes/panel_grey.tres" id="2_woaqi"]
-[ext_resource type="Texture2D" uid="uid://p8tckp5rerja" path="res://sprites/8x8 grid.png" id="3_j5guo"]
+[ext_resource type="PackedScene" uid="uid://ci1dyllsg0thw" path="res://prefabs/ui/battle_panel.tscn" id="2_woaqi"]
 [ext_resource type="Texture2D" uid="uid://ubgd5c2kufun" path="res://sprites/battle_indicator.png" id="4_j5guo"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_pp6yy"]
-atlas = ExtResource("3_j5guo")
-region = Rect2(21, 1, 8, 8)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j5guo"]
 content_margin_left = 0.0
@@ -44,88 +39,16 @@ grow_vertical = 2
 layout_mode = 2
 theme_override_constants/separation = 0
 
-[node name="panel_1" type="Button" parent="visual/tag/center/hbox" unique_id=443074875]
-custom_minimum_size = Vector2(30, 14)
+[node name="vbox" parent="visual/tag/center/hbox" unique_id=498288681 instance=ExtResource("2_woaqi")]
 layout_mode = 2
-theme_override_styles/normal = ExtResource("2_woaqi")
-theme_override_styles/pressed = ExtResource("2_woaqi")
-theme_override_styles/hover = ExtResource("2_woaqi")
-theme_override_styles/disabled = ExtResource("2_woaqi")
-theme_override_styles/focus = ExtResource("2_woaqi")
-
-[node name="margin" type="MarginContainer" parent="visual/tag/center/hbox/panel_1" unique_id=1937093343]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -16.0
-offset_top = -7.5
-offset_right = 16.0
-offset_bottom = 7.5
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-theme_override_constants/margin_left = 4
-theme_override_constants/margin_top = 1
-theme_override_constants/margin_right = 4
-theme_override_constants/margin_bottom = 1
-
-[node name="hbox" type="HBoxContainer" parent="visual/tag/center/hbox/panel_1/margin" unique_id=768366342]
-custom_minimum_size = Vector2(22, 9)
-layout_mode = 2
-mouse_filter = 2
-theme_override_constants/separation = 4
-alignment = 1
-
-[node name="container" type="MarginContainer" parent="visual/tag/center/hbox/panel_1/margin/hbox" unique_id=694968385]
-custom_minimum_size = Vector2(10, 0)
-layout_mode = 2
-size_flags_horizontal = 3
-mouse_filter = 2
-theme_override_constants/margin_left = 0
-theme_override_constants/margin_top = 0
-theme_override_constants/margin_right = 0
-theme_override_constants/margin_bottom = 0
-
-[node name="unit_count" type="RichTextLabel" parent="visual/tag/center/hbox/panel_1/margin/hbox/container" unique_id=1400924176]
-self_modulate = Color(0.7058824, 0.627451, 0.7294118, 1)
-layout_mode = 2
-size_flags_horizontal = 3
-mouse_filter = 2
-theme_override_font_sizes/normal_font_size = 7
-text = "5"
-fit_content = true
-autowrap_mode = 0
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="vbox" type="VBoxContainer" parent="visual/tag/center/hbox/panel_1/margin/hbox" unique_id=54486491]
-layout_mode = 2
-mouse_filter = 2
-theme_override_constants/separation = -9
-alignment = 1
-
-[node name="texture_1" type="TextureRect" parent="visual/tag/center/hbox/panel_1/margin/hbox/vbox" unique_id=6805245]
-self_modulate = Color(0.654902, 0.6039216, 0.67058825, 1)
-layout_mode = 2
-mouse_filter = 2
-texture = SubResource("AtlasTexture_pp6yy")
-
-[node name="texture_2" type="TextureRect" parent="visual/tag/center/hbox/panel_1/margin/hbox/vbox" unique_id=2007221340]
-self_modulate = Color(0.9607843, 0.8901961, 0.98039216, 1)
-z_index = 1
-layout_mode = 2
-mouse_filter = 2
-texture = SubResource("AtlasTexture_pp6yy")
+left = true
 
 [node name="margin" type="MarginContainer" parent="visual/tag/center/hbox" unique_id=965681971]
 z_index = 1
 layout_mode = 2
-theme_override_constants/margin_left = -3
+theme_override_constants/margin_left = -2
 theme_override_constants/margin_top = 0
-theme_override_constants/margin_right = -3
+theme_override_constants/margin_right = -2
 theme_override_constants/margin_bottom = 0
 
 [node name="panel" type="Panel" parent="visual/tag/center/hbox/margin" unique_id=57989058]
@@ -153,84 +76,11 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = ExtResource("4_j5guo")
 
-[node name="panel_2" type="Button" parent="visual/tag/center/hbox" unique_id=127802050]
-custom_minimum_size = Vector2(30, 14)
+[node name="vbox2" parent="visual/tag/center/hbox" unique_id=994385687 instance=ExtResource("2_woaqi")]
 layout_mode = 2
-theme_override_styles/normal = ExtResource("2_woaqi")
-theme_override_styles/pressed = ExtResource("2_woaqi")
-theme_override_styles/hover = ExtResource("2_woaqi")
-theme_override_styles/disabled = ExtResource("2_woaqi")
-theme_override_styles/focus = ExtResource("2_woaqi")
-
-[node name="margin" type="MarginContainer" parent="visual/tag/center/hbox/panel_2" unique_id=2145265351]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -16.0
-offset_top = -7.5
-offset_right = 16.0
-offset_bottom = 7.5
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-theme_override_constants/margin_left = 4
-theme_override_constants/margin_top = 1
-theme_override_constants/margin_right = 4
-theme_override_constants/margin_bottom = 1
-
-[node name="hbox" type="HBoxContainer" parent="visual/tag/center/hbox/panel_2/margin" unique_id=397952024]
-custom_minimum_size = Vector2(22, 9)
-layout_mode = 2
-mouse_filter = 2
-theme_override_constants/separation = 4
-alignment = 1
-
-[node name="container" type="MarginContainer" parent="visual/tag/center/hbox/panel_2/margin/hbox" unique_id=934629221]
-custom_minimum_size = Vector2(10, 0)
-layout_mode = 2
-size_flags_horizontal = 3
-mouse_filter = 2
-theme_override_constants/margin_left = 0
-theme_override_constants/margin_top = 0
-theme_override_constants/margin_right = 0
-theme_override_constants/margin_bottom = 0
-
-[node name="unit_count" type="RichTextLabel" parent="visual/tag/center/hbox/panel_2/margin/hbox/container" unique_id=755071538]
-self_modulate = Color(0.7058824, 0.627451, 0.7294118, 1)
-layout_mode = 2
-size_flags_horizontal = 3
-mouse_filter = 2
-theme_override_font_sizes/normal_font_size = 7
-text = "5"
-fit_content = true
-autowrap_mode = 0
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="vbox" type="VBoxContainer" parent="visual/tag/center/hbox/panel_2/margin/hbox" unique_id=1684074757]
-layout_mode = 2
-mouse_filter = 2
-theme_override_constants/separation = -9
-alignment = 1
-
-[node name="texture_1" type="TextureRect" parent="visual/tag/center/hbox/panel_2/margin/hbox/vbox" unique_id=1071680527]
-self_modulate = Color(0.654902, 0.6039216, 0.67058825, 1)
-layout_mode = 2
-mouse_filter = 2
-texture = SubResource("AtlasTexture_pp6yy")
-
-[node name="texture_2" type="TextureRect" parent="visual/tag/center/hbox/panel_2/margin/hbox/vbox" unique_id=684543692]
-self_modulate = Color(0.9607843, 0.8901961, 0.98039216, 1)
-z_index = 1
-layout_mode = 2
-mouse_filter = 2
-texture = SubResource("AtlasTexture_pp6yy")
 
 [node name="sprite" type="Sprite2D" parent="visual" unique_id=1211388440]
 visible = false
-position = Vector2(0, -40)
+position = Vector2(0, -56.000004)
 scale = Vector2(0.26164958, 0.26164958)
 texture = ExtResource("2_jgugy")
