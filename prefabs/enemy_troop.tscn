@@ -14,6 +14,8 @@ region = Rect2(21, 1, 8, 8)
 z_index = 100
 script = ExtResource("1_1tklm")
 intent_arrow = NodePath("visual/intent_arrow")
+main_color = Color(1, 0.70980394, 0.70980394, 1)
+secondary_color = Color(0.85882354, 0.3019608, 0.3019608, 1)
 
 [node name="tag" type="Node2D" parent="." unique_id=846256452]
 position = Vector2(0, -26)
@@ -74,7 +76,7 @@ theme_override_constants/margin_right = 0
 theme_override_constants/margin_bottom = 0
 
 [node name="unit_count" type="RichTextLabel" parent="tag/center/panel/margin/hbox/container" unique_id=1470988602]
-self_modulate = Color(0.9411765, 0.54509807, 0.54901963, 1)
+self_modulate = Color(1, 0.70980394, 0.70980394, 1)
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 2
@@ -92,13 +94,13 @@ theme_override_constants/separation = -9
 alignment = 1
 
 [node name="texture_1" type="TextureRect" parent="tag/center/panel/margin/hbox/vbox" unique_id=1256758551]
-self_modulate = Color(0.85311514, 0.33722886, 0.36710012, 1)
+self_modulate = Color(0.85882354, 0.3019608, 0.3019608, 1)
 layout_mode = 2
 mouse_filter = 2
 texture = SubResource("AtlasTexture_yttwq")
 
 [node name="texture_2" type="TextureRect" parent="tag/center/panel/margin/hbox/vbox" unique_id=1793057112]
-self_modulate = Color(0.93950003, 0.54636633, 0.55024433, 1)
+self_modulate = Color(1, 0.70980394, 0.70980394, 1)
 z_index = 1
 layout_mode = 2
 mouse_filter = 2

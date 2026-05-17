@@ -1,11 +1,21 @@
 extends Node2D
 
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
+@export var left_battle_panel: Control
+@export var right_battle_panel: Control
+
+var left_troop = null
+var right_troop = null
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass
+
+
+func begin(new_left_troop, new_right_troop):
+	left_troop = new_left_troop
+	right_troop = new_right_troop
+
+	left_battle_panel.troop = left_troop
+	right_battle_panel.troop = right_troop

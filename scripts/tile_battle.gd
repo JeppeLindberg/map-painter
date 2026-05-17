@@ -7,16 +7,21 @@ extends Node2D
 
 
 func auto_create_battle():
-	var containing_groups = []
+	if get_child_count() > 0:
+		return
+
+	var left_troop = null
+	var right_troop = null
 
 	for troop in troops.get_children():
-		if not containing_groups.has('player_troop') and troop.is_in_group('player_troop'):
-			containing_groups.append('player_troop')
-		if not containing_groups.has('enemy_troop') and troop.is_in_group('enemy_troop'):
-			containing_groups.append('enemy_troop')
+		if left_troop == null and troop.is_in_group('player_troop'):
+			left_troop = troop
+		if right_troop == null and troop.is_in_group('enemy_troop'):
+			right_troop = troop
 
-	if containing_groups.has('player_troop') and containing_groups.has('enemy_troop'):
+	if left_troop != null and right_troop != null:
 		var new_battle = battle.instantiate()
 		add_child(new_battle)
+		new_battle.begin(left_troop, right_troop)
 
 

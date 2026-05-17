@@ -4,9 +4,16 @@ extends VBoxContainer
 @export var pause = false
 
 @export var battle_panel_morale: Control
+@export var battle_panel_morale_meter: Control
 @export var battle_panel_break: Control
+@export var battle_panel_break_meter: Control
 
 @export var left = true
+
+var troop: Node2D
+
+@export var colorize_main: Array[CanvasItem]
+@export var colorize_secondary: Array[CanvasItem]
 
 func _process(_delta: float) -> void:
 	if pause:
@@ -17,5 +24,16 @@ func _process(_delta: float) -> void:
 			child.size_flags_horizontal = Control.SIZE_SHRINK_END
 		else:
 			child.size_flags_horizontal = Control.SIZE_SHRINK_BEGIN
+	
+	if Engine.is_editor_hint():
+		return
+	
+	if troop != null:
+		for node in colorize_main:
+			node.self_modulate = troop.main_color
+		for node in colorize_secondary:
+			node.self_modulate = troop.secondary_color
 
-
+		battle_panel_morale_meter.visual_fill = clamp(remap(troop.morale, 0.0, 100.0, 0.0, 1.0), 0.0, 1.0)
+		battle_panel_break_meter.visual_fill = clamp(remap(troop.broken, 0.0, 100.0, 0.0, 1.0), 0.0, 1.0)
+	

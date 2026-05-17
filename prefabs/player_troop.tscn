@@ -14,6 +14,8 @@ region = Rect2(21, 1, 8, 8)
 z_index = 100
 script = ExtResource("1_8cjuf")
 pathfinding_clickable_prefab = ExtResource("2_nxc4g")
+main_color = Color(0.70980394, 0.85882354, 1, 1)
+secondary_color = Color(0.26666668, 0.42745098, 0.5803922, 1)
 
 [node name="tag" type="Node2D" parent="." unique_id=1012614075]
 position = Vector2(0, -26)
@@ -74,7 +76,7 @@ theme_override_constants/margin_right = 0
 theme_override_constants/margin_bottom = 0
 
 [node name="unit_count" type="RichTextLabel" parent="tag/center/panel/margin/hbox/container" unique_id=1526946721]
-self_modulate = Color(0.7058824, 0.627451, 0.7294118, 1)
+self_modulate = Color(0.70980394, 0.85882354, 1, 1)
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 2
@@ -92,13 +94,13 @@ theme_override_constants/separation = -9
 alignment = 1
 
 [node name="texture_1" type="TextureRect" parent="tag/center/panel/margin/hbox/vbox" unique_id=1535563981]
-self_modulate = Color(0.654902, 0.6039216, 0.67058825, 1)
+self_modulate = Color(0.26666668, 0.42745098, 0.5803922, 1)
 layout_mode = 2
 mouse_filter = 2
 texture = SubResource("AtlasTexture_jv46q")
 
 [node name="texture_2" type="TextureRect" parent="tag/center/panel/margin/hbox/vbox" unique_id=492865280]
-self_modulate = Color(0.9607843, 0.8901961, 0.98039216, 1)
+self_modulate = Color(0.70980394, 0.85882354, 1, 1)
 z_index = 1
 layout_mode = 2
 mouse_filter = 2

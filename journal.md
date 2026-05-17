@@ -57,6 +57,10 @@ Lavede baseline battle prefab
 
 Battle panels
 
+## 26-05-17
+
+Battle panels hooket op med morale + break
+
 # TODO
 
 ## Next:

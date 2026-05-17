@@ -37,13 +37,17 @@ content_margin_right = 0.0
 content_margin_bottom = 0.0
 bg_color = Color(0.34767118, 0.41505075, 0.92047155, 1)
 
-[node name="battle_panel" type="VBoxContainer" unique_id=498288681 node_paths=PackedStringArray("battle_panel_morale", "battle_panel_break")]
+[node name="battle_panel" type="VBoxContainer" unique_id=498288681 node_paths=PackedStringArray("battle_panel_morale", "battle_panel_morale_meter", "battle_panel_break", "battle_panel_break_meter", "colorize_main", "colorize_secondary")]
 theme_override_constants/separation = 0
 script = ExtResource("1_uq6e1")
 pause = null
 battle_panel_morale = NodePath("morale_red")
+battle_panel_morale_meter = NodePath("morale_red/morale_green")
 battle_panel_break = NodePath("break_light_blue")
+battle_panel_break_meter = NodePath("break_light_blue/break_dark_blue")
 left = false
+colorize_main = [NodePath("panel_1/margin/hbox/container/unit_count"), NodePath("panel_1/margin/hbox/vbox/texture_2")]
+colorize_secondary = [NodePath("panel_1/margin/hbox/vbox/texture_1")]
 
 [node name="panel_1" type="Button" parent="." unique_id=1827350030]
 custom_minimum_size = Vector2(30, 14)

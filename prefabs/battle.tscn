@@ -17,9 +17,11 @@ corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
 corner_detail = 5
 
-[node name="battle" type="Node2D" unique_id=1062362693]
+[node name="battle" type="Node2D" unique_id=1062362693 node_paths=PackedStringArray("left_battle_panel", "right_battle_panel")]
 z_index = 100
 script = ExtResource("1_2gxmc")
+left_battle_panel = NodePath("visual/tag/center/hbox/vbox")
+right_battle_panel = NodePath("visual/tag/center/hbox/vbox2")
 
 [node name="visual" type="Node2D" parent="." unique_id=2125751662]
 

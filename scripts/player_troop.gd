@@ -10,7 +10,10 @@ var target_tile = null
 var selected = false
 
 var morale = 100.0
-var broken_meter = 100.0
+var broken = 100.0
+
+@export var main_color: Color
+@export var secondary_color: Color
 
 
 func _ready() -> void:
