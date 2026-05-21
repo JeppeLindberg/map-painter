@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://dqtkpi402pqi8"]
+
+[ext_resource type="Script" uid="uid://efmp2ikdsnf5" path="res://scripts/soldiers/foot_soldier.gd" id="1_xrmkl"]
+
+[node name="foot_soldier" type="Node" unique_id=901329176]
+script = ExtResource("1_xrmkl")

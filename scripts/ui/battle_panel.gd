@@ -7,6 +7,7 @@ extends VBoxContainer
 @export var battle_panel_morale_meter: Control
 @export var battle_panel_break: Control
 @export var battle_panel_break_meter: Control
+@export var soldier_count: RichTextLabel
 
 @export var left = true
 
@@ -36,4 +37,6 @@ func _process(_delta: float) -> void:
 
 		battle_panel_morale_meter.visual_fill = clamp(remap(troop.morale, 0.0, 100.0, 0.0, 1.0), 0.0, 1.0)
 		battle_panel_break_meter.visual_fill = clamp(remap(troop.broken, 0.0, 100.0, 0.0, 1.0), 0.0, 1.0)
+
+		soldier_count.text = str(troop.get_number_of_soldiers())
 	

@@ -2,6 +2,10 @@ extends Node2D
 
 @export var pathfinding_clickable_prefab: PackedScene
 
+@export var soldier_count: RichTextLabel
+
+@export var soldiers: Node
+
 var utils = preload("res://scripts/utils.gd").new()
 
 var state = 'idle'
@@ -24,6 +28,8 @@ func _process(_delta: float) -> void:
 	if get_tile().get_faction() != 'blue':
 		get_tile().paint('blue')
 
+	soldier_count.text = str(get_number_of_soldiers())
+
 func get_tile():
 	return get_parent().get_parent()
 
@@ -36,36 +42,50 @@ func commit_turn():
 				position = Vector2.ZERO
 				one_step_target.paint('blue')
 
-				update()
-
 			if target_tile == get_tile():
 				go_to_idle_state()
 
+	update()
+
 @onready var prev_update = {
 	'selected': selected,
-	'tile': get_tile()
+	'tile': get_tile(),
+	'state': state
 }
 
 func update():
-	if selected and (prev_update['tile'] != get_tile()):
-		create_pathfinding_clickables()
-	else:
-		if (prev_update['selected'] and not selected):
-			delete_pathfinding_clickables()
-		if not prev_update['selected'] and selected:
-			create_pathfinding_clickables()
+	_local_update()
 
 	prev_update = {
 		'selected': selected,
-		'tile': get_tile()
+		'tile': get_tile(),
+		'state': state
 	}
 
+func _local_update():
+	if selected and not prev_update['selected']:
+		create_pathfinding_clickables()
+		return
+
+	if not selected and prev_update['selected']:
+		delete_pathfinding_clickables()
+		return
+
+	if selected and prev_update['tile'] != get_tile():
+		create_pathfinding_clickables()
+		return
 
 func go_to_move_to_state():
 	state = 'move_to'
+	print(state)
+
+func go_to_battle_state():
+	state = 'battle'
+	print(state)
 
 func go_to_idle_state():
 	state = 'idle'
+	print(state)
 
 var pathfinding_clickables = []
 
@@ -83,7 +103,8 @@ func create_pathfinding_clickables():
 
 func pathfinding_clickable_clicked(caller):
 	target_tile = caller.tile
-	go_to_move_to_state()
+	if state != 'battle':
+		go_to_move_to_state()
 
 func delete_pathfinding_clickables():
 	for i in range(len( pathfinding_clickables) - 1, -1 ,-1):
@@ -103,3 +124,6 @@ func deselect():
 
 func _on_panel_pressed() -> void:
 	unit_clicked()
+
+func get_number_of_soldiers():
+	return soldiers.get_child_count()

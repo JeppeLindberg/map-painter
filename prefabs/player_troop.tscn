@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://p17h7uyjao7v" path="res://scripts/player_troop.gd" id="1_8cjuf"]
 [ext_resource type="PackedScene" uid="uid://bn2k2j1612fal" path="res://prefabs/pathfinding_clickable.tscn" id="2_nxc4g"]
+[ext_resource type="PackedScene" uid="uid://dqtkpi402pqi8" path="res://prefabs/soldiers/foot_soldier.tscn" id="3_nxc4g"]
 [ext_resource type="StyleBox" uid="uid://btyctje1ax8td" path="res://themes/panel_grey.tres" id="3_qgpvi"]
 [ext_resource type="Texture2D" uid="uid://p8tckp5rerja" path="res://sprites/8x8 grid.png" id="4_1ki7x"]
 [ext_resource type="Texture2D" uid="uid://b0j11c77u6tu4" path="res://sprites/white_circle.png" id="5_7vraf"]
@@ -10,12 +11,24 @@
 atlas = ExtResource("4_1ki7x")
 region = Rect2(21, 1, 8, 8)
 
-[node name="player_troop" type="Node2D" unique_id=1824605875 groups=["troop"]]
+[node name="player_troop" type="Node2D" unique_id=1824605875 node_paths=PackedStringArray("soldier_count", "soldiers") groups=["troop"]]
 z_index = 100
 script = ExtResource("1_8cjuf")
 pathfinding_clickable_prefab = ExtResource("2_nxc4g")
+soldier_count = NodePath("tag/center/panel/margin/hbox/container/unit_count")
+soldiers = NodePath("soldiers")
 main_color = Color(0.70980394, 0.85882354, 1, 1)
 secondary_color = Color(0.26666668, 0.42745098, 0.5803922, 1)
+
+[node name="soldiers" type="Node" parent="." unique_id=1383945574]
+
+[node name="foot_soldier" parent="soldiers" unique_id=901329176 instance=ExtResource("3_nxc4g")]
+
+[node name="foot_soldier2" parent="soldiers" unique_id=1155496740 instance=ExtResource("3_nxc4g")]
+
+[node name="foot_soldier3" parent="soldiers" unique_id=316340212 instance=ExtResource("3_nxc4g")]
+
+[node name="foot_soldier4" parent="soldiers" unique_id=1757104280 instance=ExtResource("3_nxc4g")]
 
 [node name="tag" type="Node2D" parent="." unique_id=1012614075]
 position = Vector2(0, -26)
