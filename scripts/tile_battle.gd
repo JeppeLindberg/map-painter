@@ -14,9 +14,9 @@ func auto_create_battle():
 	var right_troop = null
 
 	for troop in troops.get_children():
-		if left_troop == null and troop.is_in_group('player_troop'):
+		if left_troop == null and troop.is_in_group('troop_player'):
 			left_troop = troop
-		if right_troop == null and troop.is_in_group('enemy_troop'):
+		if right_troop == null and troop.is_in_group('troop_enemy'):
 			right_troop = troop
 
 	if left_troop != null and right_troop != null:

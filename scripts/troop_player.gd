@@ -1,14 +1,9 @@
-extends Node2D
+extends Troop
 
 @export var pathfinding_clickable_prefab: PackedScene
-
 @export var soldier_count: RichTextLabel
 
-@export var soldiers: Node
-
 var utils = preload("res://scripts/utils.gd").new()
-
-var state = 'idle'
 
 var target_tile = null
 var selected = false
@@ -21,8 +16,8 @@ var broken = 100.0
 
 
 func _ready() -> void:
-	add_to_group('troop')
-	add_to_group('player_troop')
+	super._ready()
+	add_to_group('troop_player')
 
 func _process(_delta: float) -> void:
 	if get_tile().get_faction() != 'blue':
@@ -30,16 +25,12 @@ func _process(_delta: float) -> void:
 
 	soldier_count.text = str(get_number_of_soldiers())
 
-func get_tile():
-	return get_parent().get_parent()
-
 func commit_turn():
 	match state:
 		'move_to':
 			var one_step_target = get_tile().get_step_toward(target_tile)
 			if (one_step_target != null):
 				one_step_target.add_troop(self)
-				position = Vector2.ZERO
 				one_step_target.paint('blue')
 
 			if target_tile == get_tile():
@@ -75,18 +66,6 @@ func _local_update():
 		create_pathfinding_clickables()
 		return
 
-func go_to_move_to_state():
-	state = 'move_to'
-	print(state)
-
-func go_to_battle_state():
-	state = 'battle'
-	print(state)
-
-func go_to_idle_state():
-	state = 'idle'
-	print(state)
-
 var pathfinding_clickables = []
 
 func create_pathfinding_clickables():
@@ -111,9 +90,6 @@ func delete_pathfinding_clickables():
 		pathfinding_clickables[i].queue_free()
 		pathfinding_clickables.remove_at(i)
 
-func unit_clicked():
-	select()
-
 func select():
 	selected = true
 	update()
@@ -124,6 +100,3 @@ func deselect():
 
 func _on_panel_pressed() -> void:
 	unit_clicked()
-
-func get_number_of_soldiers():
-	return soldiers.get_child_count()

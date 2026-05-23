@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bq32grs3be8v5"]
 
-[ext_resource type="Script" uid="uid://p17h7uyjao7v" path="res://scripts/player_troop.gd" id="1_8cjuf"]
+[ext_resource type="Script" uid="uid://p17h7uyjao7v" path="res://scripts/troop_player.gd" id="1_8cjuf"]
 [ext_resource type="PackedScene" uid="uid://bn2k2j1612fal" path="res://prefabs/pathfinding_clickable.tscn" id="2_nxc4g"]
 [ext_resource type="PackedScene" uid="uid://dqtkpi402pqi8" path="res://prefabs/soldiers/foot_soldier.tscn" id="3_nxc4g"]
 [ext_resource type="StyleBox" uid="uid://btyctje1ax8td" path="res://themes/panel_grey.tres" id="3_qgpvi"]
@@ -11,7 +11,7 @@
 atlas = ExtResource("4_1ki7x")
 region = Rect2(21, 1, 8, 8)
 
-[node name="player_troop" type="Node2D" unique_id=1824605875 node_paths=PackedStringArray("soldier_count", "soldiers") groups=["troop"]]
+[node name="troop_player" type="Node2D" unique_id=1824605875 node_paths=PackedStringArray("soldier_count", "soldiers") groups=["troop"]]
 z_index = 100
 script = ExtResource("1_8cjuf")
 pathfinding_clickable_prefab = ExtResource("2_nxc4g")

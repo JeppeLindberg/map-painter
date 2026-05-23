@@ -7,6 +7,11 @@ extends Node2D
 var left_troop = null
 var right_troop = null
 
+@onready var troops = get_node('../../troops')
+
+
+func _ready() -> void:
+	add_to_group('battle')
 
 
 func begin(new_left_troop, new_right_troop):
@@ -16,7 +21,45 @@ func begin(new_left_troop, new_right_troop):
 	left_battle_panel.troop = left_troop
 	right_battle_panel.troop = right_troop
 
-	if left_troop.has_method('go_to_battle_state'):
-		left_troop.go_to_battle_state()
-	if right_troop.has_method('go_to_battle_state'):
-		right_troop.go_to_battle_state()
+	left_troop.go_to_battle_state()
+	right_troop.go_to_battle_state()
+
+func commit_turn():
+	var attack_powers = []
+	for troop in troops.get_children():
+		attack_powers.append({
+			'source': troop,
+			'attack_power': troop.calculate_attack_power()
+		})
+
+	for attack_power in attack_powers:
+		for troop in troops.get_children():
+			if troop != attack_power['source']:
+				troop.take_damage(attack_power['attack_power'])
+
+	var remaining_factions = []
+	for troop in troops.get_children():
+		if troop.is_queued_for_deletion():
+			continue
+		
+		if troop.is_in_group('troop_player'):
+			if not 'troop_player' in remaining_factions:
+				remaining_factions.append('troop_player')
+		if troop.is_in_group('troop_enemy'):
+			if not 'troop_enemy' in remaining_factions:
+				remaining_factions.append('troop_enemy')
+
+		if len(remaining_factions) >= 2:
+			break
+	
+	if len(remaining_factions) < 2:
+		queue_free()
+	
+	for troop in troops.get_children():
+		if troop.is_queued_for_deletion():
+			continue
+		
+		troop.quit_battle_state()
+
+
+	

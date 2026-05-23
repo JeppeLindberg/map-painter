@@ -27,10 +27,13 @@ func commit_turn():
 	for task in utils.get_children_in_group(main, 'task'):
 		await task.commit_turn()
 
-	for player_soldier in utils.get_children_in_group(main, 'player_troop'):
-		await player_soldier.commit_turn()
+	for battle in utils.get_children_in_group(main, 'battle'):
+		await battle.commit_turn()
 
-	for enemy_soldier in utils.get_children_in_group(main, 'enemy_troop'):
-		await enemy_soldier.commit_turn()
+	for troop_player in utils.get_children_in_group(main, 'troop_player'):
+		await troop_player.commit_turn()
+
+	for troop_enemy in utils.get_children_in_group(main, 'troop_enemy'):
+		await troop_enemy.commit_turn()
 
 	timer.start_timer()

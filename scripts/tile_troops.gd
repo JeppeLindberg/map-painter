@@ -6,6 +6,7 @@ extends Node2D
 
 func add_troop(troop_node):
 	troop_node.reparent(self)
+	troop_node.position = Vector2.ZERO
 
 func spawn_troop(faction):
 	var new_troop = null

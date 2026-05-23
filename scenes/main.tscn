@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://3qegwrydp4a5"]
 
 [ext_resource type="Script" uid="uid://dupy7lp1l560o" path="res://scripts/tiles.gd" id="1_jyhfs"]
-[ext_resource type="PackedScene" uid="uid://gcfqmvwt4j8n" path="res://prefabs/tile.tscn" id="2_0wfyh"]
 [ext_resource type="Script" uid="uid://mgrik15wc4cg" path="res://scripts/turn_timer.gd" id="2_85g3d"]
 [ext_resource type="Script" uid="uid://crypkp54bqje4" path="res://scripts/turn_mgt.gd" id="2_choun"]
 [ext_resource type="Texture2D" uid="uid://cfn4c10oyciur" path="res://sprites/timer_1.png" id="2_o6xl0"]
@@ -24,7 +23,7 @@
 [ext_resource type="PackedScene" uid="uid://ppk84khpexjb" path="res://prefabs/ui/resource_indicator.tscn" id="12_2f3dj"]
 [ext_resource type="Texture2D" uid="uid://ca34fjxcfgemr" path="res://sprites/small_timer_2.png" id="12_dp3eg"]
 [ext_resource type="Script" uid="uid://bd7jxot1kw1au" path="res://scripts/ui_countup.gd" id="12_jscy8"]
-[ext_resource type="PackedScene" uid="uid://bq32grs3be8v5" path="res://prefabs/player_troop.tscn" id="12_trceg"]
+[ext_resource type="PackedScene" uid="uid://bq32grs3be8v5" path="res://prefabs/troop_player.tscn" id="12_trceg"]
 [ext_resource type="Texture2D" uid="uid://bmxkptie73hjy" path="res://sprites/small_transparent.png" id="12_yc10j"]
 [ext_resource type="Script" uid="uid://byanqs1jgvbp3" path="res://scripts/ui/tasks_tile_information.gd" id="13_og1vs"]
 [ext_resource type="PackedScene" uid="uid://c3us5n00l88ec" path="res://prefabs/ui/troop_tile_information.tscn" id="14_dgi5k"]
@@ -35,7 +34,7 @@
 [ext_resource type="Script" uid="uid://bcopiopi5m10g" path="res://scripts/ui/resources_saved_information.gd" id="24_qkpxi"]
 [ext_resource type="PackedScene" uid="uid://ceyyfda0l2263" path="res://prefabs/ui/resource_saved_information.tscn" id="25_tel4y"]
 [ext_resource type="Script" uid="uid://cosnm0i7cvh22" path="res://scripts/ui/troops_tile_information.gd" id="27_j8jky"]
-[ext_resource type="PackedScene" uid="uid://d1p1edh501dns" path="res://prefabs/enemy_troop.tscn" id="37_j2jfr"]
+[ext_resource type="PackedScene" uid="uid://d1p1edh501dns" path="res://prefabs/troop_enemy.tscn" id="37_j2jfr"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_85g3d"]
 load_path = "res://.godot/imported/transparent.png-3c672f4f7b33af5d623e125c39241dfd.ctex"
@@ -760,7 +759,6 @@ faction = "red"
 
 [node name="tiles" type="Node2D" parent="." unique_id=276516360 node_paths=PackedStringArray("occupant_container", "tiles_prototype")]
 script = ExtResource("1_jyhfs")
-tile_prefab = ExtResource("2_0wfyh")
 tile_polygon_prefab = ExtResource("10_choun")
 occupant_container = NodePath("../occupant_container")
 tiles_prototype = NodePath("../tiles_prototype")

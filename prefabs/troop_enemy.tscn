@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://d1p1edh501dns"]
 
-[ext_resource type="Script" uid="uid://dfdnrqhpd81qr" path="res://scripts/enemy_troop.gd" id="1_1tklm"]
+[ext_resource type="Script" uid="uid://dfdnrqhpd81qr" path="res://scripts/troop_enemy.gd" id="1_1tklm"]
 [ext_resource type="StyleBox" uid="uid://btyctje1ax8td" path="res://themes/panel_grey.tres" id="2_7lpkt"]
 [ext_resource type="Texture2D" uid="uid://b2it70gowf7it" path="res://sprites/arrow.png" id="2_knqmj"]
 [ext_resource type="PackedScene" uid="uid://dqtkpi402pqi8" path="res://prefabs/soldiers/foot_soldier.tscn" id="2_v6c8k"]
@@ -11,7 +11,7 @@
 atlas = ExtResource("3_v6c8k")
 region = Rect2(21, 1, 8, 8)
 
-[node name="enemy_troop" type="Node2D" unique_id=1684205262 node_paths=PackedStringArray("intent_arrow", "soldier_count", "soldiers") groups=["troop"]]
+[node name="troop_enemy" type="Node2D" unique_id=1684205262 node_paths=PackedStringArray("intent_arrow", "soldier_count", "soldiers") groups=["troop"]]
 z_index = 100
 script = ExtResource("1_1tklm")
 intent_arrow = NodePath("visual/intent_arrow")

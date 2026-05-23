@@ -9,7 +9,6 @@ var initialized = false
 
 var utils = preload("res://scripts/utils.gd").new()
 
-@export var tile_prefab: PackedScene
 @export var tile_polygon_prefab: PackedScene
 @export var occupant_container: Node2D
 @export var tiles_prototype: Node2D

@@ -116,12 +116,12 @@ func paint(new_faction):
 func spawn_troop():
 	troops.spawn_troop(faction)
 
-func get_player_troop():
-	var player_troops = utils.get_children_in_group(troops, 'player_troop')
-	if player_troops == []:
+func get_troop_player():
+	var troop_players = utils.get_children_in_group(troops, 'troop_player')
+	if troop_players == []:
 		return null
 	else:
-		return player_troops[0]
+		return troop_players[0]
 
 func add_troop(troop_node):
 	troops.add_troop(troop_node)

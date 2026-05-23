@@ -61,6 +61,18 @@ Battle panels
 
 Battle panels hooket op med morale + break
 
+## 26-05-21
+
+Troop counter viser nu korrekt tal + battle gør at troops ikke kan bevæge sig
+
+## 26-05-23
+
+BATTLES VIRKER NU
+
+damage til player + enemy
+classes til troops
+refaktorering af troop kode
+
 # TODO
 
 ## Next:
