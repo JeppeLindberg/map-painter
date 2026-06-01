@@ -186,3 +186,11 @@ func all_nodes(explored_tiles):
 	for pair in explored_tiles:
 		result.append(pair['node'])
 	return result
+
+func get_capital_of(faction):
+	for tile in get_children():
+		if tile.capital and tile.faction == faction:
+			return tile
+
+	return null
+

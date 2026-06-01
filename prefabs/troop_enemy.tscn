@@ -16,9 +16,9 @@ z_index = 100
 script = ExtResource("1_1tklm")
 intent_arrow = NodePath("visual/intent_arrow")
 soldier_count = NodePath("tag/center/panel/margin/hbox/container/unit_count")
-soldiers = NodePath("soldiers")
 main_color = Color(1, 0.70980394, 0.70980394, 1)
 secondary_color = Color(0.85882354, 0.3019608, 0.3019608, 1)
+soldiers = NodePath("soldiers")
 
 [node name="soldiers" type="Node" parent="." unique_id=1222905344]
 
@@ -27,6 +27,14 @@ secondary_color = Color(0.85882354, 0.3019608, 0.3019608, 1)
 [node name="foot_soldier2" parent="soldiers" unique_id=157453744 instance=ExtResource("2_v6c8k")]
 
 [node name="foot_soldier3" parent="soldiers" unique_id=604067145 instance=ExtResource("2_v6c8k")]
+
+[node name="foot_soldier4" parent="soldiers" unique_id=160490517 instance=ExtResource("2_v6c8k")]
+
+[node name="foot_soldier5" parent="soldiers" unique_id=2093573466 instance=ExtResource("2_v6c8k")]
+
+[node name="foot_soldier6" parent="soldiers" unique_id=81121461 instance=ExtResource("2_v6c8k")]
+
+[node name="foot_soldier7" parent="soldiers" unique_id=1404570994 instance=ExtResource("2_v6c8k")]
 
 [node name="tag" type="Node2D" parent="." unique_id=846256452]
 position = Vector2(0, -26)

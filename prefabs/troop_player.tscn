@@ -16,9 +16,9 @@ z_index = 100
 script = ExtResource("1_8cjuf")
 pathfinding_clickable_prefab = ExtResource("2_nxc4g")
 soldier_count = NodePath("tag/center/panel/margin/hbox/container/unit_count")
-soldiers = NodePath("soldiers")
 main_color = Color(0.70980394, 0.85882354, 1, 1)
 secondary_color = Color(0.26666668, 0.42745098, 0.5803922, 1)
+soldiers = NodePath("soldiers")
 
 [node name="soldiers" type="Node" parent="." unique_id=1383945574]
 
@@ -29,6 +29,22 @@ secondary_color = Color(0.26666668, 0.42745098, 0.5803922, 1)
 [node name="foot_soldier3" parent="soldiers" unique_id=316340212 instance=ExtResource("3_nxc4g")]
 
 [node name="foot_soldier4" parent="soldiers" unique_id=1757104280 instance=ExtResource("3_nxc4g")]
+
+[node name="foot_soldier5" parent="soldiers" unique_id=1016068389 instance=ExtResource("3_nxc4g")]
+
+[node name="foot_soldier6" parent="soldiers" unique_id=1304173460 instance=ExtResource("3_nxc4g")]
+
+[node name="foot_soldier7" parent="soldiers" unique_id=1670819193 instance=ExtResource("3_nxc4g")]
+
+[node name="foot_soldier8" parent="soldiers" unique_id=1232565434 instance=ExtResource("3_nxc4g")]
+
+[node name="foot_soldier9" parent="soldiers" unique_id=1836725390 instance=ExtResource("3_nxc4g")]
+
+[node name="foot_soldier10" parent="soldiers" unique_id=1803935176 instance=ExtResource("3_nxc4g")]
+
+[node name="foot_soldier11" parent="soldiers" unique_id=46996623 instance=ExtResource("3_nxc4g")]
+
+[node name="foot_soldier12" parent="soldiers" unique_id=369526470 instance=ExtResource("3_nxc4g")]
 
 [node name="tag" type="Node2D" parent="." unique_id=1012614075]
 position = Vector2(0, -26)

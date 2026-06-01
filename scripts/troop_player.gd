@@ -5,11 +5,7 @@ extends Troop
 
 var utils = preload("res://scripts/utils.gd").new()
 
-var target_tile = null
 var selected = false
-
-var morale = 100.0
-var broken = 100.0
 
 @export var main_color: Color
 @export var secondary_color: Color
@@ -18,6 +14,7 @@ var broken = 100.0
 func _ready() -> void:
 	super._ready()
 	add_to_group('troop_player')
+	faction = 'blue'
 
 func _process(_delta: float) -> void:
 	if get_tile().get_faction() != 'blue':
@@ -26,15 +23,7 @@ func _process(_delta: float) -> void:
 	soldier_count.text = str(get_number_of_soldiers())
 
 func commit_turn():
-	match state:
-		'move_to':
-			var one_step_target = get_tile().get_step_toward(target_tile)
-			if (one_step_target != null):
-				one_step_target.add_troop(self)
-				one_step_target.paint('blue')
-
-			if target_tile == get_tile():
-				go_to_idle_state()
+	super.commit_turn()
 
 	update()
 

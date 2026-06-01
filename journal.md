@@ -73,6 +73,10 @@ damage til player + enemy
 classes til troops
 refaktorering af troop kode
 
+## 26-06-01
+
+Battles kan nu konkludere med 1 side der bliver nødt til at retreat
+
 # TODO
 
 ## Next:

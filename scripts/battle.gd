@@ -26,22 +26,23 @@ func begin(new_left_troop, new_right_troop):
 
 func commit_turn():
 	var attack_powers = []
-	for troop in troops.get_children():
+	for troop in battling_troops():
 		attack_powers.append({
 			'source': troop,
 			'attack_power': troop.calculate_attack_power()
 		})
 
 	for attack_power in attack_powers:
-		for troop in troops.get_children():
+		for troop in battling_troops():
 			if troop != attack_power['source']:
 				troop.take_damage(attack_power['attack_power'])
 
+	for troop in battling_troops():
+		if troop.morale == 0.0:
+			troop.go_to_retreat_state()
+
 	var remaining_factions = []
-	for troop in troops.get_children():
-		if troop.is_queued_for_deletion():
-			continue
-		
+	for troop in battling_troops():		
 		if troop.is_in_group('troop_player'):
 			if not 'troop_player' in remaining_factions:
 				remaining_factions.append('troop_player')
@@ -53,13 +54,22 @@ func commit_turn():
 			break
 	
 	if len(remaining_factions) < 2:
+		for troop in battling_troops():		
+			troop.quit_battle_state()
+			
 		queue_free()
 	
+
+
+func battling_troops():
+	var result = []
 	for troop in troops.get_children():
 		if troop.is_queued_for_deletion():
 			continue
-		
-		troop.quit_battle_state()
-
+		if troop.state != 'battle':
+			continue
+		result.append(troop)
+	
+	return result
 
 	
