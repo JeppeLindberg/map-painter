@@ -667,6 +667,7 @@ faction = "red"
 self_modulate = Color(0.49803922, 1, 0.83137256, 1)
 position = Vector2(-26, -63)
 polygon = PackedVector2Array(-5, 34, -26, 19, -36, -3, -25, -17, 37, 3, 33, 30)
+resource = "wood"
 base_production = 1.1
 faction = "blue"
 

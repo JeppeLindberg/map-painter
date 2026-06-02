@@ -6,7 +6,7 @@ var prev_points = []
 
 @export_category('Tile')
 @export_tool_button("Randomize resource", "Callable") var resource_callable = randomize_resource
-@export_enum('stone') var resource = 'stone'
+@export_enum('wood','stone') var resource = 'stone'
 @export_tool_button("Randomize base production", "Callable") var base_production_callable = randomize_base_production
 @export var base_production = 0.0
 
@@ -17,7 +17,7 @@ var prev_points = []
 
 
 func randomize_resource():
-	resource = ['stone'].pick_random()
+	resource = ['wood','stone'].pick_random()
 
 func randomize_base_production():
 	base_production = snapped(randf_range(0.8, 1.3), 0.1)

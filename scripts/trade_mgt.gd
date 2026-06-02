@@ -12,3 +12,6 @@ func commit_turn():
 			if packets[i].resource_name == 'stone':
 				await resource_mgt.add_resource(tile.faction, 'ducats', packets[i].amount * 0.1)
 				packets[i].queue_free();
+			if packets[i].resource_name == 'wood':
+				await resource_mgt.add_resource(tile.faction, 'ducats', packets[i].amount * 0.05)
+				packets[i].queue_free();

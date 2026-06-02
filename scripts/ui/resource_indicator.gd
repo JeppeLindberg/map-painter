@@ -1,6 +1,7 @@
 extends PanelContainer
 
 
+@export var wood_texture: Texture2D
 @export var stone_texture: Texture2D
 @export var manpower_texture: Texture2D
 
@@ -15,6 +16,9 @@ extends PanelContainer
 
 func set_info(res_name, production):
 	match res_name:
+		'wood':
+			resource_name.text = 'Wood'
+			texture.texture = wood_texture
 		'stone':
 			resource_name.text = 'Stone'
 			texture.texture = stone_texture

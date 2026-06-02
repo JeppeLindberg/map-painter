@@ -66,7 +66,7 @@ func _process(delta: float) -> void:
 				troops_control.visible = false
 			
 			var resources_to_add = []
-			for resource_name in ['stone', 'manpower']:
+			for resource_name in ['wood', 'stone', 'manpower']:
 				if tile.get_resource_production(resource_name) != 0.0:
 					resources_to_add.append([resource_name, tile.get_resource_production(resource_name)])
 

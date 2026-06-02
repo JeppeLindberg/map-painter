@@ -77,15 +77,17 @@ refaktorering af troop kode
 
 Battles kan nu konkludere med 1 side der bliver nødt til at retreat
 
+## 26-06-02
+
+Oprettede wood som ressource
+
 # TODO
 
 ## Next:
 
-Lav capitals
+Lav ressourcerne (Træ, metal, mad, fibre, sten)
 
-Lav enemies
-
-Lav battles
+Lav population pr lokation
 
 
 ## Resource trading, planned

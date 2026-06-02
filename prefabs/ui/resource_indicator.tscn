@@ -15,6 +15,10 @@ corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
 corner_detail = 5
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_8s74x"]
+atlas = ExtResource("1_4irvp")
+region = Rect2(91, 1, 16, 16)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_ukjet"]
 atlas = ExtResource("1_4irvp")
 region = Rect2(37, 1, 16, 16)
@@ -32,6 +36,7 @@ custom_minimum_size = Vector2(0, 10)
 size_flags_horizontal = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_2wyq8")
 script = ExtResource("1_ukjet")
+wood_texture = SubResource("AtlasTexture_8s74x")
 stone_texture = SubResource("AtlasTexture_ukjet")
 manpower_texture = SubResource("AtlasTexture_tc44u")
 texture = NodePath("hbox/texture")
@@ -75,4 +80,5 @@ size_flags_stretch_ratio = 2.0
 theme_override_font_sizes/normal_font_size = 8
 text = "Stone"
 fit_content = true
+autowrap_mode = 0
 vertical_alignment = 1

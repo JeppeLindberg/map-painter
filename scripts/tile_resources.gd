@@ -22,7 +22,7 @@ func get_resource_production(resource):
 	return result
 
 func create_packets():
-	for resource in ['stone', 'manpower']:	
+	for resource in ['wood', 'stone', 'manpower']:	
 		if get_resource_production(resource) > 0.0:
 			var new_resource_packet = resource_packet_prefab.instantiate()
 			add_child(new_resource_packet)
