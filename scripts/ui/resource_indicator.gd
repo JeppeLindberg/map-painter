@@ -26,7 +26,7 @@ func set_info(res_name, production):
 			resource_name.text = 'Manpower'
 			texture.texture = manpower_texture
 
-	gain_loss.text = str(snapped(production, 0.1))
+	gain_loss.text = str(snapped(abs(production), 0.1))
 	if production >= 0.0:
 		gain_loss.text = '+' + gain_loss.text
 	else:

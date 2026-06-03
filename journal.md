@@ -81,6 +81,10 @@ Battles kan nu konkludere med 1 side der bliver nødt til at retreat
 
 Oprettede wood som ressource
 
+## 26-06-03
+
+Oprettede baseline for ressource consumption
+
 # TODO
 
 ## Next:

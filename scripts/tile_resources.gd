@@ -21,6 +21,14 @@ func get_resource_production(resource):
 	
 	return result
 
+func get_resource_consumption(resource):
+	if resource == 'wood':
+		return 0.5
+	if resource == 'stone':
+		return 0.1
+	
+	return 0.0
+
 func create_packets():
 	for resource in ['wood', 'stone', 'manpower']:	
 		if get_resource_production(resource) > 0.0:

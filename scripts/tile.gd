@@ -102,7 +102,8 @@ func calculate_neighbours():
 			neighbour_paths.append(self.get_path_to(tile))
 
 func prepare_turn():
-	await battle.auto_create_battle()
+	# Find the closest resource packets, and reserve them
+	pass
 
 func get_relative_tile(vec):
 	return tiles.get_tile(tile_index + vec)
@@ -209,6 +210,9 @@ func enqueue_task(task_name, parameter_1):
 
 func get_resource_production(resource_name):
 	return resources.get_resource_production(resource_name)
+
+func get_resource_consumption(resource_name):
+	return resources.get_resource_consumption(resource_name)
 
 func create_resource_packets():
 	await resources.create_packets()

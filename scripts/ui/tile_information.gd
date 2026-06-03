@@ -67,8 +67,9 @@ func _process(delta: float) -> void:
 			
 			var resources_to_add = []
 			for resource_name in ['wood', 'stone', 'manpower']:
-				if tile.get_resource_production(resource_name) != 0.0:
-					resources_to_add.append([resource_name, tile.get_resource_production(resource_name)])
+				var sum = tile.get_resource_production(resource_name) - tile.get_resource_consumption(resource_name)
+				if sum != 0.0:
+					resources_to_add.append([resource_name, sum])
 
 			if prev_resources != resources_to_add:
 				for child in resources_control.get_children():
