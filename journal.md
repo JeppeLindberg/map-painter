@@ -85,6 +85,10 @@ Oprettede wood som ressource
 
 Oprettede baseline for ressource consumption
 
+## 26-06-08
+
+Fixede nogle bugs, redesiget ressource trading
+
 # TODO
 
 ## Next:
@@ -96,12 +100,15 @@ Lav population pr lokation
 
 ## Resource trading, planned
 
-End of turn:
-	For each blue tile that consumes resources, allocate resources from resource packs, and send them to those tiles
-	All remaining resource packs gets sold in trades
-		Trades are determined by other factions, and what they need
-		for now, 0.1 ducats for each 1 resource sold
-	Unsold resources gets lost
+Start of turn:
+	For each tile and each resource, spawn a resource packet that represents it. These can be both positive (supply) and negative (demand).
+	When all packets are spawned, calculate the overall supply + demand of the entire country
+	in case of supply:
+		Sell it to neighbouring countries, if they have demand of that resource
+		Otherwise, if they have supply but less then the original country, also sell it but in smaller quanities and way worse prices
+	In case of demand:
+		Recieve it from neigbouring countries if they have supply of that resource
+	Only get money from selling, not losing from buying (flavored as taxes)
 
 
 

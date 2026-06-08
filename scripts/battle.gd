@@ -38,11 +38,11 @@ func commit_turn():
 				troop.take_damage(attack_power['attack_power'])
 
 	for troop in battling_troops():
-		if troop.morale == 0.0:
+		if troop.morale <= 0.0:
 			troop.go_to_retreat_state()
 
 	var remaining_factions = []
-	for troop in battling_troops():		
+	for troop in battling_troops():
 		if troop.is_in_group('troop_player'):
 			if not 'troop_player' in remaining_factions:
 				remaining_factions.append('troop_player')
@@ -54,7 +54,7 @@ func commit_turn():
 			break
 	
 	if len(remaining_factions) < 2:
-		for troop in battling_troops():		
+		for troop in battling_troops():
 			troop.quit_battle_state()
 			
 		queue_free()

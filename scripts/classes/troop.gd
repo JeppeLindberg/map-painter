@@ -106,5 +106,7 @@ func commit_turn():
 				one_step_target.add_troop(self)
 				one_step_target.paint(faction)
 
+	match state:
+		'move_to', 'retreat':
 			if target_tile == get_tile():
 				go_to_idle_state()
