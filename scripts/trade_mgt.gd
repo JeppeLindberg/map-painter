@@ -4,14 +4,9 @@ extends Node
 @onready var tiles = get_node('/root/main/tiles')
 
 
-func commit_turn():
-	for tile in tiles.get_children():
-		var packets = tile.get_resource_packets()
 
-		for i in range(len(packets) -1, -1, -1):
-			if packets[i].resource_name == 'stone':
-				await resource_mgt.add_resource(tile.faction, 'ducats', packets[i].amount * 0.1)
-				packets[i].queue_free();
-			if packets[i].resource_name == 'wood':
-				await resource_mgt.add_resource(tile.faction, 'ducats', packets[i].amount * 0.05)
-				packets[i].queue_free();
+func add_tradable_resource(faction, resource_name, amount):
+	if faction == 'neutral':
+		return
+
+	print(resource_name + ' ' + str(amount))

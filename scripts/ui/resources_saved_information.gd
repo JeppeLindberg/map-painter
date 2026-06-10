@@ -5,6 +5,7 @@ extends PanelContainer
 @export var resources_container: Control
 
 @onready var resource_mgt = get_node('/root/main/resource_mgt')
+@onready var factions = get_node('/root/main/factions')
 
 
 var resources_information_state = []
@@ -16,7 +17,7 @@ func _process(_delta):
 		new_resources_information_state.append({
 			'faction': 'blue',
 			'resource': resource,
-			'amount': resource_mgt.get_resource('blue', resource)
+			'amount': factions.get_faction('blue').get_resource(resource)
 		})
 	
 	if new_resources_information_state != resources_information_state:

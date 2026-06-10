@@ -30,13 +30,25 @@ func get_resource_consumption(resource):
 	return 0.0
 
 func create_packets():
+	for child in get_children():
+		child.queue_free()
+
 	for resource in ['wood', 'stone', 'manpower']:	
 		if get_resource_production(resource) > 0.0:
-			var new_resource_packet = resource_packet_prefab.instantiate()
-			add_child(new_resource_packet)
-			new_resource_packet.resource_name = resource
-			new_resource_packet.amount = get_resource_production(resource)
+			var amount = get_resource_production(resource) - get_resource_consumption(resource)
+			if amount != 0.0:
+				var new_resource_packet = resource_packet_prefab.instantiate()
+				add_child(new_resource_packet)
+				new_resource_packet.faction = tile.get_faction()
+				new_resource_packet.resource_name = resource
+				new_resource_packet.amount = get_resource_production(resource)
 
 func get_packets():
-	return get_children()
+	var result = []
+
+	for child in get_children():
+		if not child.is_queued_for_deletion():
+			result.append(child)
+
+	return result
 

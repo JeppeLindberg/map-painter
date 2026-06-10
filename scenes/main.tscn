@@ -11,6 +11,8 @@
 [ext_resource type="Texture2D" uid="uid://ciiobs1rsylf6" path="res://sprites/timer_0.png" id="4_tipki"]
 [ext_resource type="Shader" uid="uid://dysv0u7mpo6od" path="res://shaders/timer.gdshader" id="5_0ld40"]
 [ext_resource type="Script" uid="uid://dxy82a5tlulm7" path="res://scripts/trade_mgt.gd" id="5_5q0nq"]
+[ext_resource type="Script" uid="uid://dpru6gkdunlvg" path="res://scripts/factions.gd" id="6_fuf3a"]
+[ext_resource type="PackedScene" uid="uid://8jfjowegs0ih" path="res://prefabs/faction.tscn" id="7_fuf3a"]
 [ext_resource type="Script" uid="uid://u83l5gfua48x" path="res://scripts/ui/tile_information.gd" id="7_trceg"]
 [ext_resource type="Theme" uid="uid://bt3iq21ixn45k" path="res://themes/theme.tres" id="9_a8y0u"]
 [ext_resource type="StyleBox" uid="uid://cxvta636uomo7" path="res://themes/panel_pink.tres" id="9_fv21b"]
@@ -160,6 +162,14 @@ script = ExtResource("4_qkpxi")
 
 [node name="trade_mgt" type="Node" parent="." unique_id=82153317]
 script = ExtResource("5_5q0nq")
+
+[node name="factions" type="Node" parent="." unique_id=728397347]
+script = ExtResource("6_fuf3a")
+
+[node name="blue" parent="factions" unique_id=453694845 instance=ExtResource("7_fuf3a")]
+
+[node name="red" parent="factions" unique_id=378524369 instance=ExtResource("7_fuf3a")]
+faction_name = "red"
 
 [node name="camera" type="Camera2D" parent="." unique_id=1132405800]
 

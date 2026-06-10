@@ -4,7 +4,6 @@ extends Node
 var utils = preload("res://scripts/utils.gd").new()
 @onready var main = get_node('/root/main')
 @onready var resource_mgt = get_node('/root/main/resource_mgt')
-@onready var trade_mgt = get_node('/root/main/trade_mgt')
 
 @export var timer: Node2D
 
@@ -19,8 +18,6 @@ func prepare_turn():
 
 func commit_turn():
 	await get_tree().process_frame
-
-	await trade_mgt.commit_turn()
 	
 	await resource_mgt.commit_turn()
 

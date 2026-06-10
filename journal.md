@@ -89,6 +89,14 @@ Oprettede baseline for ressource consumption
 
 Fixede nogle bugs, redesiget ressource trading
 
+## 26-06-09
+
+Implementeret del af ny resource trading
+
+## 26-06-10
+
+Udviklede videre på trading system, forbereder til at lave supply/demand system
+
 # TODO
 
 ## Next:
